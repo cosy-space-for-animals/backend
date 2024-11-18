@@ -53,11 +53,21 @@ public class QPet extends EntityPathBase<Pet> {
 
     public final StringPath petFavs2 = createString("petFavs2");
 
+    public final StringPath petFavs2Colour = createString("petFavs2Colour");
+
     public final StringPath petFavs3 = createString("petFavs3");
+
+    public final StringPath petFavs3Colour = createString("petFavs3Colour");
+
+    public final StringPath petFavsColour = createString("petFavsColour");
 
     public final StringPath petName = createString("petName");
 
+    public final NumberPath<Integer> petProfileFrame = createNumber("petProfileFrame", Integer.class);
+
     public final StringPath petProfileUrl = createString("petProfileUrl");
+
+    public final EnumPath<PetStatus> petStatus = createEnum("petStatus", PetStatus.class);
 
     public final QSpecies species;
 
@@ -79,7 +89,7 @@ public class QPet extends EntityPathBase<Pet> {
 
     public QPet(Class<? extends Pet> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.member = inits.isInitialized("member") ? new com.memopet.memopet.domain.member.entity.QMember(forProperty("member"), inits.get("member")) : null;
+        this.member = inits.isInitialized("member") ? new com.memopet.memopet.domain.member.entity.QMember(forProperty("member")) : null;
         this.species = inits.isInitialized("species") ? new QSpecies(forProperty("species")) : null;
     }
 

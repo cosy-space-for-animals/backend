@@ -18,17 +18,13 @@ public class QMember extends EntityPathBase<Member> {
 
     private static final long serialVersionUID = -1070714820L;
 
-    private static final PathInits INITS = PathInits.DIRECT2;
-
     public static final QMember member = new QMember("member1");
 
     public final com.memopet.memopet.global.common.entity.QFirstCreatedEntity _super = new com.memopet.memopet.global.common.entity.QFirstCreatedEntity(this);
 
-    public final BooleanPath activated = createBoolean("activated");
+    public final DateTimePath<java.time.LocalDateTime> agreeDate = createDateTime("agreeDate", java.time.LocalDateTime.class);
 
-    public final QAddress address;
-
-    public final EnumPath<Authority> authority = createEnum("authority", Authority.class);
+    public final BooleanPath agreeYn = createBoolean("agreeYn");
 
     //inherited
     public final DateTimePath<java.time.LocalDateTime> createdDate = _super.createdDate;
@@ -39,9 +35,7 @@ public class QMember extends EntityPathBase<Member> {
 
     public final DateTimePath<java.time.LocalDateTime> deletedDate = createDateTime("deletedDate", java.time.LocalDateTime.class);
 
-    public final StringPath email = createString("email");
-
-    public final ComparablePath<java.util.UUID> id = createComparable("id", java.util.UUID.class);
+    public final NumberPath<Long> id = createNumber("id", Long.class);
 
     //inherited
     public final StringPath lastModifiedBy = _super.lastModifiedBy;
@@ -49,7 +43,7 @@ public class QMember extends EntityPathBase<Member> {
     //inherited
     public final DateTimePath<java.time.LocalDateTime> lastModifiedDate = _super.lastModifiedDate;
 
-    public final StringPath password = createString("password");
+    public final StringPath memberId = createString("memberId");
 
     public final ListPath<com.memopet.memopet.domain.pet.entity.Pet, com.memopet.memopet.domain.pet.entity.QPet> pets = this.<com.memopet.memopet.domain.pet.entity.Pet, com.memopet.memopet.domain.pet.entity.QPet>createList("pets", com.memopet.memopet.domain.pet.entity.Pet.class, com.memopet.memopet.domain.pet.entity.QPet.class, PathInits.DIRECT2);
 
@@ -58,24 +52,15 @@ public class QMember extends EntityPathBase<Member> {
     public final StringPath username = createString("username");
 
     public QMember(String variable) {
-        this(Member.class, forVariable(variable), INITS);
+        super(Member.class, forVariable(variable));
     }
 
     public QMember(Path<? extends Member> path) {
-        this(path.getType(), path.getMetadata(), PathInits.getFor(path.getMetadata(), INITS));
+        super(path.getType(), path.getMetadata());
     }
 
     public QMember(PathMetadata metadata) {
-        this(metadata, PathInits.getFor(metadata, INITS));
-    }
-
-    public QMember(PathMetadata metadata, PathInits inits) {
-        this(Member.class, metadata, inits);
-    }
-
-    public QMember(Class<? extends Member> type, PathMetadata metadata, PathInits inits) {
-        super(type, metadata, inits);
-        this.address = inits.isInitialized("address") ? new QAddress(forProperty("address")) : null;
+        super(Member.class, metadata);
     }
 
 }

@@ -6,7 +6,6 @@ import com.memopet.memopet.global.common.entity.FirstCreatedEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.sql.Clob;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -41,6 +40,9 @@ public class Pet extends FirstCreatedEntity {
     @Column(name = "pet_profile_url", nullable = false)
     private String petProfileUrl;
 
+    @Column(name = "pet_profile_frame", nullable = false)
+    private int petProfileFrame;
+
     @Column(name = "back_img_url")
     private String backImgUrl;
 
@@ -53,9 +55,19 @@ public class Pet extends FirstCreatedEntity {
     @Column(name = "pet_favs3")
     private String petFavs3;
 
+    @Column(name = "pet_favs_colour", nullable = false)
+    private String petFavsColour;
+
+    @Column(name = "pet_favs2_colour")
+    private String petFavs2Colour;
+
+    @Column(name = "pet_favs3_colour")
+    private String petFavs3Colour;
+
     @Column(name = "pet_desc", nullable = false)
     private String petDesc;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Gender gender;
 
@@ -66,4 +78,45 @@ public class Pet extends FirstCreatedEntity {
     @Column(name = "deleted_date")
     private LocalDateTime deletedDate;
 
+    /********** 변경감지용 메서드 **************/
+    public void updateDeletedDate(LocalDateTime deletedDate) {
+        this.deletedDate = deletedDate;
+    }
+
+    public void updateDesc(String petDesc) {
+        this.petDesc = petDesc;
+    }
+
+    public void updateFav(String petFavs, int dec) {
+        if(dec == 1) this.petFavs = petFavs;
+        if(dec == 2) this.petFavs2 = petFavs;
+        if(dec == 3) this.petFavs3 = petFavs;
+    }
+
+    public void updatePetStatus(PetStatus petStatus) {
+        this.petStatus = petStatus;
+    }
+    public void updateName(String petName) {
+        this.petName = petName;
+    }
+
+    public void updateBirthDate(LocalDate petBirthDate) {
+        this.petBirth = petBirthDate;
+    }
+
+    public void updateDeathDate(LocalDate petDeathDate) {
+        this.petDeathDate = petDeathDate;
+    }
+
+    public void updatePetProfileFrame(Integer petProfileFrame) {
+        this.petProfileFrame = petProfileFrame;
+    }
+
+    public void updateProfileUrl(String storedPetImgName) {
+        this.petProfileUrl = storedPetImgName;
+    }
+
+    public void updateBackgroundUrl(String storedBackgroundImgName) {
+        this.backImgUrl = storedBackgroundImgName;
+    }
 }

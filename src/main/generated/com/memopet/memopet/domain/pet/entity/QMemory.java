@@ -24,12 +24,12 @@ public class QMemory extends EntityPathBase<Memory> {
 
     public final com.memopet.memopet.global.common.entity.QFirstCreatedEntity _super = new com.memopet.memopet.global.common.entity.QFirstCreatedEntity(this);
 
+    public final EnumPath<Audience> audience = createEnum("audience", Audience.class);
+
     //inherited
     public final DateTimePath<java.time.LocalDateTime> createdDate = _super.createdDate;
 
     public final DateTimePath<java.time.LocalDateTime> deletedDate = createDateTime("deletedDate", java.time.LocalDateTime.class);
-
-    public final StringPath description = createString("description");
 
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
@@ -39,11 +39,13 @@ public class QMemory extends EntityPathBase<Memory> {
     //inherited
     public final DateTimePath<java.time.LocalDateTime> lastModifiedDate = _super.lastModifiedDate;
 
-    public final NumberPath<Long> likeCount = createNumber("likeCount", Long.class);
+    public final NumberPath<Integer> likeCount = createNumber("likeCount", Integer.class);
 
-    public final DateTimePath<java.time.LocalDateTime> memoryDate = createDateTime("memoryDate", java.time.LocalDateTime.class);
+    public final DatePath<java.time.LocalDate> memoryDate = createDate("memoryDate", java.time.LocalDate.class);
 
-    public final com.memopet.memopet.domain.member.entity.QMember modifier;
+    public final StringPath memoryDescription = createString("memoryDescription");
+
+    public final QPet pet;
 
     public final StringPath title = createString("title");
 
@@ -65,7 +67,7 @@ public class QMemory extends EntityPathBase<Memory> {
 
     public QMemory(Class<? extends Memory> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.modifier = inits.isInitialized("modifier") ? new com.memopet.memopet.domain.member.entity.QMember(forProperty("modifier"), inits.get("modifier")) : null;
+        this.pet = inits.isInitialized("pet") ? new QPet(forProperty("pet"), inits.get("pet")) : null;
     }
 
 }

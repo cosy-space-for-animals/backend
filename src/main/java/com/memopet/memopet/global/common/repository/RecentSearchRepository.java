@@ -4,8 +4,8 @@ import com.memopet.memopet.domain.pet.entity.Pet;
 import com.memopet.memopet.global.common.entity.RecentSearch;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.List;
-
 public interface RecentSearchRepository extends JpaRepository<RecentSearch, Long> {
-     List<RecentSearch> findByPetId(Pet petId);
+
+     RecentSearch findByPet(Pet petId);
+     boolean existsByPetId(Pet petId);
 }

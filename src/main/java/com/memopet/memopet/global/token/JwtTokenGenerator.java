@@ -1,20 +1,26 @@
 package com.memopet.memopet.global.token;
+import com.memopet.memopet.domain.member.entity.RefreshToken;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.oauth2.jwt.JwtClaimsSet;
-//import org.springframework.security.oauth2.jwt.JwtEncoder;
 import org.springframework.security.oauth2.jwt.JwtEncoder;
 import org.springframework.security.oauth2.jwt.JwtEncoderParameters;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
+
+import static com.memopet.memopet.global.token.TokenConstant.ACCESSTOKENEXPIRYTIME;
+import static com.memopet.memopet.global.token.TokenConstant.REFRESHEXPIRYTIME;
+
 
 @Service
 @RequiredArgsConstructor
@@ -34,7 +40,7 @@ public class JwtTokenGenerator {
         JwtClaimsSet claims = JwtClaimsSet.builder()
                 .issuer("atquil")
                 .issuedAt(Instant.now())
-                .expiresAt(Instant.now().plus(1 , ChronoUnit.MINUTES))
+                .expiresAt(Instant.now().plus(ACCESSTOKENEXPIRYTIME, ChronoUnit.MINUTES))
                 .subject(authentication.getName())
                 .claim("scope", permissions)
                 .build();
@@ -60,19 +66,21 @@ public class JwtTokenGenerator {
 
         return String.join(" ", permissions);
     }
-    public String generateRefreshToken(Authentication authentication) {
-
-        log.info("[JwtTokenGenerator:generateRefreshToken] Token Creation Started for:{}", authentication.getName());
+    public RefreshToken generateRefreshToken(String email) {
+        log.info("[JwtTokenGenerator:generateRefreshToken] Token Creation Started for:{}", email);
 
         JwtClaimsSet claims = JwtClaimsSet.builder()
                 .issuer("atquil")
                 .issuedAt(Instant.now())
-                .expiresAt(Instant.now().plus(15 , ChronoUnit.DAYS))
-                .subject(authentication.getName())
+                .expiresAt(Instant.now().plus(REFRESHEXPIRYTIME, ChronoUnit.DAYS))
+                .subject(email)
                 .claim("scope", "REFRESH_TOKEN")
                 .build();
 
-        return jwtEncoder.encode(JwtEncoderParameters.from(claims)).getTokenValue();
+        String refreshToken = jwtEncoder.encode(JwtEncoderParameters.from(claims)).getTokenValue();
+
+        LocalDateTime localDateTimeDefault = LocalDateTime.ofInstant(claims.getExpiresAt(), ZoneId.systemDefault());
+        return RefreshToken.builder().refreshToken(refreshToken).expiredAt(localDateTimeDefault).build();
     }
 
 }

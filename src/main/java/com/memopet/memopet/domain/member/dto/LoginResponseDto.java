@@ -1,6 +1,6 @@
 package com.memopet.memopet.domain.member.dto;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.memopet.memopet.domain.member.entity.MemberStatus;
 import lombok.*;
 
 @Getter
@@ -11,15 +11,18 @@ import lombok.*;
 public class LoginResponseDto {
 
     private String username;
-    @JsonProperty("user_status")
-    private String userStatus;
-    @JsonProperty("user_name")
+
+    private MemberStatus userStatus;
+
+    private String phoneNumYn;
+
+    private String userRole;
+
     private int loginFailCount;
-    @JsonProperty("access_token")
+
     private String accessToken;
-    @JsonProperty("access_token_expiry")
-    private int accessTokenExpiry;
-    @JsonProperty("token_type")
-    private String tokenType;
+
+    private String memberId;
+
 
 }

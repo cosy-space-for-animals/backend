@@ -1,0 +1,663 @@
+2024-08-21 22:50:00.642 [http-nio-8080-exec-2]  INFO p6spy - #1724248200642 | took 3ms | rollback | connection 2| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-21 22:50:00.753 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-1]  INFO p6spy - #1724248200753 | took 4ms | commit | connection 3| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-21 22:51:43.452 [http-nio-8080-exec-3]  INFO p6spy - #1724248303452 | took 24ms | rollback | connection 4| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-21 22:51:43.468 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-1]  INFO p6spy - #1724248303468 | took 0ms | commit | connection 5| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-21 22:53:43.869 [http-nio-8080-exec-5]  INFO p6spy - #1724248423869 | took 54ms | rollback | connection 6| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-21 22:53:43.890 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-1]  INFO p6spy - #1724248423890 | took 0ms | commit | connection 7| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-21 22:54:08.396 [http-nio-8080-exec-1]  INFO p6spy - #1724248448396 | took 14ms | rollback | connection 2| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-21 22:54:08.482 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-1]  INFO p6spy - #1724248448482 | took 0ms | commit | connection 3| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-21 22:55:56.826 [http-nio-8080-exec-3]  INFO p6spy - #1724248556826 | took 2ms | rollback | connection 4| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-21 22:55:56.859 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-1]  INFO p6spy - #1724248556859 | took 0ms | commit | connection 5| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-21 22:56:44.216 [http-nio-8080-exec-1]  INFO p6spy - #1724248604216 | took 10ms | statement | connection 2| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+select m1_0.id,m1_0.created_date,m1_0.deleted_date,m1_0.email,m1_0.last_login_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.login_fail_count,m1_0.member_id,m1_0.member_status,m1_0.password,m1_0.phone_num,m1_0.provider,m1_0.provider_id,m1_0.roles,m1_0.username from member_social m1_0 where m1_0.email=? and m1_0.deleted_date is null
+select m1_0.id,m1_0.created_date,m1_0.deleted_date,m1_0.email,m1_0.last_login_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.login_fail_count,m1_0.member_id,m1_0.member_status,m1_0.password,m1_0.phone_num,m1_0.provider,m1_0.provider_id,m1_0.roles,m1_0.username from member_social m1_0 where m1_0.email='nueizkk@gmail.com' and m1_0.deleted_date is null;
+2024-08-21 22:56:44.235 [http-nio-8080-exec-1]  INFO p6spy - #1724248604235 | took 14ms | statement | connection 2| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+select m1_0.id,m1_0.agree_date,m1_0.agree_yn,m1_0.created_date,m1_0.deactivation_reason,m1_0.deactivation_reason_comment,m1_0.deleted_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.member_id,m1_0.phone_num,m1_0.username from member m1_0 where m1_0.phone_num=? and m1_0.deleted_date is null
+select m1_0.id,m1_0.agree_date,m1_0.agree_yn,m1_0.created_date,m1_0.deactivation_reason,m1_0.deactivation_reason_comment,m1_0.deleted_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.member_id,m1_0.phone_num,m1_0.username from member m1_0 where m1_0.phone_num=NULL and m1_0.deleted_date is null;
+2024-08-21 22:56:44.372 [http-nio-8080-exec-1]  INFO p6spy - #1724248604371 | took 18ms | statement | connection 2| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into member (agree_date,agree_yn,created_date,deactivation_reason,deactivation_reason_comment,deleted_date,last_modified_by,last_modified_date,member_id,phone_num,username) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into member (agree_date,agree_yn,created_date,deactivation_reason,deactivation_reason_comment,deleted_date,last_modified_by,last_modified_date,member_id,phone_num,username) values ('2024-08-21T22:56:44.237+0900',true,'2024-08-21T22:56:44.339+0900',NULL,NULL,NULL,'ee6f84d1-6f88-491a-9fe1-fd06505a4b92','2024-08-21T22:56:44.339+0900','20240821225644236923',NULL,'김지은');
+2024-08-21 22:56:44.385 [http-nio-8080-exec-1]  INFO p6spy - #1724248604385 | took 1ms | statement | connection 2| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into member_social (created_date,deleted_date,email,last_login_date,last_modified_by,last_modified_date,login_fail_count,member_id,member_status,password,phone_num,provider,provider_id,roles,username) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+insert into member_social (created_date,deleted_date,email,last_login_date,last_modified_by,last_modified_date,login_fail_count,member_id,member_status,password,phone_num,provider,provider_id,roles,username) values ('2024-08-21T22:56:44.382+0900',NULL,'nueizkk@gmail.com','2024-08-21T22:56:44.379+0900','555377c5-b9d1-471a-84df-076113cfe8fd','2024-08-21T22:56:44.382+0900',0,'20240821225644236923','NORMAL',NULL,NULL,'google','109908861507199911008','ROLE_USER','김지은');
+2024-08-21 22:56:44.448 [http-nio-8080-exec-1]  INFO p6spy - #1724248604448 | took 4ms | statement | connection 2| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+select rt.* FROM refresh_token rt where rt.access_token = ? and rt.revoked = false
+select rt.* FROM refresh_token rt where rt.access_token = 'eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJhdHF1aWwiLCJzdWIiOiJudWVpemtrQGdtYWlsLmNvbSIsImV4cCI6MTcyNDI1OTQwNCwiaWF0IjoxNzI0MjQ4NjA0LCJzY29wZSI6IlVTRVJfQVVUSE9SSVRZIn0.RkNHKgOyUckRfMpavYLN9X1eSr9qZkK2taysq7flZ4Q_RQKm2FGMoKpzR0jf96pj1k7JEO5JwxFiXic0jY98647-2PIyWj2cobByTxg0T4TFgSeS3rCrhAhZtA4Ww0kOQ2LB-Umz23RvwABbyL8RafP8x6lutOffULjv_K1AfaUC76wkqQh6JG1_n-VsfqfxhW5ReZdpVspCVMN2xuw7JzLampXaHYCw29LDzvV_umzLMYrckszm6CbpJ5y02Zx4O925eXyBbihoF9kymXWmoBMqaYqW3NDPdv21WFxsTL5f1ZseIa8v5mNpL65RYoMYcLgegJ4pLDPoJNOYo9ovGA' and rt.revoked = false;
+2024-08-21 22:56:44.474 [http-nio-8080-exec-1]  INFO p6spy - #1724248604474 | took 2ms | statement | connection 3| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+select next_val as id_val from refresh_token_seq for update
+select next_val as id_val from refresh_token_seq for update;
+2024-08-21 22:56:44.476 [http-nio-8080-exec-1]  INFO p6spy - #1724248604476 | took 1ms | statement | connection 3| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+update refresh_token_seq set next_val= ? where next_val=?
+update refresh_token_seq set next_val= 1601 where next_val=1551;
+2024-08-21 22:56:44.478 [http-nio-8080-exec-1]  INFO p6spy - #1724248604478 | took 2ms | commit | connection 3| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-21 22:56:44.486 [http-nio-8080-exec-1]  INFO p6spy - #1724248604486 | took 3ms | statement | connection 2| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into refresh_token (access_token,expired_at,member_social_id,refresh_token,revoked,id) values (?,?,?,?,?,?)
+insert into refresh_token (access_token,expired_at,member_social_id,refresh_token,revoked,id) values ('eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJhdHF1aWwiLCJzdWIiOiJudWVpemtrQGdtYWlsLmNvbSIsImV4cCI6MTcyNDI1OTQwNCwiaWF0IjoxNzI0MjQ4NjA0LCJzY29wZSI6IlVTRVJfQVVUSE9SSVRZIn0.RkNHKgOyUckRfMpavYLN9X1eSr9qZkK2taysq7flZ4Q_RQKm2FGMoKpzR0jf96pj1k7JEO5JwxFiXic0jY98647-2PIyWj2cobByTxg0T4TFgSeS3rCrhAhZtA4Ww0kOQ2LB-Umz23RvwABbyL8RafP8x6lutOffULjv_K1AfaUC76wkqQh6JG1_n-VsfqfxhW5ReZdpVspCVMN2xuw7JzLampXaHYCw29LDzvV_umzLMYrckszm6CbpJ5y02Zx4O925eXyBbihoF9kymXWmoBMqaYqW3NDPdv21WFxsTL5f1ZseIa8v5mNpL65RYoMYcLgegJ4pLDPoJNOYo9ovGA','2024-09-20T22:56:44.457+0900',9,'eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJhdHF1aWwiLCJzdWIiOiJudWVpemtrQGdtYWlsLmNvbSIsImV4cCI6MTcyNjg0MDYwNCwiaWF0IjoxNzI0MjQ4NjA0LCJzY29wZSI6IlJFRlJFU0hfVE9LRU4ifQ.mHaVvvHiheq0ChobY7o1CbPu-isyLQQTEKT5EvrF4_cuLxeAhG_cqG6moV7ZUBsETUiyR5MXQ6TyB-vROiRGPGWScIxX2LUEMIh72P5QhLiO8qOZnrYL772bcs3qU6Jp-GJiQ4wcA3Ao2E1oUXlO7S5P6sbV5jRO3-vCeYkWCmbfSXOCpt3Vm_nY90jlXwVgIyDLOYeiKYvfWT8zgmuy637t1uBgpCcapBD-w45EYi7ixBIfpQ5M1FmKQMPNUmjn9UVBxUU0AXDUZ6-c9FWU8fiSDKAZz5_mtqBuPQiPjtCDKy2jKdouM7VgRlPSMY8q5gEy4lcNWAqHop0y-zspiw',false,1502);
+2024-08-21 22:56:44.488 [http-nio-8080-exec-1]  INFO p6spy - #1724248604488 | took 0ms | commit | connection 2| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-21 22:56:44.581 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-1]  INFO p6spy - #1724248604581 | took 0ms | commit | connection 4| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-21 23:04:01.815 [restartedMain]  INFO p6spy - #1724249041815 | took 0ms | statement | connection 9| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into member (agree_date,agree_yn,created_date,deactivation_reason,deactivation_reason_comment,deleted_date,last_modified_by,last_modified_date,member_id,phone_num,username) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into member (agree_date,agree_yn,created_date,deactivation_reason,deactivation_reason_comment,deleted_date,last_modified_by,last_modified_date,member_id,phone_num,username) values ('2024-08-21T23:04:01.559+0900',true,'2024-08-21T23:04:01.813+0900',NULL,NULL,NULL,'f451accf-9f46-4d8c-aae7-dfd9e834307e','2024-08-21T23:04:01.813+0900','20240821230401559636','01052801436','이재훈');
+2024-08-21 23:04:01.817 [restartedMain]  INFO p6spy - #1724249041817 | took 0ms | statement | connection 9| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into member (agree_date,agree_yn,created_date,deactivation_reason,deactivation_reason_comment,deleted_date,last_modified_by,last_modified_date,member_id,phone_num,username) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into member (agree_date,agree_yn,created_date,deactivation_reason,deactivation_reason_comment,deleted_date,last_modified_by,last_modified_date,member_id,phone_num,username) values ('2024-08-21T23:04:01.653+0900',true,'2024-08-21T23:04:01.816+0900',NULL,NULL,NULL,'3e88317a-bce4-413a-a937-f0a56b8b0d3b','2024-08-21T23:04:01.816+0900','20240821230401653850','01094232322','노재현');
+2024-08-21 23:04:01.818 [restartedMain]  INFO p6spy - #1724249041818 | took 0ms | statement | connection 9| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into member (agree_date,agree_yn,created_date,deactivation_reason,deactivation_reason_comment,deleted_date,last_modified_by,last_modified_date,member_id,phone_num,username) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into member (agree_date,agree_yn,created_date,deactivation_reason,deactivation_reason_comment,deleted_date,last_modified_by,last_modified_date,member_id,phone_num,username) values ('2024-08-21T23:04:01.732+0900',true,'2024-08-21T23:04:01.817+0900',NULL,NULL,NULL,'25ae4d35-2a87-4b5f-8f3b-933ea54b5d41','2024-08-21T23:04:01.817+0900','20240821230401731988','01084232322','김형구');
+2024-08-21 23:04:01.819 [restartedMain]  INFO p6spy - #1724249041819 | took 0ms | commit | connection 9| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-21 23:04:01.825 [restartedMain]  INFO p6spy - #1724249041825 | took 1ms | statement | connection 10| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into member_social (created_date,deleted_date,email,last_login_date,last_modified_by,last_modified_date,login_fail_count,member_id,member_status,password,phone_num,provider,provider_id,roles,username) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+insert into member_social (created_date,deleted_date,email,last_login_date,last_modified_by,last_modified_date,login_fail_count,member_id,member_status,password,phone_num,provider,provider_id,roles,username) values ('2024-08-21T23:04:01.822+0900',NULL,'user@gmail.com','2024-08-21T23:04:01.653+0900','074bc4b8-ff95-438b-ba1a-c480409d876c','2024-08-21T23:04:01.822+0900',0,'20240821230401559636','NORMAL','{bcrypt}$2a$10$8jZJZgp1StDwVM/ivs74hO6jz7OKAfliBH48LEHtoVrOl.bBLYtU6','01052801436',NULL,NULL,'ROLE_USER','이재훈');
+2024-08-21 23:04:01.827 [restartedMain]  INFO p6spy - #1724249041827 | took 0ms | statement | connection 10| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into member_social (created_date,deleted_date,email,last_login_date,last_modified_by,last_modified_date,login_fail_count,member_id,member_status,password,phone_num,provider,provider_id,roles,username) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+insert into member_social (created_date,deleted_date,email,last_login_date,last_modified_by,last_modified_date,login_fail_count,member_id,member_status,password,phone_num,provider,provider_id,roles,username) values ('2024-08-21T23:04:01.826+0900',NULL,'jae@gmail.com','2024-08-21T23:04:01.731+0900','062b90d4-3b1b-450f-883c-07da1d31ec88','2024-08-21T23:04:01.826+0900',0,'20240821230401653850','NORMAL','{bcrypt}$2a$10$pKLOpfGNYzLG9fcM8vWW5.TLqDUhEAFHyY5C80OMjJt99Hd.uTfaG','01094232322',NULL,NULL,'ROLE_USER','노재현');
+2024-08-21 23:04:01.830 [restartedMain]  INFO p6spy - #1724249041830 | took 2ms | statement | connection 10| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into member_social (created_date,deleted_date,email,last_login_date,last_modified_by,last_modified_date,login_fail_count,member_id,member_status,password,phone_num,provider,provider_id,roles,username) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+insert into member_social (created_date,deleted_date,email,last_login_date,last_modified_by,last_modified_date,login_fail_count,member_id,member_status,password,phone_num,provider,provider_id,roles,username) values ('2024-08-21T23:04:01.827+0900',NULL,'admin@gmail.com','2024-08-21T23:04:01.809+0900','0dab3ea6-3674-4c83-933a-201fe310282d','2024-08-21T23:04:01.827+0900',0,'20240821230401731988','NORMAL','{bcrypt}$2a$10$YM.AeCxXz3ldAlmTYJM2ruB8W0mzBLjAwXyJHEdHJ5Un8Wq.9t/Oe','01084232322',NULL,NULL,'ROLE_USER','김형구');
+2024-08-21 23:04:01.831 [restartedMain]  INFO p6spy - #1724249041831 | took 0ms | commit | connection 10| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-21 23:04:01.865 [restartedMain]  INFO p6spy - #1724249041865 | took 29ms | statement | connection 11| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into species (species_large_category,last_modified_by,last_modified_date,species_mid_category,species_small_category) values (?,?,?,?,?)
+insert into species (species_large_category,last_modified_by,last_modified_date,species_mid_category,species_small_category) values ('포유류','3827aaed-ec0f-4bca-bb43-d0271adaec02','2024-08-21T23:04:01.835+0900','개','마티즈');
+2024-08-21 23:04:01.866 [restartedMain]  INFO p6spy - #1724249041866 | took 0ms | statement | connection 11| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into species (species_large_category,last_modified_by,last_modified_date,species_mid_category,species_small_category) values (?,?,?,?,?)
+insert into species (species_large_category,last_modified_by,last_modified_date,species_mid_category,species_small_category) values ('포유류','146eabc7-b48d-417d-8b39-ef9890efc821','2024-08-21T23:04:01.865+0900','개','시바이누');
+2024-08-21 23:04:01.868 [restartedMain]  INFO p6spy - #1724249041867 | took 0ms | statement | connection 11| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into species (species_large_category,last_modified_by,last_modified_date,species_mid_category,species_small_category) values (?,?,?,?,?)
+insert into species (species_large_category,last_modified_by,last_modified_date,species_mid_category,species_small_category) values ('포유류','3dda7866-8bae-48a5-8a38-6a4a7b4500b1','2024-08-21T23:04:01.867+0900','개','세인트버나드');
+2024-08-21 23:04:01.869 [restartedMain]  INFO p6spy - #1724249041869 | took 0ms | statement | connection 11| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into species (species_large_category,last_modified_by,last_modified_date,species_mid_category,species_small_category) values (?,?,?,?,?)
+insert into species (species_large_category,last_modified_by,last_modified_date,species_mid_category,species_small_category) values ('포유류','18211c73-a0cc-49a5-bf07-5e5b243ca27f','2024-08-21T23:04:01.868+0900','개','서식스스패니얼');
+2024-08-21 23:04:01.870 [restartedMain]  INFO p6spy - #1724249041870 | took 0ms | statement | connection 11| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into species (species_large_category,last_modified_by,last_modified_date,species_mid_category,species_small_category) values (?,?,?,?,?)
+insert into species (species_large_category,last_modified_by,last_modified_date,species_mid_category,species_small_category) values ('포유류','89722686-4bd9-48f1-b0ad-6656d8f7ff74','2024-08-21T23:04:01.869+0900','개','폭스테리어');
+2024-08-21 23:04:01.872 [restartedMain]  INFO p6spy - #1724249041872 | took 0ms | statement | connection 11| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into species (species_large_category,last_modified_by,last_modified_date,species_mid_category,species_small_category) values (?,?,?,?,?)
+insert into species (species_large_category,last_modified_by,last_modified_date,species_mid_category,species_small_category) values ('포유류','cd294394-31c4-40aa-81a2-4068b12c6596','2024-08-21T23:04:01.870+0900','개','테리어');
+2024-08-21 23:04:01.875 [restartedMain]  INFO p6spy - #1724249041875 | took 0ms | statement | connection 11| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into species (species_large_category,last_modified_by,last_modified_date,species_mid_category,species_small_category) values (?,?,?,?,?)
+insert into species (species_large_category,last_modified_by,last_modified_date,species_mid_category,species_small_category) values ('포유류','9b4e6078-b8f5-41f7-97c8-ab33dcd6d58f','2024-08-21T23:04:01.872+0900','개','시추');
+2024-08-21 23:04:01.877 [restartedMain]  INFO p6spy - #1724249041877 | took 0ms | statement | connection 11| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into species (species_large_category,last_modified_by,last_modified_date,species_mid_category,species_small_category) values (?,?,?,?,?)
+insert into species (species_large_category,last_modified_by,last_modified_date,species_mid_category,species_small_category) values ('포유류','49743751-02f3-47c5-8bdd-6d5c09a51163','2024-08-21T23:04:01.875+0900','개','푸들');
+2024-08-21 23:04:01.882 [restartedMain]  INFO p6spy - #1724249041882 | took 3ms | commit | connection 11| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-21 23:04:01.891 [restartedMain]  INFO p6spy - #1724249041891 | took 2ms | statement | connection 12| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into pet (back_img_url,created_date,deleted_date,gender,last_modified_by,last_modified_date,member_id,pet_birth,pet_death_date,pet_desc,pet_favs,pet_favs2,pet_favs2_colour,pet_favs3,pet_favs3_colour,pet_favs_colour,pet_name,pet_profile_frame,pet_profile_url,pet_status,pet_species_id) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+insert into pet (back_img_url,created_date,deleted_date,gender,last_modified_by,last_modified_date,member_id,pet_birth,pet_death_date,pet_desc,pet_favs,pet_favs2,pet_favs2_colour,pet_favs3,pet_favs3_colour,pet_favs_colour,pet_name,pet_profile_frame,pet_profile_url,pet_status,pet_species_id) values ('https://images.unsplash.com/photo-1707343843982-f8275f3994c5?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHw2fHx8ZW58MHx8fHx8','2024-08-21T23:04:01.887+0900',NULL,'F','596b12f7-200e-4ced-834e-dac860ed5bee','2024-08-21T23:04:01.887+0900',7,'2024-08-21T00:00:00.000+0900',NULL,'두리는 이쁘다','웃기','먹기','#C8102E','달리기','#C8102E','#C8102E','두리',0,'https://images.unsplash.com/photo-1517849845537-4d257902454a?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8JUVBJUIwJTlDfGVufDB8fDB8fHww','ACTIVE',9);
+2024-08-21 23:04:01.892 [restartedMain]  INFO p6spy - #1724249041892 | took 0ms | statement | connection 12| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into pet (back_img_url,created_date,deleted_date,gender,last_modified_by,last_modified_date,member_id,pet_birth,pet_death_date,pet_desc,pet_favs,pet_favs2,pet_favs2_colour,pet_favs3,pet_favs3_colour,pet_favs_colour,pet_name,pet_profile_frame,pet_profile_url,pet_status,pet_species_id) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+insert into pet (back_img_url,created_date,deleted_date,gender,last_modified_by,last_modified_date,member_id,pet_birth,pet_death_date,pet_desc,pet_favs,pet_favs2,pet_favs2_colour,pet_favs3,pet_favs3_colour,pet_favs_colour,pet_name,pet_profile_frame,pet_profile_url,pet_status,pet_species_id) values ('https://images.unsplash.com/photo-1706670542491-61eeb26510de?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzfHx8ZW58MHx8fHx8','2024-08-21T23:04:01.891+0900',NULL,'F','3d9938f2-5789-4c53-8cd8-bfc77386b190','2024-08-21T23:04:01.891+0900',7,'2024-08-21T00:00:00.000+0900',NULL,'방울이는 이쁘다','웃기','먹기','#C8102E','달리기','#C8102E','#C8102E','방울이',0,'https://images.unsplash.com/photo-1530281700549-e82e7bf110d6?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8JUVBJUIwJTlDfGVufDB8fDB8fHww','DEACTIVE',9);
+2024-08-21 23:04:01.894 [restartedMain]  INFO p6spy - #1724249041894 | took 0ms | statement | connection 12| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into pet (back_img_url,created_date,deleted_date,gender,last_modified_by,last_modified_date,member_id,pet_birth,pet_death_date,pet_desc,pet_favs,pet_favs2,pet_favs2_colour,pet_favs3,pet_favs3_colour,pet_favs_colour,pet_name,pet_profile_frame,pet_profile_url,pet_status,pet_species_id) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+insert into pet (back_img_url,created_date,deleted_date,gender,last_modified_by,last_modified_date,member_id,pet_birth,pet_death_date,pet_desc,pet_favs,pet_favs2,pet_favs2_colour,pet_favs3,pet_favs3_colour,pet_favs_colour,pet_name,pet_profile_frame,pet_profile_url,pet_status,pet_species_id) values ('https://images.unsplash.com/photo-1706670542491-61eeb26510de?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzfHx8ZW58MHx8fHx8','2024-08-21T23:04:01.893+0900',NULL,'F','33f67c05-eae5-4abf-a9ec-537f9eefe3d9','2024-08-21T23:04:01.893+0900',8,'2024-08-21T00:00:00.000+0900',NULL,'조롱이는 이쁘다','떠들기','뛰기','#C8102E','달리기','#C8102E','#C8102E','조롱이',0,'https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fCVFQSVCMCU5Q3xlbnwwfHwwfHx8MA%3D%3D','ACTIVE',9);
+2024-08-21 23:04:01.896 [restartedMain]  INFO p6spy - #1724249041896 | took 0ms | statement | connection 12| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into pet (back_img_url,created_date,deleted_date,gender,last_modified_by,last_modified_date,member_id,pet_birth,pet_death_date,pet_desc,pet_favs,pet_favs2,pet_favs2_colour,pet_favs3,pet_favs3_colour,pet_favs_colour,pet_name,pet_profile_frame,pet_profile_url,pet_status,pet_species_id) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+insert into pet (back_img_url,created_date,deleted_date,gender,last_modified_by,last_modified_date,member_id,pet_birth,pet_death_date,pet_desc,pet_favs,pet_favs2,pet_favs2_colour,pet_favs3,pet_favs3_colour,pet_favs_colour,pet_name,pet_profile_frame,pet_profile_url,pet_status,pet_species_id) values ('https://images.unsplash.com/photo-1706670542491-61eeb26510de?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzfHx8ZW58MHx8fHx8','2024-08-21T23:04:01.894+0900',NULL,'F','a80718ed-4cc4-4ee6-9965-81865c032aea','2024-08-21T23:04:01.894+0900',8,'2024-08-21T00:00:00.000+0900',NULL,'띵띵이는 이쁘다','울기','웃기','#C8102E','때리기','#C8102E','#C8102E','띵띵이',0,'https://images.unsplash.com/photo-1588943211346-0908a1fb0b01?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fCVFQSVCMCU5Q3xlbnwwfHwwfHx8MA%3D%3D','DEACTIVE',9);
+2024-08-21 23:04:01.897 [restartedMain]  INFO p6spy - #1724249041897 | took 0ms | commit | connection 12| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-21 23:04:01.906 [restartedMain]  INFO p6spy - #1724249041906 | took 4ms | statement | connection 14| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+select next_val as id_val from memory_seq for update
+select next_val as id_val from memory_seq for update;
+2024-08-21 23:04:01.906 [restartedMain]  INFO p6spy - #1724249041906 | took 0ms | statement | connection 14| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+update memory_seq set next_val= ? where next_val=?
+update memory_seq set next_val= 151 where next_val=101;
+2024-08-21 23:04:01.907 [restartedMain]  INFO p6spy - #1724249041907 | took 0ms | commit | connection 14| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-21 23:04:01.914 [restartedMain]  INFO p6spy - #1724249041914 | took 2ms | statement | connection 13| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values ('ALL','2024-08-21T23:04:01.901+0900',NULL,'ea629dc7-658d-4b0d-adc9-bcaf3bbbc7e8','2024-08-21T23:04:01.901+0900',1,'2024-08-21T00:00:00.000+0900','방울이와의 산책이 너무 즐거웠습니다.',5,'방울이와의 밤 산책',52);
+2024-08-21 23:04:01.915 [restartedMain]  INFO p6spy - #1724249041915 | took 0ms | statement | connection 13| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values ('ME','2024-08-21T23:04:01.907+0900',NULL,'5c9fcd6a-6574-445f-9981-328ec4cc6daa','2024-08-21T23:04:01.907+0900',1,'2024-08-21T00:00:00.000+0900','방울이와의 산책이 너무 즐거웠습니다.',5,'방울이와의 낮 산책',53);
+2024-08-21 23:04:01.917 [restartedMain]  INFO p6spy - #1724249041917 | took 0ms | statement | connection 13| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values ('FRIEND','2024-08-21T23:04:01.908+0900',NULL,'ce9f757d-211d-44b1-8e95-4b9da383edea','2024-08-21T23:04:01.908+0900',1,'2024-08-21T00:00:00.000+0900','방울이와의 산책이 너무 즐거웠습니다.',5,'방울이와의 오전 산책',54);
+2024-08-21 23:04:01.918 [restartedMain]  INFO p6spy - #1724249041918 | took 0ms | statement | connection 13| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values ('ALL','2024-08-21T23:04:01.908+0900',NULL,'5695e8f4-dff1-4558-a2d8-52cad12c8583','2024-08-21T23:04:01.908+0900',1,'2024-08-21T00:00:00.000+0900','방울이와의 산책이 너무 즐거웠습니다.',5,'방울이와의 오후 산책',55);
+2024-08-21 23:04:01.919 [restartedMain]  INFO p6spy - #1724249041919 | took 0ms | statement | connection 13| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values ('ALL','2024-08-21T23:04:01.908+0900',NULL,'a0c03a6f-28c3-4f62-b6af-7c14d227d424','2024-08-21T23:04:01.908+0900',1,'2024-08-21T00:00:00.000+0900','두리와의 산책이 너무 즐거웠습니다.',6,'두리와의 오전 산책',56);
+2024-08-21 23:04:01.919 [restartedMain]  INFO p6spy - #1724249041919 | took 0ms | statement | connection 13| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values ('ALL','2024-08-21T23:04:01.908+0900',NULL,'b1f09148-9ad1-4997-9fdd-ccabbf628024','2024-08-21T23:04:01.908+0900',1,'2024-08-21T00:00:00.000+0900','두리와의 산책이 너무 즐거웠습니다.',6,'두리와의 산책',57);
+2024-08-21 23:04:01.920 [restartedMain]  INFO p6spy - #1724249041920 | took 0ms | statement | connection 13| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values ('ALL','2024-08-21T23:04:01.908+0900',NULL,'1260708d-d878-488b-b109-a8a96f612c67','2024-08-21T23:04:01.908+0900',1,'2024-08-21T00:00:00.000+0900','두리와의 산책이 너무 즐거웠습니다.',6,'두리와의 산책',58);
+2024-08-21 23:04:01.921 [restartedMain]  INFO p6spy - #1724249041921 | took 0ms | statement | connection 13| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values ('ALL','2024-08-21T23:04:01.909+0900',NULL,'0da2578e-f26e-45af-a4d4-76f2eb74d0e8','2024-08-21T23:04:01.909+0900',1,'2024-08-21T00:00:00.000+0900','방울이와의 산책이 너무 즐거웠습니다.',7,'방울이와의 산책',59);
+2024-08-21 23:04:01.922 [restartedMain]  INFO p6spy - #1724249041922 | took 0ms | statement | connection 13| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values ('ALL','2024-08-21T23:04:01.909+0900',NULL,'3c046423-b10a-4684-8c5b-49f7078baaf4','2024-08-21T23:04:01.909+0900',0,'2024-08-21T00:00:00.000+0900','방울이와의 산책이 너무 즐거웠습니다.',7,'방울이와의 산책',60);
+2024-08-21 23:04:01.922 [restartedMain]  INFO p6spy - #1724249041922 | took 0ms | statement | connection 13| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values ('ALL','2024-08-21T23:04:01.909+0900',NULL,'68d592b2-aca5-4067-a4d9-a9f3a3a9c025','2024-08-21T23:04:01.909+0900',0,'2024-08-21T00:00:00.000+0900','방울이와의 산책이 너무 즐거웠습니다.',7,'방울이와의 산책',61);
+2024-08-21 23:04:01.923 [restartedMain]  INFO p6spy - #1724249041923 | took 0ms | statement | connection 13| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values ('ALL','2024-08-21T23:04:01.909+0900',NULL,'79392d5f-9379-4b19-9e0d-351e754d06a8','2024-08-21T23:04:01.909+0900',0,'2024-08-21T00:00:00.000+0900','방울이와의 산책이 너무 즐거웠습니다.',7,'방울이와의 산책',62);
+2024-08-21 23:04:01.924 [restartedMain]  INFO p6spy - #1724249041924 | took 0ms | statement | connection 13| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values ('ALL','2024-08-21T23:04:01.909+0900',NULL,'cb6d17b7-6b22-4a11-a486-abe29bd42e7b','2024-08-21T23:04:01.909+0900',0,'2024-08-21T00:00:00.000+0900','방울이와의 산책이 너무 즐거웠습니다.',8,'방울이와의 산책',63);
+2024-08-21 23:04:01.925 [restartedMain]  INFO p6spy - #1724249041925 | took 0ms | statement | connection 13| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values ('ALL','2024-08-21T23:04:01.909+0900',NULL,'bccfc470-8ce6-4e63-be0a-64e72fbedfe5','2024-08-21T23:04:01.909+0900',0,'2024-08-21T00:00:00.000+0900','방울이와의 산책이 너무 즐거웠습니다.',8,'방울이와의 산책',64);
+2024-08-21 23:04:01.926 [restartedMain]  INFO p6spy - #1724249041926 | took 0ms | statement | connection 13| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values ('ALL','2024-08-21T23:04:01.909+0900',NULL,'63f37928-2233-4585-9d73-d5d775c71fe7','2024-08-21T23:04:01.909+0900',0,'2024-08-21T00:00:00.000+0900','방울이와의 산책이 너무 즐거웠습니다.',8,'방울이와의 산책',65);
+2024-08-21 23:04:01.926 [restartedMain]  INFO p6spy - #1724249041926 | took 0ms | statement | connection 13| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values ('ALL','2024-08-21T23:04:01.909+0900',NULL,'7b135c44-a08b-40be-808c-6ba81b007755','2024-08-21T23:04:01.909+0900',0,'2024-08-21T00:00:00.000+0900','방울이와의 산책이 너무 즐거웠습니다.',8,'방울이와의 산책',66);
+2024-08-21 23:04:01.927 [restartedMain]  INFO p6spy - #1724249041927 | took 0ms | statement | connection 13| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values ('ALL','2024-08-21T23:04:01.909+0900',NULL,'11c8195b-6dee-4dfa-b020-044ac371bde8','2024-08-21T23:04:01.909+0900',0,'2024-08-21T00:00:00.000+0900','방울이와의 산책이 너무 즐거웠습니다.',8,'방울이와의 산책',67);
+2024-08-21 23:04:01.928 [restartedMain]  INFO p6spy - #1724249041928 | took 0ms | statement | connection 13| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values ('ALL','2024-08-21T23:04:01.910+0900',NULL,'50379f1f-fa02-4a53-a9ac-a8a262f983b9','2024-08-21T23:04:01.910+0900',0,'2024-08-21T00:00:00.000+0900','방울이와의 산책이 너무 즐거웠습니다.',8,'방울이와의 산책',68);
+2024-08-21 23:04:01.929 [restartedMain]  INFO p6spy - #1724249041929 | took 0ms | statement | connection 13| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values ('ALL','2024-08-21T23:04:01.910+0900',NULL,'871e8a7c-840c-429c-958f-8d0d47574c85','2024-08-21T23:04:01.910+0900',0,'2024-08-21T00:00:00.000+0900','방울이와의 산책이 너무 즐거웠습니다.',8,'방울이와의 산책',69);
+2024-08-21 23:04:01.930 [restartedMain]  INFO p6spy - #1724249041930 | took 0ms | statement | connection 13| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values ('ALL','2024-08-21T23:04:01.910+0900',NULL,'d7efb500-085b-45d2-8662-a242a3896bed','2024-08-21T23:04:01.910+0900',0,'2024-08-21T00:00:00.000+0900','방울이와의 산책이 너무 즐거웠습니다.',8,'방울이와의 산책',70);
+2024-08-21 23:04:01.931 [restartedMain]  INFO p6spy - #1724249041931 | took 0ms | statement | connection 13| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values ('ALL','2024-08-21T23:04:01.910+0900',NULL,'92a18b46-00eb-4924-820b-1a0c5c7edb0d','2024-08-21T23:04:01.910+0900',0,'2024-08-21T00:00:00.000+0900','방울이와의 산책이 너무 즐거웠습니다.',8,'방울이와의 산책',71);
+2024-08-21 23:04:01.931 [restartedMain]  INFO p6spy - #1724249041931 | took 0ms | statement | connection 13| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values ('ALL','2024-08-21T23:04:01.910+0900',NULL,'66383699-ce64-4782-a0ef-3d1cad5cca6e','2024-08-21T23:04:01.910+0900',0,'2024-08-21T00:00:00.000+0900','방울이와의 산책이 너무 즐거웠습니다.',8,'방울이와의 산책',72);
+2024-08-21 23:04:01.932 [restartedMain]  INFO p6spy - #1724249041932 | took 0ms | statement | connection 13| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values ('ALL','2024-08-21T23:04:01.910+0900',NULL,'c85f0be4-5a6b-4706-826f-8da170bb93d4','2024-08-21T23:04:01.910+0900',0,'2024-08-21T00:00:00.000+0900','방울이와의 산책이 너무 즐거웠습니다.',8,'방울이와의 산책',73);
+2024-08-21 23:04:01.933 [restartedMain]  INFO p6spy - #1724249041933 | took 0ms | statement | connection 13| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values ('ALL','2024-08-21T23:04:01.910+0900',NULL,'9dc87eb4-5060-4d70-8a01-a9067fbb8d8f','2024-08-21T23:04:01.910+0900',0,'2024-08-21T00:00:00.000+0900','방울이와의 산책이 너무 즐거웠습니다.',8,'방울이와의 산책',74);
+2024-08-21 23:04:01.934 [restartedMain]  INFO p6spy - #1724249041934 | took 0ms | commit | connection 13| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-21 23:04:01.938 [restartedMain]  INFO p6spy - #1724249041938 | took 1ms | statement | connection 16| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+select next_val as id_val from memory_image_seq for update
+select next_val as id_val from memory_image_seq for update;
+2024-08-21 23:04:01.939 [restartedMain]  INFO p6spy - #1724249041939 | took 0ms | statement | connection 16| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+update memory_image_seq set next_val= ? where next_val=?
+update memory_image_seq set next_val= 151 where next_val=101;
+2024-08-21 23:04:01.939 [restartedMain]  INFO p6spy - #1724249041939 | took 0ms | commit | connection 16| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-21 23:04:01.943 [restartedMain]  INFO p6spy - #1724249041943 | took 1ms | statement | connection 15| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into memory_image (created_date,deleted_date,image_format,image_logical_name,image_physical_name,image_size,image_url,memory_id,memory_image_id) values (?,?,?,?,?,?,?,?,?)
+insert into memory_image (created_date,deleted_date,image_format,image_logical_name,image_physical_name,image_size,image_url,memory_id,memory_image_id) values ('2024-08-21T23:04:01.935+0900',NULL,'jpg','9d2d3aae-6968-4483-910d-8118ba365550','추억 1 : 방울이와 찍은사진','20mb','https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA4L3Jhd3BpeGVsX29mZmljZV8xNV9waG90b19vZl9hX2RvZ19ydW5uaW5nX3dpdGhfb3duZXJfYXRfcGFya19lcF9mM2I3MDQyZC0zNWJlLTRlMTQtOGZhNy1kY2Q2OWQ1YzQzZjlfMi5qcGc.jpg',52,52);
+2024-08-21 23:04:01.944 [restartedMain]  INFO p6spy - #1724249041944 | took 0ms | statement | connection 15| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into memory_image (created_date,deleted_date,image_format,image_logical_name,image_physical_name,image_size,image_url,memory_id,memory_image_id) values (?,?,?,?,?,?,?,?,?)
+insert into memory_image (created_date,deleted_date,image_format,image_logical_name,image_physical_name,image_size,image_url,memory_id,memory_image_id) values ('2024-08-21T23:04:01.939+0900',NULL,'jpg','4c162126-c258-4bec-849e-76cc265cf31b','추억 1 : 방울이와 찍은사진1','30mb','https://thumbs.dreamstime.com/b/beagle-dog-isolated-white-background-purebred-103538194.jpg',52,53);
+2024-08-21 23:04:01.944 [restartedMain]  INFO p6spy - #1724249041944 | took 0ms | statement | connection 15| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into memory_image (created_date,deleted_date,image_format,image_logical_name,image_physical_name,image_size,image_url,memory_id,memory_image_id) values (?,?,?,?,?,?,?,?,?)
+insert into memory_image (created_date,deleted_date,image_format,image_logical_name,image_physical_name,image_size,image_url,memory_id,memory_image_id) values ('2024-08-21T23:04:01.940+0900',NULL,'jpg','76d125da-bf3b-4a6f-846f-9606f51b3ec7','추억 1 : 방울이와 찍은사진','20mb','https://images.unsplash.com/photo-1551992536-ee9a450c44d2?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8JUVBJUIwJTlDJTIwJUVDJTgyJUFDJUVDJUE3JTg0fGVufDB8fDB8fHww',52,54);
+2024-08-21 23:04:01.945 [restartedMain]  INFO p6spy - #1724249041945 | took 0ms | statement | connection 15| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into memory_image (created_date,deleted_date,image_format,image_logical_name,image_physical_name,image_size,image_url,memory_id,memory_image_id) values (?,?,?,?,?,?,?,?,?)
+insert into memory_image (created_date,deleted_date,image_format,image_logical_name,image_physical_name,image_size,image_url,memory_id,memory_image_id) values ('2024-08-21T23:04:01.940+0900',NULL,'jpg','ea15d29b-17cf-4359-b6ac-cb80beab3a6c','추억 2 : 방울이와 찍은사진1','30mb','https://images.unsplash.com/photo-1521247560470-d2cbfe2f7b47?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8JUVBJUIwJTlDJTIwJUVDJTgyJUFDJUVDJUE3JTg0fGVufDB8fDB8fHww',53,55);
+2024-08-21 23:04:01.946 [restartedMain]  INFO p6spy - #1724249041946 | took 0ms | statement | connection 15| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into memory_image (created_date,deleted_date,image_format,image_logical_name,image_physical_name,image_size,image_url,memory_id,memory_image_id) values (?,?,?,?,?,?,?,?,?)
+insert into memory_image (created_date,deleted_date,image_format,image_logical_name,image_physical_name,image_size,image_url,memory_id,memory_image_id) values ('2024-08-21T23:04:01.940+0900',NULL,'jpg','6a2ca4c2-92aa-4043-8708-3a65a43b084a','추억 2 : 방울이와 찍은사진1','30mb','https://images.unsplash.com/photo-1591214958544-ddcf55d9707b?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fCVFQSVCMCU5QyUyMCVFQyU4MiVBQyVFQyVBNyU4NHxlbnwwfHwwfHx8MA%3D%3D',53,56);
+2024-08-21 23:04:01.946 [restartedMain]  INFO p6spy - #1724249041946 | took 0ms | commit | connection 15| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-21 23:04:01.950 [restartedMain]  INFO p6spy - #1724249041950 | took 1ms | statement | connection 18| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+select next_val as id_val from likes_seq for update
+select next_val as id_val from likes_seq for update;
+2024-08-21 23:04:01.951 [restartedMain]  INFO p6spy - #1724249041951 | took 0ms | statement | connection 18| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+update likes_seq set next_val= ? where next_val=?
+update likes_seq set next_val= 151 where next_val=101;
+2024-08-21 23:04:01.951 [restartedMain]  INFO p6spy - #1724249041951 | took 0ms | commit | connection 18| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-21 23:04:01.954 [restartedMain]  INFO p6spy - #1724249041954 | took 1ms | statement | connection 17| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into likes (created_date,liked_own_pet_id,memory_id,pet_id,likes_id) values (?,?,?,?,?)
+insert into likes (created_date,liked_own_pet_id,memory_id,pet_id,likes_id) values ('2024-08-21T23:04:01.947+0900',5,52,6,52);
+2024-08-21 23:04:01.955 [restartedMain]  INFO p6spy - #1724249041955 | took 0ms | statement | connection 17| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into likes (created_date,liked_own_pet_id,memory_id,pet_id,likes_id) values (?,?,?,?,?)
+insert into likes (created_date,liked_own_pet_id,memory_id,pet_id,likes_id) values ('2024-08-21T23:04:01.952+0900',5,53,6,53);
+2024-08-21 23:04:01.958 [restartedMain]  INFO p6spy - #1724249041958 | took 1ms | statement | connection 17| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into likes (created_date,liked_own_pet_id,memory_id,pet_id,likes_id) values (?,?,?,?,?)
+insert into likes (created_date,liked_own_pet_id,memory_id,pet_id,likes_id) values ('2024-08-21T23:04:01.952+0900',5,54,6,54);
+2024-08-21 23:04:01.959 [restartedMain]  INFO p6spy - #1724249041959 | took 0ms | statement | connection 17| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into likes (created_date,liked_own_pet_id,memory_id,pet_id,likes_id) values (?,?,?,?,?)
+insert into likes (created_date,liked_own_pet_id,memory_id,pet_id,likes_id) values ('2024-08-21T23:04:01.952+0900',6,56,7,55);
+2024-08-21 23:04:01.960 [restartedMain]  INFO p6spy - #1724249041960 | took 0ms | statement | connection 17| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into likes (created_date,liked_own_pet_id,memory_id,pet_id,likes_id) values (?,?,?,?,?)
+insert into likes (created_date,liked_own_pet_id,memory_id,pet_id,likes_id) values ('2024-08-21T23:04:01.952+0900',6,57,7,56);
+2024-08-21 23:04:01.962 [restartedMain]  INFO p6spy - #1724249041962 | took 1ms | statement | connection 17| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into likes (created_date,liked_own_pet_id,memory_id,pet_id,likes_id) values (?,?,?,?,?)
+insert into likes (created_date,liked_own_pet_id,memory_id,pet_id,likes_id) values ('2024-08-21T23:04:01.952+0900',6,58,8,57);
+2024-08-21 23:04:01.963 [restartedMain]  INFO p6spy - #1724249041963 | took 0ms | statement | connection 17| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into likes (created_date,liked_own_pet_id,memory_id,pet_id,likes_id) values (?,?,?,?,?)
+insert into likes (created_date,liked_own_pet_id,memory_id,pet_id,likes_id) values ('2024-08-21T23:04:01.952+0900',6,59,8,58);
+2024-08-21 23:04:01.964 [restartedMain]  INFO p6spy - #1724249041964 | took 1ms | commit | connection 17| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-21 23:04:01.974 [restartedMain]  INFO p6spy - #1724249041974 | took 3ms | statement | connection 19| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into comment (comment,comment_group,commenter_id,created_date,deleted_date,depth,last_modified_by,last_modified_date,memory_id,parent_comment_id,pet_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into comment (comment,comment_group,commenter_id,created_date,deleted_date,depth,last_modified_by,last_modified_date,memory_id,parent_comment_id,pet_id) values ('방울이는 너무 사랑스러워요','MEMORY_COMMENT',6,'2024-08-21T23:04:01.969+0900',NULL,1,'adc13aca-0bab-4ffd-a800-fb89b3008756','2024-08-21T23:04:01.969+0900',52,NULL,NULL);
+2024-08-21 23:04:01.975 [restartedMain]  INFO p6spy - #1724249041975 | took 0ms | statement | connection 19| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into comment (comment,comment_group,commenter_id,created_date,deleted_date,depth,last_modified_by,last_modified_date,memory_id,parent_comment_id,pet_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into comment (comment,comment_group,commenter_id,created_date,deleted_date,depth,last_modified_by,last_modified_date,memory_id,parent_comment_id,pet_id) values ('방울이는 좋은곳으로 갔을거에요','LAST_WORD',6,'2024-08-21T23:04:01.974+0900',NULL,1,'78d295cf-47ae-4530-a8a6-53267889efc8','2024-08-21T23:04:01.974+0900',NULL,NULL,5);
+2024-08-21 23:04:01.977 [restartedMain]  INFO p6spy - #1724249041977 | took 0ms | statement | connection 19| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into comment (comment,comment_group,commenter_id,created_date,deleted_date,depth,last_modified_by,last_modified_date,memory_id,parent_comment_id,pet_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into comment (comment,comment_group,commenter_id,created_date,deleted_date,depth,last_modified_by,last_modified_date,memory_id,parent_comment_id,pet_id) values ('방울이는 참 귀여웠는데 안타까워요','LAST_WORD',7,'2024-08-21T23:04:01.976+0900',NULL,1,'37f4a78f-7cb8-461f-9489-e69c42759ff6','2024-08-21T23:04:01.976+0900',NULL,NULL,5);
+2024-08-21 23:04:01.977 [restartedMain]  INFO p6spy - #1724249041977 | took 0ms | statement | connection 19| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into comment (comment,comment_group,commenter_id,created_date,deleted_date,depth,last_modified_by,last_modified_date,memory_id,parent_comment_id,pet_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into comment (comment,comment_group,commenter_id,created_date,deleted_date,depth,last_modified_by,last_modified_date,memory_id,parent_comment_id,pet_id) values ('방울이는 참 좋은 주인을 만났어요','LAST_WORD',7,'2024-08-21T23:04:01.977+0900',NULL,1,'f161b178-b42c-4c74-b770-b1fbff7dbd73','2024-08-21T23:04:01.977+0900',NULL,NULL,5);
+2024-08-21 23:04:01.979 [restartedMain]  INFO p6spy - #1724249041979 | took 0ms | statement | connection 19| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into comment (comment,comment_group,commenter_id,created_date,deleted_date,depth,last_modified_by,last_modified_date,memory_id,parent_comment_id,pet_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into comment (comment,comment_group,commenter_id,created_date,deleted_date,depth,last_modified_by,last_modified_date,memory_id,parent_comment_id,pet_id) values ('방울이의 명복을빕니다.','LAST_WORD',8,'2024-08-21T23:04:01.978+0900',NULL,1,'87fb1c21-b165-4f68-8b88-5a51ae77edb5','2024-08-21T23:04:01.978+0900',NULL,NULL,5);
+2024-08-21 23:04:01.980 [restartedMain]  INFO p6spy - #1724249041980 | took 0ms | statement | connection 19| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into comment (comment,comment_group,commenter_id,created_date,deleted_date,depth,last_modified_by,last_modified_date,memory_id,parent_comment_id,pet_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into comment (comment,comment_group,commenter_id,created_date,deleted_date,depth,last_modified_by,last_modified_date,memory_id,parent_comment_id,pet_id) values ('방울이는 내 기쁨이었어요','LAST_WORD',6,'2024-08-21T23:04:01.979+0900',NULL,1,'efeedd2e-e6bb-4688-bd4e-abaffcbbfd5a','2024-08-21T23:04:01.979+0900',NULL,NULL,5);
+2024-08-21 23:04:01.981 [restartedMain]  INFO p6spy - #1724249041981 | took 0ms | statement | connection 19| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into comment (comment,comment_group,commenter_id,created_date,deleted_date,depth,last_modified_by,last_modified_date,memory_id,parent_comment_id,pet_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into comment (comment,comment_group,commenter_id,created_date,deleted_date,depth,last_modified_by,last_modified_date,memory_id,parent_comment_id,pet_id) values ('방울이가 보고싶어요','LAST_WORD',8,'2024-08-21T23:04:01.980+0900',NULL,1,'fb3a0476-37ee-42c0-a5ca-d4fe3419b437','2024-08-21T23:04:01.980+0900',NULL,NULL,5);
+2024-08-21 23:04:01.982 [restartedMain]  INFO p6spy - #1724249041982 | took 0ms | statement | connection 19| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into comment (comment,comment_group,commenter_id,created_date,deleted_date,depth,last_modified_by,last_modified_date,memory_id,parent_comment_id,pet_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into comment (comment,comment_group,commenter_id,created_date,deleted_date,depth,last_modified_by,last_modified_date,memory_id,parent_comment_id,pet_id) values ('방울이는 천재였어요','LAST_WORD',8,'2024-08-21T23:04:01.981+0900',NULL,1,'f1124465-0f64-47a5-836c-bed51a41c1c8','2024-08-21T23:04:01.981+0900',NULL,NULL,5);
+2024-08-21 23:04:01.983 [restartedMain]  INFO p6spy - #1724249041983 | took 0ms | statement | connection 19| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into comment (comment,comment_group,commenter_id,created_date,deleted_date,depth,last_modified_by,last_modified_date,memory_id,parent_comment_id,pet_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into comment (comment,comment_group,commenter_id,created_date,deleted_date,depth,last_modified_by,last_modified_date,memory_id,parent_comment_id,pet_id) values ('방울이 ㅠㅠ','LAST_WORD',8,'2024-08-21T23:04:01.982+0900',NULL,1,'94ef7833-ab01-4170-8a9e-6afe481e2807','2024-08-21T23:04:01.982+0900',NULL,NULL,5);
+2024-08-21 23:04:01.984 [restartedMain]  INFO p6spy - #1724249041984 | took 0ms | statement | connection 19| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into comment (comment,comment_group,commenter_id,created_date,deleted_date,depth,last_modified_by,last_modified_date,memory_id,parent_comment_id,pet_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into comment (comment,comment_group,commenter_id,created_date,deleted_date,depth,last_modified_by,last_modified_date,memory_id,parent_comment_id,pet_id) values ('방울이는 낭만파~','LAST_WORD',8,'2024-08-21T23:04:01.983+0900',NULL,1,'c078482a-0816-4097-8a90-272b03b65806','2024-08-21T23:04:01.983+0900',NULL,NULL,5);
+2024-08-21 23:04:01.985 [restartedMain]  INFO p6spy - #1724249041985 | took 0ms | commit | connection 19| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-21 23:04:01.988 [restartedMain]  INFO p6spy - #1724249041988 | took 2ms | statement | connection 20| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into comment (comment,comment_group,commenter_id,created_date,deleted_date,depth,last_modified_by,last_modified_date,memory_id,parent_comment_id,pet_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into comment (comment,comment_group,commenter_id,created_date,deleted_date,depth,last_modified_by,last_modified_date,memory_id,parent_comment_id,pet_id) values ('방울이는 너무 사랑스러워요','MEMORY_COMMENT',8,'2024-08-21T23:04:01.986+0900',NULL,2,'825840f0-0410-4250-96a1-751f4ff4971d','2024-08-21T23:04:01.986+0900',52,16,NULL);
+2024-08-21 23:04:01.990 [restartedMain]  INFO p6spy - #1724249041990 | took 0ms | statement | connection 20| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into comment (comment,comment_group,commenter_id,created_date,deleted_date,depth,last_modified_by,last_modified_date,memory_id,parent_comment_id,pet_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into comment (comment,comment_group,commenter_id,created_date,deleted_date,depth,last_modified_by,last_modified_date,memory_id,parent_comment_id,pet_id) values ('방울이는 너무 사랑스러워요','LAST_WORD',6,'2024-08-21T23:04:01.989+0900',NULL,2,'5ffce0d4-69de-4a12-b5b5-77d4a84c3b45','2024-08-21T23:04:01.989+0900',NULL,17,5);
+2024-08-21 23:04:01.991 [restartedMain]  INFO p6spy - #1724249041991 | took 0ms | statement | connection 20| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into comment (comment,comment_group,commenter_id,created_date,deleted_date,depth,last_modified_by,last_modified_date,memory_id,parent_comment_id,pet_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into comment (comment,comment_group,commenter_id,created_date,deleted_date,depth,last_modified_by,last_modified_date,memory_id,parent_comment_id,pet_id) values ('방울이는 너무 사랑스러워요','LAST_WORD',7,'2024-08-21T23:04:01.990+0900',NULL,2,'0b123dbc-fccc-48dd-884d-92845da4ed01','2024-08-21T23:04:01.990+0900',NULL,17,5);
+2024-08-21 23:04:01.992 [restartedMain]  INFO p6spy - #1724249041992 | took 0ms | statement | connection 20| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into comment (comment,comment_group,commenter_id,created_date,deleted_date,depth,last_modified_by,last_modified_date,memory_id,parent_comment_id,pet_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into comment (comment,comment_group,commenter_id,created_date,deleted_date,depth,last_modified_by,last_modified_date,memory_id,parent_comment_id,pet_id) values ('방울이는 내 첫사랑~','MEMORY_COMMENT',6,'2024-08-21T23:04:01.991+0900',NULL,2,'6ecad16d-7ec8-46be-9c8c-41a4dccd76a0','2024-08-21T23:04:01.991+0900',52,16,NULL);
+2024-08-21 23:04:01.993 [restartedMain]  INFO p6spy - #1724249041993 | took 0ms | statement | connection 20| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into comment (comment,comment_group,commenter_id,created_date,deleted_date,depth,last_modified_by,last_modified_date,memory_id,parent_comment_id,pet_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into comment (comment,comment_group,commenter_id,created_date,deleted_date,depth,last_modified_by,last_modified_date,memory_id,parent_comment_id,pet_id) values ('최고의 방울이','MEMORY_COMMENT',7,'2024-08-21T23:04:01.992+0900',NULL,2,'37e35b8a-7d4d-4f35-8996-18a8ba188288','2024-08-21T23:04:01.992+0900',52,16,NULL);
+2024-08-21 23:04:01.994 [restartedMain]  INFO p6spy - #1724249041994 | took 0ms | commit | connection 20| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-21 23:04:02.000 [restartedMain]  INFO p6spy - #1724249042000 | took 1ms | statement | connection 22| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+select next_val as id_val from follow_seq for update
+select next_val as id_val from follow_seq for update;
+2024-08-21 23:04:02.001 [restartedMain]  INFO p6spy - #1724249042001 | took 0ms | statement | connection 22| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+update follow_seq set next_val= ? where next_val=?
+update follow_seq set next_val= 201 where next_val=151;
+2024-08-21 23:04:02.001 [restartedMain]  INFO p6spy - #1724249042001 | took 0ms | commit | connection 22| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-21 23:04:02.005 [restartedMain]  INFO p6spy - #1724249042005 | took 1ms | statement | connection 21| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into follow (created_date,following_pet_id,last_modified_by,last_modified_date,pet_id,id) values (?,?,?,?,?,?)
+insert into follow (created_date,following_pet_id,last_modified_by,last_modified_date,pet_id,id) values ('2024-08-21T23:04:01.998+0900',5,'4d64644a-c8c5-4e56-8fa5-ff98e55ae17e','2024-08-21T23:04:01.998+0900',6,102);
+2024-08-21 23:04:02.006 [restartedMain]  INFO p6spy - #1724249042006 | took 0ms | statement | connection 21| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into follow (created_date,following_pet_id,last_modified_by,last_modified_date,pet_id,id) values (?,?,?,?,?,?)
+insert into follow (created_date,following_pet_id,last_modified_by,last_modified_date,pet_id,id) values ('2024-08-21T23:04:02.002+0900',5,'1682e01c-ee8e-43e5-8888-feeb5df3e473','2024-08-21T23:04:02.002+0900',7,103);
+2024-08-21 23:04:02.006 [restartedMain]  INFO p6spy - #1724249042006 | took 0ms | statement | connection 21| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into follow (created_date,following_pet_id,last_modified_by,last_modified_date,pet_id,id) values (?,?,?,?,?,?)
+insert into follow (created_date,following_pet_id,last_modified_by,last_modified_date,pet_id,id) values ('2024-08-21T23:04:02.002+0900',5,'a7601bef-93d4-4d67-b67e-e238d1d975a7','2024-08-21T23:04:02.002+0900',8,104);
+2024-08-21 23:04:02.007 [restartedMain]  INFO p6spy - #1724249042007 | took 0ms | statement | connection 21| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into follow (created_date,following_pet_id,last_modified_by,last_modified_date,pet_id,id) values (?,?,?,?,?,?)
+insert into follow (created_date,following_pet_id,last_modified_by,last_modified_date,pet_id,id) values ('2024-08-21T23:04:02.002+0900',7,'0321dea1-b4a6-4780-b97e-2a08793e15f0','2024-08-21T23:04:02.002+0900',6,105);
+2024-08-21 23:04:02.008 [restartedMain]  INFO p6spy - #1724249042008 | took 0ms | statement | connection 21| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into follow (created_date,following_pet_id,last_modified_by,last_modified_date,pet_id,id) values (?,?,?,?,?,?)
+insert into follow (created_date,following_pet_id,last_modified_by,last_modified_date,pet_id,id) values ('2024-08-21T23:04:02.002+0900',8,'f9cbb612-b607-425b-be13-c7cc491122e7','2024-08-21T23:04:02.002+0900',6,106);
+2024-08-21 23:04:02.008 [restartedMain]  INFO p6spy - #1724249042008 | took 0ms | statement | connection 21| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into follow (created_date,following_pet_id,last_modified_by,last_modified_date,pet_id,id) values (?,?,?,?,?,?)
+insert into follow (created_date,following_pet_id,last_modified_by,last_modified_date,pet_id,id) values ('2024-08-21T23:04:02.002+0900',6,'a0022a67-4774-4ea8-81c5-69a20c378771','2024-08-21T23:04:02.002+0900',7,107);
+2024-08-21 23:04:02.009 [restartedMain]  INFO p6spy - #1724249042009 | took 0ms | statement | connection 21| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into follow (created_date,following_pet_id,last_modified_by,last_modified_date,pet_id,id) values (?,?,?,?,?,?)
+insert into follow (created_date,following_pet_id,last_modified_by,last_modified_date,pet_id,id) values ('2024-08-21T23:04:02.002+0900',6,'892e7403-c01b-4b5a-95fb-0a16d27e125f','2024-08-21T23:04:02.002+0900',8,108);
+2024-08-21 23:04:02.010 [restartedMain]  INFO p6spy - #1724249042010 | took 0ms | statement | connection 21| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into follow (created_date,following_pet_id,last_modified_by,last_modified_date,pet_id,id) values (?,?,?,?,?,?)
+insert into follow (created_date,following_pet_id,last_modified_by,last_modified_date,pet_id,id) values ('2024-08-21T23:04:02.002+0900',7,'7a405df9-78b0-45ed-9600-3b615f9c5009','2024-08-21T23:04:02.002+0900',8,109);
+2024-08-21 23:04:02.010 [restartedMain]  INFO p6spy - #1724249042010 | took 0ms | commit | connection 21| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-21 23:04:02.015 [restartedMain]  INFO p6spy - #1724249042015 | took 1ms | statement | connection 23| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into recent_search (created_date,pet_id,search_texts) values (?,?,?)
+insert into recent_search (created_date,pet_id,search_texts) values ('2024-08-21T23:04:02.010+0900',5,'ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000002770400000002740006ECBD94ECBD94740006ED94BCEAB8B078');
+2024-08-21 23:04:02.016 [restartedMain]  INFO p6spy - #1724249042016 | took 0ms | commit | connection 23| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-21 23:04:54.821 [Test worker]  INFO p6spy - #1724249094821 | took 67ms | statement | connection 1| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into member (agree_date,agree_yn,created_date,deactivation_reason,deactivation_reason_comment,deleted_date,last_modified_by,last_modified_date,member_id,phone_num,username) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into member (agree_date,agree_yn,created_date,deactivation_reason,deactivation_reason_comment,deleted_date,last_modified_by,last_modified_date,member_id,phone_num,username) values ('2024-08-21T23:04:54.464+0900',true,'2024-08-21T23:04:54.740+0900',NULL,NULL,NULL,'de4f9af4-9c92-491c-9bd7-b905d5742bab','2024-08-21T23:04:54.740+0900','20240821230454464277','01052801436','이재훈');
+2024-08-21 23:04:54.832 [Test worker]  INFO p6spy - #1724249094832 | took 0ms | statement | connection 1| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into member (agree_date,agree_yn,created_date,deactivation_reason,deactivation_reason_comment,deleted_date,last_modified_by,last_modified_date,member_id,phone_num,username) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into member (agree_date,agree_yn,created_date,deactivation_reason,deactivation_reason_comment,deleted_date,last_modified_by,last_modified_date,member_id,phone_num,username) values ('2024-08-21T23:04:54.558+0900',true,'2024-08-21T23:04:54.830+0900',NULL,NULL,NULL,'44baa318-8d05-48a4-ac18-5ca62bed30b8','2024-08-21T23:04:54.830+0900','20240821230454558295','01094232322','노재현');
+2024-08-21 23:04:54.845 [Test worker]  INFO p6spy - #1724249094845 | took 11ms | statement | connection 1| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into member (agree_date,agree_yn,created_date,deactivation_reason,deactivation_reason_comment,deleted_date,last_modified_by,last_modified_date,member_id,phone_num,username) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into member (agree_date,agree_yn,created_date,deactivation_reason,deactivation_reason_comment,deleted_date,last_modified_by,last_modified_date,member_id,phone_num,username) values ('2024-08-21T23:04:54.640+0900',true,'2024-08-21T23:04:54.833+0900',NULL,NULL,NULL,'93fd871d-4a53-41eb-a02c-962e293c15fd','2024-08-21T23:04:54.833+0900','20240821230454640445','01084232322','김형구');
+2024-08-21 23:04:54.855 [Test worker]  INFO p6spy - #1724249094855 | took 3ms | commit | connection 1| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-21 23:04:54.863 [Test worker]  INFO p6spy - #1724249094863 | took 2ms | statement | connection 2| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into member_social (created_date,deleted_date,email,last_login_date,last_modified_by,last_modified_date,login_fail_count,member_id,member_status,password,phone_num,provider,provider_id,roles,username) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+insert into member_social (created_date,deleted_date,email,last_login_date,last_modified_by,last_modified_date,login_fail_count,member_id,member_status,password,phone_num,provider,provider_id,roles,username) values ('2024-08-21T23:04:54.859+0900',NULL,'user@gmail.com','2024-08-21T23:04:54.558+0900','36269b4c-1989-445b-b119-02c3f71b11d6','2024-08-21T23:04:54.859+0900',0,'20240821230454464277','NORMAL','{bcrypt}$2a$10$o8JhhJ8PUilUerwzdN8meu6o1E0Z.zzbirfeb6jHq1qvs9Vz/YU3q','01052801436',NULL,NULL,'ROLE_USER','이재훈');
+2024-08-21 23:04:54.864 [Test worker]  INFO p6spy - #1724249094864 | took 0ms | statement | connection 2| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into member_social (created_date,deleted_date,email,last_login_date,last_modified_by,last_modified_date,login_fail_count,member_id,member_status,password,phone_num,provider,provider_id,roles,username) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+insert into member_social (created_date,deleted_date,email,last_login_date,last_modified_by,last_modified_date,login_fail_count,member_id,member_status,password,phone_num,provider,provider_id,roles,username) values ('2024-08-21T23:04:54.863+0900',NULL,'jae@gmail.com','2024-08-21T23:04:54.640+0900','313b7b01-00be-4d5f-821b-5fa7e83ba36a','2024-08-21T23:04:54.863+0900',0,'20240821230454558295','NORMAL','{bcrypt}$2a$10$7AQ5hlq9n00Kqe7iSox.SOKpeZEK9/TzbDd6nlqs9hWnKRUlYQgwm','01094232322',NULL,NULL,'ROLE_USER','노재현');
+2024-08-21 23:04:54.866 [Test worker]  INFO p6spy - #1724249094866 | took 0ms | statement | connection 2| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into member_social (created_date,deleted_date,email,last_login_date,last_modified_by,last_modified_date,login_fail_count,member_id,member_status,password,phone_num,provider,provider_id,roles,username) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+insert into member_social (created_date,deleted_date,email,last_login_date,last_modified_by,last_modified_date,login_fail_count,member_id,member_status,password,phone_num,provider,provider_id,roles,username) values ('2024-08-21T23:04:54.865+0900',NULL,'admin@gmail.com','2024-08-21T23:04:54.720+0900','26cd0e35-d037-4ed6-8767-549cefec0a96','2024-08-21T23:04:54.865+0900',0,'20240821230454640445','NORMAL','{bcrypt}$2a$10$kqeepvxkPGgLD/vtagyLwOzRNTviW0MYxEn4zfAwsv9gk/ojsZigm','01084232322',NULL,NULL,'ROLE_USER','김형구');
+2024-08-21 23:04:54.867 [Test worker]  INFO p6spy - #1724249094867 | took 0ms | commit | connection 2| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-21 23:04:54.876 [Test worker]  INFO p6spy - #1724249094876 | took 6ms | statement | connection 3| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into species (species_large_category,last_modified_by,last_modified_date,species_mid_category,species_small_category) values (?,?,?,?,?)
+insert into species (species_large_category,last_modified_by,last_modified_date,species_mid_category,species_small_category) values ('포유류','9ea459f9-c62e-4078-aac0-18fd36b14f06','2024-08-21T23:04:54.870+0900','개','마티즈');
+2024-08-21 23:04:54.878 [Test worker]  INFO p6spy - #1724249094878 | took 0ms | statement | connection 3| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into species (species_large_category,last_modified_by,last_modified_date,species_mid_category,species_small_category) values (?,?,?,?,?)
+insert into species (species_large_category,last_modified_by,last_modified_date,species_mid_category,species_small_category) values ('포유류','0e3a70c9-bd01-495d-8793-d58efd9575d0','2024-08-21T23:04:54.877+0900','개','시바이누');
+2024-08-21 23:04:54.879 [Test worker]  INFO p6spy - #1724249094879 | took 0ms | statement | connection 3| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into species (species_large_category,last_modified_by,last_modified_date,species_mid_category,species_small_category) values (?,?,?,?,?)
+insert into species (species_large_category,last_modified_by,last_modified_date,species_mid_category,species_small_category) values ('포유류','dc652b0f-be84-404a-9464-d7fdc792e79b','2024-08-21T23:04:54.878+0900','개','세인트버나드');
+2024-08-21 23:04:54.881 [Test worker]  INFO p6spy - #1724249094881 | took 0ms | statement | connection 3| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into species (species_large_category,last_modified_by,last_modified_date,species_mid_category,species_small_category) values (?,?,?,?,?)
+insert into species (species_large_category,last_modified_by,last_modified_date,species_mid_category,species_small_category) values ('포유류','2a6cd93d-7f5d-417b-8e67-25e7fe692c99','2024-08-21T23:04:54.880+0900','개','서식스스패니얼');
+2024-08-21 23:04:54.884 [Test worker]  INFO p6spy - #1724249094884 | took 2ms | statement | connection 3| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into species (species_large_category,last_modified_by,last_modified_date,species_mid_category,species_small_category) values (?,?,?,?,?)
+insert into species (species_large_category,last_modified_by,last_modified_date,species_mid_category,species_small_category) values ('포유류','26f7dd89-1afa-4e80-b7b8-0dbbfea0bdfb','2024-08-21T23:04:54.881+0900','개','폭스테리어');
+2024-08-21 23:04:54.886 [Test worker]  INFO p6spy - #1724249094886 | took 1ms | statement | connection 3| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into species (species_large_category,last_modified_by,last_modified_date,species_mid_category,species_small_category) values (?,?,?,?,?)
+insert into species (species_large_category,last_modified_by,last_modified_date,species_mid_category,species_small_category) values ('포유류','b7fda466-61d3-4911-b13b-502a175fb62e','2024-08-21T23:04:54.885+0900','개','테리어');
+2024-08-21 23:04:54.887 [Test worker]  INFO p6spy - #1724249094887 | took 0ms | statement | connection 3| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into species (species_large_category,last_modified_by,last_modified_date,species_mid_category,species_small_category) values (?,?,?,?,?)
+insert into species (species_large_category,last_modified_by,last_modified_date,species_mid_category,species_small_category) values ('포유류','0bedf1f6-7df0-4755-82d0-9968da8f03f0','2024-08-21T23:04:54.887+0900','개','시추');
+2024-08-21 23:04:54.889 [Test worker]  INFO p6spy - #1724249094889 | took 0ms | statement | connection 3| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into species (species_large_category,last_modified_by,last_modified_date,species_mid_category,species_small_category) values (?,?,?,?,?)
+insert into species (species_large_category,last_modified_by,last_modified_date,species_mid_category,species_small_category) values ('포유류','bc839ada-f186-4424-930a-33872f869b63','2024-08-21T23:04:54.888+0900','개','푸들');
+2024-08-21 23:04:54.890 [Test worker]  INFO p6spy - #1724249094890 | took 0ms | commit | connection 3| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-21 23:04:54.898 [Test worker]  INFO p6spy - #1724249094898 | took 2ms | statement | connection 4| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into pet (back_img_url,created_date,deleted_date,gender,last_modified_by,last_modified_date,member_id,pet_birth,pet_death_date,pet_desc,pet_favs,pet_favs2,pet_favs2_colour,pet_favs3,pet_favs3_colour,pet_favs_colour,pet_name,pet_profile_frame,pet_profile_url,pet_status,pet_species_id) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+insert into pet (back_img_url,created_date,deleted_date,gender,last_modified_by,last_modified_date,member_id,pet_birth,pet_death_date,pet_desc,pet_favs,pet_favs2,pet_favs2_colour,pet_favs3,pet_favs3_colour,pet_favs_colour,pet_name,pet_profile_frame,pet_profile_url,pet_status,pet_species_id) values ('https://images.unsplash.com/photo-1707343843982-f8275f3994c5?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHw2fHx8ZW58MHx8fHx8','2024-08-21T23:04:54.894+0900',NULL,'F','b875ec4a-79bd-4550-8082-a37088e1805a','2024-08-21T23:04:54.894+0900',10,'2024-08-21T00:00:00.000+0900',NULL,'두리는 이쁘다','웃기','먹기','#C8102E','달리기','#C8102E','#C8102E','두리',0,'https://images.unsplash.com/photo-1517849845537-4d257902454a?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8JUVBJUIwJTlDfGVufDB8fDB8fHww','ACTIVE',17);
+2024-08-21 23:04:54.900 [Test worker]  INFO p6spy - #1724249094900 | took 1ms | statement | connection 4| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into pet (back_img_url,created_date,deleted_date,gender,last_modified_by,last_modified_date,member_id,pet_birth,pet_death_date,pet_desc,pet_favs,pet_favs2,pet_favs2_colour,pet_favs3,pet_favs3_colour,pet_favs_colour,pet_name,pet_profile_frame,pet_profile_url,pet_status,pet_species_id) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+insert into pet (back_img_url,created_date,deleted_date,gender,last_modified_by,last_modified_date,member_id,pet_birth,pet_death_date,pet_desc,pet_favs,pet_favs2,pet_favs2_colour,pet_favs3,pet_favs3_colour,pet_favs_colour,pet_name,pet_profile_frame,pet_profile_url,pet_status,pet_species_id) values ('https://images.unsplash.com/photo-1706670542491-61eeb26510de?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzfHx8ZW58MHx8fHx8','2024-08-21T23:04:54.899+0900',NULL,'F','daf1d293-e636-4a74-871a-9845183476cb','2024-08-21T23:04:54.899+0900',10,'2024-08-21T00:00:00.000+0900',NULL,'방울이는 이쁘다','웃기','먹기','#C8102E','달리기','#C8102E','#C8102E','방울이',0,'https://images.unsplash.com/photo-1530281700549-e82e7bf110d6?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8JUVBJUIwJTlDfGVufDB8fDB8fHww','DEACTIVE',17);
+2024-08-21 23:04:54.902 [Test worker]  INFO p6spy - #1724249094902 | took 0ms | statement | connection 4| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into pet (back_img_url,created_date,deleted_date,gender,last_modified_by,last_modified_date,member_id,pet_birth,pet_death_date,pet_desc,pet_favs,pet_favs2,pet_favs2_colour,pet_favs3,pet_favs3_colour,pet_favs_colour,pet_name,pet_profile_frame,pet_profile_url,pet_status,pet_species_id) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+insert into pet (back_img_url,created_date,deleted_date,gender,last_modified_by,last_modified_date,member_id,pet_birth,pet_death_date,pet_desc,pet_favs,pet_favs2,pet_favs2_colour,pet_favs3,pet_favs3_colour,pet_favs_colour,pet_name,pet_profile_frame,pet_profile_url,pet_status,pet_species_id) values ('https://images.unsplash.com/photo-1706670542491-61eeb26510de?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzfHx8ZW58MHx8fHx8','2024-08-21T23:04:54.901+0900',NULL,'F','a782773b-5b0f-4ab4-a7fc-ca879b06e477','2024-08-21T23:04:54.901+0900',11,'2024-08-21T00:00:00.000+0900',NULL,'조롱이는 이쁘다','떠들기','뛰기','#C8102E','달리기','#C8102E','#C8102E','조롱이',0,'https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fCVFQSVCMCU5Q3xlbnwwfHwwfHx8MA%3D%3D','ACTIVE',17);
+2024-08-21 23:04:54.904 [Test worker]  INFO p6spy - #1724249094904 | took 0ms | statement | connection 4| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into pet (back_img_url,created_date,deleted_date,gender,last_modified_by,last_modified_date,member_id,pet_birth,pet_death_date,pet_desc,pet_favs,pet_favs2,pet_favs2_colour,pet_favs3,pet_favs3_colour,pet_favs_colour,pet_name,pet_profile_frame,pet_profile_url,pet_status,pet_species_id) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+insert into pet (back_img_url,created_date,deleted_date,gender,last_modified_by,last_modified_date,member_id,pet_birth,pet_death_date,pet_desc,pet_favs,pet_favs2,pet_favs2_colour,pet_favs3,pet_favs3_colour,pet_favs_colour,pet_name,pet_profile_frame,pet_profile_url,pet_status,pet_species_id) values ('https://images.unsplash.com/photo-1706670542491-61eeb26510de?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzfHx8ZW58MHx8fHx8','2024-08-21T23:04:54.903+0900',NULL,'F','09d58df6-488e-4d56-9675-580aee304d55','2024-08-21T23:04:54.903+0900',11,'2024-08-21T00:00:00.000+0900',NULL,'띵띵이는 이쁘다','울기','웃기','#C8102E','때리기','#C8102E','#C8102E','띵띵이',0,'https://images.unsplash.com/photo-1588943211346-0908a1fb0b01?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fCVFQSVCMCU5Q3xlbnwwfHwwfHx8MA%3D%3D','DEACTIVE',17);
+2024-08-21 23:04:54.905 [Test worker]  INFO p6spy - #1724249094905 | took 0ms | commit | connection 4| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-21 23:04:54.914 [Test worker]  INFO p6spy - #1724249094914 | took 2ms | statement | connection 6| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+select next_val as id_val from memory_seq for update
+select next_val as id_val from memory_seq for update;
+2024-08-21 23:04:54.914 [Test worker]  INFO p6spy - #1724249094914 | took 0ms | statement | connection 6| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+update memory_seq set next_val= ? where next_val=?
+update memory_seq set next_val= 201 where next_val=151;
+2024-08-21 23:04:54.915 [Test worker]  INFO p6spy - #1724249094915 | took 0ms | commit | connection 6| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-21 23:04:54.925 [Test worker]  INFO p6spy - #1724249094925 | took 2ms | statement | connection 5| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values ('ALL','2024-08-21T23:04:54.908+0900',NULL,'adbff616-cf1f-4f11-81ae-8c8f88afeba4','2024-08-21T23:04:54.908+0900',1,'2024-08-21T00:00:00.000+0900','방울이와의 산책이 너무 즐거웠습니다.',9,'방울이와의 밤 산책',102);
+2024-08-21 23:04:54.926 [Test worker]  INFO p6spy - #1724249094926 | took 0ms | statement | connection 5| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values ('ME','2024-08-21T23:04:54.916+0900',NULL,'f36f92da-2b9b-4331-96f7-6c80044386bb','2024-08-21T23:04:54.916+0900',1,'2024-08-21T00:00:00.000+0900','방울이와의 산책이 너무 즐거웠습니다.',9,'방울이와의 낮 산책',103);
+2024-08-21 23:04:54.927 [Test worker]  INFO p6spy - #1724249094927 | took 0ms | statement | connection 5| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values ('FRIEND','2024-08-21T23:04:54.916+0900',NULL,'fa0887a0-b9c5-4c8a-91b7-005ca528feee','2024-08-21T23:04:54.916+0900',1,'2024-08-21T00:00:00.000+0900','방울이와의 산책이 너무 즐거웠습니다.',9,'방울이와의 오전 산책',104);
+2024-08-21 23:04:54.927 [Test worker]  INFO p6spy - #1724249094927 | took 0ms | statement | connection 5| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values ('ALL','2024-08-21T23:04:54.917+0900',NULL,'1cb906b3-fc19-4821-94d7-bac4d05b9c15','2024-08-21T23:04:54.917+0900',1,'2024-08-21T00:00:00.000+0900','방울이와의 산책이 너무 즐거웠습니다.',9,'방울이와의 오후 산책',105);
+2024-08-21 23:04:54.928 [Test worker]  INFO p6spy - #1724249094928 | took 0ms | statement | connection 5| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values ('ALL','2024-08-21T23:04:54.917+0900',NULL,'92ef4dd8-45e7-40f3-a459-d20b06c6193d','2024-08-21T23:04:54.917+0900',1,'2024-08-21T00:00:00.000+0900','두리와의 산책이 너무 즐거웠습니다.',10,'두리와의 오전 산책',106);
+2024-08-21 23:04:54.929 [Test worker]  INFO p6spy - #1724249094929 | took 0ms | statement | connection 5| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values ('ALL','2024-08-21T23:04:54.917+0900',NULL,'31d7a50e-e064-4612-b1e2-426603fef07e','2024-08-21T23:04:54.917+0900',1,'2024-08-21T00:00:00.000+0900','두리와의 산책이 너무 즐거웠습니다.',10,'두리와의 산책',107);
+2024-08-21 23:04:54.930 [Test worker]  INFO p6spy - #1724249094930 | took 0ms | statement | connection 5| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values ('ALL','2024-08-21T23:04:54.917+0900',NULL,'920e103d-b3f2-40ac-a57b-e2c7f7527ca7','2024-08-21T23:04:54.917+0900',1,'2024-08-21T00:00:00.000+0900','두리와의 산책이 너무 즐거웠습니다.',10,'두리와의 산책',108);
+2024-08-21 23:04:54.930 [Test worker]  INFO p6spy - #1724249094930 | took 0ms | statement | connection 5| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values ('ALL','2024-08-21T23:04:54.917+0900',NULL,'9d57635e-c7f2-42d2-a787-cf5d0d447c40','2024-08-21T23:04:54.917+0900',1,'2024-08-21T00:00:00.000+0900','방울이와의 산책이 너무 즐거웠습니다.',11,'방울이와의 산책',109);
+2024-08-21 23:04:54.931 [Test worker]  INFO p6spy - #1724249094931 | took 0ms | statement | connection 5| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values ('ALL','2024-08-21T23:04:54.917+0900',NULL,'5b5931ea-d3f6-43f4-bf95-2fab976098d1','2024-08-21T23:04:54.917+0900',0,'2024-08-21T00:00:00.000+0900','방울이와의 산책이 너무 즐거웠습니다.',11,'방울이와의 산책',110);
+2024-08-21 23:04:54.932 [Test worker]  INFO p6spy - #1724249094932 | took 0ms | statement | connection 5| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values ('ALL','2024-08-21T23:04:54.917+0900',NULL,'d8b2931b-568e-4143-beaa-1096dd67e1e6','2024-08-21T23:04:54.917+0900',0,'2024-08-21T00:00:00.000+0900','방울이와의 산책이 너무 즐거웠습니다.',11,'방울이와의 산책',111);
+2024-08-21 23:04:54.933 [Test worker]  INFO p6spy - #1724249094933 | took 0ms | statement | connection 5| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values ('ALL','2024-08-21T23:04:54.917+0900',NULL,'a320cee8-d5bb-47dc-8dec-30fa24fd9775','2024-08-21T23:04:54.917+0900',0,'2024-08-21T00:00:00.000+0900','방울이와의 산책이 너무 즐거웠습니다.',11,'방울이와의 산책',112);
+2024-08-21 23:04:54.934 [Test worker]  INFO p6spy - #1724249094934 | took 0ms | statement | connection 5| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values ('ALL','2024-08-21T23:04:54.918+0900',NULL,'ad6a5a0a-f398-46a4-9d90-ffa9ef9c19b5','2024-08-21T23:04:54.918+0900',0,'2024-08-21T00:00:00.000+0900','방울이와의 산책이 너무 즐거웠습니다.',12,'방울이와의 산책',113);
+2024-08-21 23:04:54.934 [Test worker]  INFO p6spy - #1724249094934 | took 0ms | statement | connection 5| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values ('ALL','2024-08-21T23:04:54.918+0900',NULL,'9b34e682-a8d1-4957-86dd-858b2d7947f2','2024-08-21T23:04:54.918+0900',0,'2024-08-21T00:00:00.000+0900','방울이와의 산책이 너무 즐거웠습니다.',12,'방울이와의 산책',114);
+2024-08-21 23:04:54.935 [Test worker]  INFO p6spy - #1724249094935 | took 0ms | statement | connection 5| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values ('ALL','2024-08-21T23:04:54.918+0900',NULL,'114aa662-7e08-4ad0-8548-ac447dcaaa0f','2024-08-21T23:04:54.918+0900',0,'2024-08-21T00:00:00.000+0900','방울이와의 산책이 너무 즐거웠습니다.',12,'방울이와의 산책',115);
+2024-08-21 23:04:54.936 [Test worker]  INFO p6spy - #1724249094936 | took 0ms | statement | connection 5| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values ('ALL','2024-08-21T23:04:54.918+0900',NULL,'466c93b3-b694-47b4-8d1d-cc54a816f05a','2024-08-21T23:04:54.918+0900',0,'2024-08-21T00:00:00.000+0900','방울이와의 산책이 너무 즐거웠습니다.',12,'방울이와의 산책',116);
+2024-08-21 23:04:54.936 [Test worker]  INFO p6spy - #1724249094936 | took 0ms | statement | connection 5| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values ('ALL','2024-08-21T23:04:54.918+0900',NULL,'4b3076a2-8b51-4488-8866-0ab8a16550b1','2024-08-21T23:04:54.918+0900',0,'2024-08-21T00:00:00.000+0900','방울이와의 산책이 너무 즐거웠습니다.',12,'방울이와의 산책',117);
+2024-08-21 23:04:54.937 [Test worker]  INFO p6spy - #1724249094937 | took 0ms | statement | connection 5| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values ('ALL','2024-08-21T23:04:54.918+0900',NULL,'29530ef2-612c-4b62-931a-e05fc8866a03','2024-08-21T23:04:54.918+0900',0,'2024-08-21T00:00:00.000+0900','방울이와의 산책이 너무 즐거웠습니다.',12,'방울이와의 산책',118);
+2024-08-21 23:04:54.938 [Test worker]  INFO p6spy - #1724249094938 | took 0ms | statement | connection 5| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values ('ALL','2024-08-21T23:04:54.918+0900',NULL,'39bdfbaa-97e3-42cc-8937-69d45908bfa1','2024-08-21T23:04:54.918+0900',0,'2024-08-21T00:00:00.000+0900','방울이와의 산책이 너무 즐거웠습니다.',12,'방울이와의 산책',119);
+2024-08-21 23:04:54.939 [Test worker]  INFO p6spy - #1724249094939 | took 0ms | statement | connection 5| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values ('ALL','2024-08-21T23:04:54.918+0900',NULL,'3bac9243-3b7d-4c38-8041-cab500b1c9c3','2024-08-21T23:04:54.918+0900',0,'2024-08-21T00:00:00.000+0900','방울이와의 산책이 너무 즐거웠습니다.',12,'방울이와의 산책',120);
+2024-08-21 23:04:54.940 [Test worker]  INFO p6spy - #1724249094940 | took 0ms | statement | connection 5| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values ('ALL','2024-08-21T23:04:54.919+0900',NULL,'a4db3b06-aba8-430d-a8b5-ea280beb3449','2024-08-21T23:04:54.919+0900',0,'2024-08-21T00:00:00.000+0900','방울이와의 산책이 너무 즐거웠습니다.',12,'방울이와의 산책',121);
+2024-08-21 23:04:54.940 [Test worker]  INFO p6spy - #1724249094940 | took 0ms | statement | connection 5| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values ('ALL','2024-08-21T23:04:54.919+0900',NULL,'4a7c4533-9552-4a66-81e1-41cc4a54f70c','2024-08-21T23:04:54.919+0900',0,'2024-08-21T00:00:00.000+0900','방울이와의 산책이 너무 즐거웠습니다.',12,'방울이와의 산책',122);
+2024-08-21 23:04:54.941 [Test worker]  INFO p6spy - #1724249094941 | took 0ms | statement | connection 5| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values ('ALL','2024-08-21T23:04:54.919+0900',NULL,'b1ca3bb3-5e7f-4bc2-ad46-1b6f016196b7','2024-08-21T23:04:54.919+0900',0,'2024-08-21T00:00:00.000+0900','방울이와의 산책이 너무 즐거웠습니다.',12,'방울이와의 산책',123);
+2024-08-21 23:04:54.942 [Test worker]  INFO p6spy - #1724249094942 | took 0ms | statement | connection 5| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into memory (audience,created_date,deleted_date,last_modified_by,last_modified_date,like_count,memory_date,memory_description,pet_id,title,memory_id) values ('ALL','2024-08-21T23:04:54.919+0900',NULL,'f4e2615e-4711-43a2-9d2f-42311a118ecb','2024-08-21T23:04:54.919+0900',0,'2024-08-21T00:00:00.000+0900','방울이와의 산책이 너무 즐거웠습니다.',12,'방울이와의 산책',124);
+2024-08-21 23:04:54.942 [Test worker]  INFO p6spy - #1724249094942 | took 0ms | commit | connection 5| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-21 23:04:54.946 [Test worker]  INFO p6spy - #1724249094946 | took 0ms | statement | connection 8| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+select next_val as id_val from memory_image_seq for update
+select next_val as id_val from memory_image_seq for update;
+2024-08-21 23:04:54.947 [Test worker]  INFO p6spy - #1724249094947 | took 0ms | statement | connection 8| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+update memory_image_seq set next_val= ? where next_val=?
+update memory_image_seq set next_val= 201 where next_val=151;
+2024-08-21 23:04:54.947 [Test worker]  INFO p6spy - #1724249094947 | took 0ms | commit | connection 8| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-21 23:04:54.950 [Test worker]  INFO p6spy - #1724249094950 | took 1ms | statement | connection 7| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into memory_image (created_date,deleted_date,image_format,image_logical_name,image_physical_name,image_size,image_url,memory_id,memory_image_id) values (?,?,?,?,?,?,?,?,?)
+insert into memory_image (created_date,deleted_date,image_format,image_logical_name,image_physical_name,image_size,image_url,memory_id,memory_image_id) values ('2024-08-21T23:04:54.943+0900',NULL,'jpg','5296b63c-e951-468f-a8a2-0fa7e7d5daef','추억 1 : 방울이와 찍은사진','20mb','https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA4L3Jhd3BpeGVsX29mZmljZV8xNV9waG90b19vZl9hX2RvZ19ydW5uaW5nX3dpdGhfb3duZXJfYXRfcGFya19lcF9mM2I3MDQyZC0zNWJlLTRlMTQtOGZhNy1kY2Q2OWQ1YzQzZjlfMi5qcGc.jpg',102,102);
+2024-08-21 23:04:54.950 [Test worker]  INFO p6spy - #1724249094950 | took 0ms | statement | connection 7| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into memory_image (created_date,deleted_date,image_format,image_logical_name,image_physical_name,image_size,image_url,memory_id,memory_image_id) values (?,?,?,?,?,?,?,?,?)
+insert into memory_image (created_date,deleted_date,image_format,image_logical_name,image_physical_name,image_size,image_url,memory_id,memory_image_id) values ('2024-08-21T23:04:54.948+0900',NULL,'jpg','44ea323f-50c6-4ea0-b51a-0f98069b7ebf','추억 1 : 방울이와 찍은사진1','30mb','https://thumbs.dreamstime.com/b/beagle-dog-isolated-white-background-purebred-103538194.jpg',102,103);
+2024-08-21 23:04:54.951 [Test worker]  INFO p6spy - #1724249094951 | took 0ms | statement | connection 7| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into memory_image (created_date,deleted_date,image_format,image_logical_name,image_physical_name,image_size,image_url,memory_id,memory_image_id) values (?,?,?,?,?,?,?,?,?)
+insert into memory_image (created_date,deleted_date,image_format,image_logical_name,image_physical_name,image_size,image_url,memory_id,memory_image_id) values ('2024-08-21T23:04:54.948+0900',NULL,'jpg','6f6026fc-7dab-4935-b067-295592574484','추억 1 : 방울이와 찍은사진','20mb','https://images.unsplash.com/photo-1551992536-ee9a450c44d2?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8JUVBJUIwJTlDJTIwJUVDJTgyJUFDJUVDJUE3JTg0fGVufDB8fDB8fHww',102,104);
+2024-08-21 23:04:54.952 [Test worker]  INFO p6spy - #1724249094952 | took 0ms | statement | connection 7| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into memory_image (created_date,deleted_date,image_format,image_logical_name,image_physical_name,image_size,image_url,memory_id,memory_image_id) values (?,?,?,?,?,?,?,?,?)
+insert into memory_image (created_date,deleted_date,image_format,image_logical_name,image_physical_name,image_size,image_url,memory_id,memory_image_id) values ('2024-08-21T23:04:54.948+0900',NULL,'jpg','6d4a1c65-3739-40f6-a2cf-d5a359463948','추억 2 : 방울이와 찍은사진1','30mb','https://images.unsplash.com/photo-1521247560470-d2cbfe2f7b47?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8JUVBJUIwJTlDJTIwJUVDJTgyJUFDJUVDJUE3JTg0fGVufDB8fDB8fHww',103,105);
+2024-08-21 23:04:54.952 [Test worker]  INFO p6spy - #1724249094952 | took 0ms | statement | connection 7| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into memory_image (created_date,deleted_date,image_format,image_logical_name,image_physical_name,image_size,image_url,memory_id,memory_image_id) values (?,?,?,?,?,?,?,?,?)
+insert into memory_image (created_date,deleted_date,image_format,image_logical_name,image_physical_name,image_size,image_url,memory_id,memory_image_id) values ('2024-08-21T23:04:54.948+0900',NULL,'jpg','e3d26723-9683-4ecc-a0f7-aa7d9a13b3ce','추억 2 : 방울이와 찍은사진1','30mb','https://images.unsplash.com/photo-1591214958544-ddcf55d9707b?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fCVFQSVCMCU5QyUyMCVFQyU4MiVBQyVFQyVBNyU4NHxlbnwwfHwwfHx8MA%3D%3D',103,106);
+2024-08-21 23:04:54.953 [Test worker]  INFO p6spy - #1724249094953 | took 0ms | commit | connection 7| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-21 23:04:54.957 [Test worker]  INFO p6spy - #1724249094957 | took 1ms | statement | connection 10| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+select next_val as id_val from likes_seq for update
+select next_val as id_val from likes_seq for update;
+2024-08-21 23:04:54.958 [Test worker]  INFO p6spy - #1724249094958 | took 0ms | statement | connection 10| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+update likes_seq set next_val= ? where next_val=?
+update likes_seq set next_val= 201 where next_val=151;
+2024-08-21 23:04:54.958 [Test worker]  INFO p6spy - #1724249094958 | took 0ms | commit | connection 10| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-21 23:04:54.960 [Test worker]  INFO p6spy - #1724249094960 | took 0ms | statement | connection 9| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into likes (created_date,liked_own_pet_id,memory_id,pet_id,likes_id) values (?,?,?,?,?)
+insert into likes (created_date,liked_own_pet_id,memory_id,pet_id,likes_id) values ('2024-08-21T23:04:54.954+0900',9,102,10,102);
+2024-08-21 23:04:54.961 [Test worker]  INFO p6spy - #1724249094961 | took 0ms | statement | connection 9| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into likes (created_date,liked_own_pet_id,memory_id,pet_id,likes_id) values (?,?,?,?,?)
+insert into likes (created_date,liked_own_pet_id,memory_id,pet_id,likes_id) values ('2024-08-21T23:04:54.959+0900',9,103,10,103);
+2024-08-21 23:04:54.962 [Test worker]  INFO p6spy - #1724249094961 | took 0ms | statement | connection 9| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into likes (created_date,liked_own_pet_id,memory_id,pet_id,likes_id) values (?,?,?,?,?)
+insert into likes (created_date,liked_own_pet_id,memory_id,pet_id,likes_id) values ('2024-08-21T23:04:54.959+0900',9,104,10,104);
+2024-08-21 23:04:54.962 [Test worker]  INFO p6spy - #1724249094962 | took 0ms | statement | connection 9| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into likes (created_date,liked_own_pet_id,memory_id,pet_id,likes_id) values (?,?,?,?,?)
+insert into likes (created_date,liked_own_pet_id,memory_id,pet_id,likes_id) values ('2024-08-21T23:04:54.959+0900',10,106,11,105);
+2024-08-21 23:04:54.963 [Test worker]  INFO p6spy - #1724249094963 | took 0ms | statement | connection 9| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into likes (created_date,liked_own_pet_id,memory_id,pet_id,likes_id) values (?,?,?,?,?)
+insert into likes (created_date,liked_own_pet_id,memory_id,pet_id,likes_id) values ('2024-08-21T23:04:54.959+0900',10,107,11,106);
+2024-08-21 23:04:54.964 [Test worker]  INFO p6spy - #1724249094964 | took 0ms | statement | connection 9| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into likes (created_date,liked_own_pet_id,memory_id,pet_id,likes_id) values (?,?,?,?,?)
+insert into likes (created_date,liked_own_pet_id,memory_id,pet_id,likes_id) values ('2024-08-21T23:04:54.959+0900',10,108,12,107);
+2024-08-21 23:04:54.964 [Test worker]  INFO p6spy - #1724249094964 | took 0ms | statement | connection 9| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into likes (created_date,liked_own_pet_id,memory_id,pet_id,likes_id) values (?,?,?,?,?)
+insert into likes (created_date,liked_own_pet_id,memory_id,pet_id,likes_id) values ('2024-08-21T23:04:54.959+0900',10,109,12,108);
+2024-08-21 23:04:54.965 [Test worker]  INFO p6spy - #1724249094965 | took 0ms | commit | connection 9| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-21 23:04:54.970 [Test worker]  INFO p6spy - #1724249094970 | took 1ms | statement | connection 11| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into comment (comment,comment_group,commenter_id,created_date,deleted_date,depth,last_modified_by,last_modified_date,memory_id,parent_comment_id,pet_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into comment (comment,comment_group,commenter_id,created_date,deleted_date,depth,last_modified_by,last_modified_date,memory_id,parent_comment_id,pet_id) values ('방울이는 너무 사랑스러워요','MEMORY_COMMENT',10,'2024-08-21T23:04:54.968+0900',NULL,1,'c4544464-0b21-4728-a494-57c56ac054ba','2024-08-21T23:04:54.968+0900',102,NULL,NULL);
+2024-08-21 23:04:54.971 [Test worker]  INFO p6spy - #1724249094971 | took 0ms | statement | connection 11| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into comment (comment,comment_group,commenter_id,created_date,deleted_date,depth,last_modified_by,last_modified_date,memory_id,parent_comment_id,pet_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into comment (comment,comment_group,commenter_id,created_date,deleted_date,depth,last_modified_by,last_modified_date,memory_id,parent_comment_id,pet_id) values ('방울이는 좋은곳으로 갔을거에요','LAST_WORD',10,'2024-08-21T23:04:54.971+0900',NULL,1,'2569b6fe-6eb8-4c51-9b68-87994565a815','2024-08-21T23:04:54.971+0900',NULL,NULL,9);
+2024-08-21 23:04:54.972 [Test worker]  INFO p6spy - #1724249094972 | took 0ms | statement | connection 11| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into comment (comment,comment_group,commenter_id,created_date,deleted_date,depth,last_modified_by,last_modified_date,memory_id,parent_comment_id,pet_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into comment (comment,comment_group,commenter_id,created_date,deleted_date,depth,last_modified_by,last_modified_date,memory_id,parent_comment_id,pet_id) values ('방울이는 참 귀여웠는데 안타까워요','LAST_WORD',11,'2024-08-21T23:04:54.972+0900',NULL,1,'b42fc5cc-0d38-4823-81ff-32274f8ac627','2024-08-21T23:04:54.972+0900',NULL,NULL,9);
+2024-08-21 23:04:54.973 [Test worker]  INFO p6spy - #1724249094973 | took 0ms | statement | connection 11| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into comment (comment,comment_group,commenter_id,created_date,deleted_date,depth,last_modified_by,last_modified_date,memory_id,parent_comment_id,pet_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into comment (comment,comment_group,commenter_id,created_date,deleted_date,depth,last_modified_by,last_modified_date,memory_id,parent_comment_id,pet_id) values ('방울이는 참 좋은 주인을 만났어요','LAST_WORD',11,'2024-08-21T23:04:54.972+0900',NULL,1,'e6a23aa3-5d5b-4f95-9507-9cc818178f39','2024-08-21T23:04:54.972+0900',NULL,NULL,9);
+2024-08-21 23:04:54.974 [Test worker]  INFO p6spy - #1724249094974 | took 0ms | statement | connection 11| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into comment (comment,comment_group,commenter_id,created_date,deleted_date,depth,last_modified_by,last_modified_date,memory_id,parent_comment_id,pet_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into comment (comment,comment_group,commenter_id,created_date,deleted_date,depth,last_modified_by,last_modified_date,memory_id,parent_comment_id,pet_id) values ('방울이의 명복을빕니다.','LAST_WORD',12,'2024-08-21T23:04:54.973+0900',NULL,1,'90994350-c234-4495-93eb-3ee38d1872e4','2024-08-21T23:04:54.973+0900',NULL,NULL,9);
+2024-08-21 23:04:54.975 [Test worker]  INFO p6spy - #1724249094975 | took 0ms | statement | connection 11| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into comment (comment,comment_group,commenter_id,created_date,deleted_date,depth,last_modified_by,last_modified_date,memory_id,parent_comment_id,pet_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into comment (comment,comment_group,commenter_id,created_date,deleted_date,depth,last_modified_by,last_modified_date,memory_id,parent_comment_id,pet_id) values ('방울이는 내 기쁨이었어요','LAST_WORD',10,'2024-08-21T23:04:54.974+0900',NULL,1,'f040408e-ac16-417e-878f-c9d18c2d293a','2024-08-21T23:04:54.974+0900',NULL,NULL,9);
+2024-08-21 23:04:54.976 [Test worker]  INFO p6spy - #1724249094976 | took 0ms | statement | connection 11| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into comment (comment,comment_group,commenter_id,created_date,deleted_date,depth,last_modified_by,last_modified_date,memory_id,parent_comment_id,pet_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into comment (comment,comment_group,commenter_id,created_date,deleted_date,depth,last_modified_by,last_modified_date,memory_id,parent_comment_id,pet_id) values ('방울이가 보고싶어요','LAST_WORD',12,'2024-08-21T23:04:54.975+0900',NULL,1,'9682e0d9-a601-4f56-8c79-40f358f8c788','2024-08-21T23:04:54.975+0900',NULL,NULL,9);
+2024-08-21 23:04:54.977 [Test worker]  INFO p6spy - #1724249094977 | took 0ms | statement | connection 11| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into comment (comment,comment_group,commenter_id,created_date,deleted_date,depth,last_modified_by,last_modified_date,memory_id,parent_comment_id,pet_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into comment (comment,comment_group,commenter_id,created_date,deleted_date,depth,last_modified_by,last_modified_date,memory_id,parent_comment_id,pet_id) values ('방울이는 천재였어요','LAST_WORD',12,'2024-08-21T23:04:54.976+0900',NULL,1,'227b4512-80a0-4af7-a3e4-4e43c56928f3','2024-08-21T23:04:54.976+0900',NULL,NULL,9);
+2024-08-21 23:04:54.977 [Test worker]  INFO p6spy - #1724249094977 | took 0ms | statement | connection 11| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into comment (comment,comment_group,commenter_id,created_date,deleted_date,depth,last_modified_by,last_modified_date,memory_id,parent_comment_id,pet_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into comment (comment,comment_group,commenter_id,created_date,deleted_date,depth,last_modified_by,last_modified_date,memory_id,parent_comment_id,pet_id) values ('방울이 ㅠㅠ','LAST_WORD',12,'2024-08-21T23:04:54.977+0900',NULL,1,'1bace8bd-64b0-48cf-87e2-7ad9116b9cdd','2024-08-21T23:04:54.977+0900',NULL,NULL,9);
+2024-08-21 23:04:54.978 [Test worker]  INFO p6spy - #1724249094978 | took 0ms | statement | connection 11| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into comment (comment,comment_group,commenter_id,created_date,deleted_date,depth,last_modified_by,last_modified_date,memory_id,parent_comment_id,pet_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into comment (comment,comment_group,commenter_id,created_date,deleted_date,depth,last_modified_by,last_modified_date,memory_id,parent_comment_id,pet_id) values ('방울이는 낭만파~','LAST_WORD',12,'2024-08-21T23:04:54.978+0900',NULL,1,'76298aa9-bd76-46e2-b3e2-47c5daeec373','2024-08-21T23:04:54.978+0900',NULL,NULL,9);
+2024-08-21 23:04:54.979 [Test worker]  INFO p6spy - #1724249094979 | took 0ms | commit | connection 11| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-21 23:04:54.981 [Test worker]  INFO p6spy - #1724249094981 | took 0ms | statement | connection 12| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into comment (comment,comment_group,commenter_id,created_date,deleted_date,depth,last_modified_by,last_modified_date,memory_id,parent_comment_id,pet_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into comment (comment,comment_group,commenter_id,created_date,deleted_date,depth,last_modified_by,last_modified_date,memory_id,parent_comment_id,pet_id) values ('방울이는 너무 사랑스러워요','MEMORY_COMMENT',12,'2024-08-21T23:04:54.980+0900',NULL,2,'6c3a0f01-4d72-4d3d-9daf-0a39d6321479','2024-08-21T23:04:54.980+0900',102,31,NULL);
+2024-08-21 23:04:54.982 [Test worker]  INFO p6spy - #1724249094982 | took 0ms | statement | connection 12| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into comment (comment,comment_group,commenter_id,created_date,deleted_date,depth,last_modified_by,last_modified_date,memory_id,parent_comment_id,pet_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into comment (comment,comment_group,commenter_id,created_date,deleted_date,depth,last_modified_by,last_modified_date,memory_id,parent_comment_id,pet_id) values ('방울이는 너무 사랑스러워요','LAST_WORD',10,'2024-08-21T23:04:54.981+0900',NULL,2,'9aa5c63d-899b-48db-b824-f49426207978','2024-08-21T23:04:54.981+0900',NULL,32,9);
+2024-08-21 23:04:54.982 [Test worker]  INFO p6spy - #1724249094982 | took 0ms | statement | connection 12| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into comment (comment,comment_group,commenter_id,created_date,deleted_date,depth,last_modified_by,last_modified_date,memory_id,parent_comment_id,pet_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into comment (comment,comment_group,commenter_id,created_date,deleted_date,depth,last_modified_by,last_modified_date,memory_id,parent_comment_id,pet_id) values ('방울이는 너무 사랑스러워요','LAST_WORD',11,'2024-08-21T23:04:54.982+0900',NULL,2,'e353a4fb-22ca-4e07-805e-128da351d071','2024-08-21T23:04:54.982+0900',NULL,32,9);
+2024-08-21 23:04:54.983 [Test worker]  INFO p6spy - #1724249094983 | took 0ms | statement | connection 12| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into comment (comment,comment_group,commenter_id,created_date,deleted_date,depth,last_modified_by,last_modified_date,memory_id,parent_comment_id,pet_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into comment (comment,comment_group,commenter_id,created_date,deleted_date,depth,last_modified_by,last_modified_date,memory_id,parent_comment_id,pet_id) values ('방울이는 내 첫사랑~','MEMORY_COMMENT',10,'2024-08-21T23:04:54.983+0900',NULL,2,'f7e02a2d-45db-4316-90bf-a5c95595aa88','2024-08-21T23:04:54.983+0900',102,31,NULL);
+2024-08-21 23:04:54.984 [Test worker]  INFO p6spy - #1724249094984 | took 0ms | statement | connection 12| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into comment (comment,comment_group,commenter_id,created_date,deleted_date,depth,last_modified_by,last_modified_date,memory_id,parent_comment_id,pet_id) values (?,?,?,?,?,?,?,?,?,?,?)
+insert into comment (comment,comment_group,commenter_id,created_date,deleted_date,depth,last_modified_by,last_modified_date,memory_id,parent_comment_id,pet_id) values ('최고의 방울이','MEMORY_COMMENT',11,'2024-08-21T23:04:54.983+0900',NULL,2,'f45b21de-dbf7-451e-b748-2ae7f1abc13e','2024-08-21T23:04:54.983+0900',102,31,NULL);
+2024-08-21 23:04:54.985 [Test worker]  INFO p6spy - #1724249094985 | took 0ms | commit | connection 12| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-21 23:04:54.989 [Test worker]  INFO p6spy - #1724249094989 | took 1ms | statement | connection 14| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+select next_val as id_val from follow_seq for update
+select next_val as id_val from follow_seq for update;
+2024-08-21 23:04:54.991 [Test worker]  INFO p6spy - #1724249094991 | took 1ms | statement | connection 14| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+update follow_seq set next_val= ? where next_val=?
+update follow_seq set next_val= 251 where next_val=201;
+2024-08-21 23:04:54.992 [Test worker]  INFO p6spy - #1724249094992 | took 0ms | commit | connection 14| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-21 23:04:54.994 [Test worker]  INFO p6spy - #1724249094994 | took 0ms | statement | connection 13| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into follow (created_date,following_pet_id,last_modified_by,last_modified_date,pet_id,id) values (?,?,?,?,?,?)
+insert into follow (created_date,following_pet_id,last_modified_by,last_modified_date,pet_id,id) values ('2024-08-21T23:04:54.987+0900',9,'a2363128-99d6-49a3-a476-95070a6a6c34','2024-08-21T23:04:54.987+0900',10,152);
+2024-08-21 23:04:54.995 [Test worker]  INFO p6spy - #1724249094995 | took 0ms | statement | connection 13| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into follow (created_date,following_pet_id,last_modified_by,last_modified_date,pet_id,id) values (?,?,?,?,?,?)
+insert into follow (created_date,following_pet_id,last_modified_by,last_modified_date,pet_id,id) values ('2024-08-21T23:04:54.992+0900',9,'50873ef3-d927-466f-9dc9-cad81b4342ce','2024-08-21T23:04:54.992+0900',11,153);
+2024-08-21 23:04:54.996 [Test worker]  INFO p6spy - #1724249094996 | took 0ms | statement | connection 13| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into follow (created_date,following_pet_id,last_modified_by,last_modified_date,pet_id,id) values (?,?,?,?,?,?)
+insert into follow (created_date,following_pet_id,last_modified_by,last_modified_date,pet_id,id) values ('2024-08-21T23:04:54.992+0900',9,'8a572707-636a-4d20-90cd-c191a665fff8','2024-08-21T23:04:54.992+0900',12,154);
+2024-08-21 23:04:54.996 [Test worker]  INFO p6spy - #1724249094996 | took 0ms | statement | connection 13| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into follow (created_date,following_pet_id,last_modified_by,last_modified_date,pet_id,id) values (?,?,?,?,?,?)
+insert into follow (created_date,following_pet_id,last_modified_by,last_modified_date,pet_id,id) values ('2024-08-21T23:04:54.992+0900',11,'9af6b0e7-6e3d-4879-bfca-8b99a92d442b','2024-08-21T23:04:54.992+0900',10,155);
+2024-08-21 23:04:54.997 [Test worker]  INFO p6spy - #1724249094997 | took 0ms | statement | connection 13| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into follow (created_date,following_pet_id,last_modified_by,last_modified_date,pet_id,id) values (?,?,?,?,?,?)
+insert into follow (created_date,following_pet_id,last_modified_by,last_modified_date,pet_id,id) values ('2024-08-21T23:04:54.992+0900',12,'c82a5063-1d76-4b4a-a1e9-8040971194da','2024-08-21T23:04:54.992+0900',10,156);
+2024-08-21 23:04:54.997 [Test worker]  INFO p6spy - #1724249094997 | took 0ms | statement | connection 13| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into follow (created_date,following_pet_id,last_modified_by,last_modified_date,pet_id,id) values (?,?,?,?,?,?)
+insert into follow (created_date,following_pet_id,last_modified_by,last_modified_date,pet_id,id) values ('2024-08-21T23:04:54.993+0900',10,'9d9824d2-7849-484a-8db0-aa77d1e56ac7','2024-08-21T23:04:54.993+0900',11,157);
+2024-08-21 23:04:54.997 [Test worker]  INFO p6spy - #1724249094997 | took 0ms | statement | connection 13| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into follow (created_date,following_pet_id,last_modified_by,last_modified_date,pet_id,id) values (?,?,?,?,?,?)
+insert into follow (created_date,following_pet_id,last_modified_by,last_modified_date,pet_id,id) values ('2024-08-21T23:04:54.993+0900',10,'568856f4-7ddf-423b-a951-ac6b28653e20','2024-08-21T23:04:54.993+0900',12,158);
+2024-08-21 23:04:54.998 [Test worker]  INFO p6spy - #1724249094998 | took 0ms | statement | connection 13| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into follow (created_date,following_pet_id,last_modified_by,last_modified_date,pet_id,id) values (?,?,?,?,?,?)
+insert into follow (created_date,following_pet_id,last_modified_by,last_modified_date,pet_id,id) values ('2024-08-21T23:04:54.993+0900',11,'861f5cb6-95e7-4298-a50f-281d60f645fc','2024-08-21T23:04:54.993+0900',12,159);
+2024-08-21 23:04:54.999 [Test worker]  INFO p6spy - #1724249094999 | took 0ms | commit | connection 13| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-21 23:04:55.003 [Test worker]  INFO p6spy - #1724249095003 | took 1ms | statement | connection 15| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into recent_search (created_date,pet_id,search_texts) values (?,?,?)
+insert into recent_search (created_date,pet_id,search_texts) values ('2024-08-21T23:04:54.999+0900',9,'ACED0005737200136A6176612E7574696C2E41727261794C6973747881D21D99C7619D03000149000473697A65787000000002770400000002740006ECBD94ECBD94740006ED94BCEAB8B078');
+2024-08-21 23:04:55.004 [Test worker]  INFO p6spy - #1724249095004 | took 0ms | commit | connection 15| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;

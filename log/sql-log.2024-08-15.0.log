@@ -1,0 +1,24 @@
+2024-08-15 09:35:51.258 [http-nio-8080-exec-1]  INFO p6spy - #1723682151257 | took 12ms | rollback | connection 2| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-15 09:35:51.336 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-1]  INFO p6spy - #1723682151336 | took 5ms | commit | connection 3| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-15 09:36:42.002 [http-nio-8080-exec-4]  INFO p6spy - #1723682202002 | took 0ms | rollback | connection 4| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-15 09:36:42.061 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-1]  INFO p6spy - #1723682202061 | took 0ms | commit | connection 5| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-15 09:37:12.843 [http-nio-8080-exec-5]  INFO p6spy - #1723682232843 | took 0ms | rollback | connection 6| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-15 09:37:12.875 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-1]  INFO p6spy - #1723682232875 | took 0ms | commit | connection 7| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-15 18:29:43.549 [http-nio-8080-exec-7]  INFO p6spy - #1723714183549 | took 0ms | rollback | connection 8| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-15 18:29:43.579 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-1]  INFO p6spy - #1723714183579 | took 0ms | commit | connection 9| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;

@@ -22,6 +22,8 @@ public class QMemoryImage extends EntityPathBase<MemoryImage> {
 
     public static final QMemoryImage memoryImage = new QMemoryImage("memoryImage");
 
+    public final DateTimePath<java.time.LocalDateTime> createdDate = createDateTime("createdDate", java.time.LocalDateTime.class);
+
     public final DateTimePath<java.time.LocalDateTime> deletedDate = createDateTime("deletedDate", java.time.LocalDateTime.class);
 
     public final NumberPath<Long> id = createNumber("id", Long.class);
@@ -32,11 +34,11 @@ public class QMemoryImage extends EntityPathBase<MemoryImage> {
 
     public final StringPath imagePhysicalName = createString("imagePhysicalName");
 
-    public final NumberPath<Long> imageSize = createNumber("imageSize", Long.class);
+    public final StringPath imageSize = createString("imageSize");
+
+    public final StringPath imageUrl = createString("imageUrl");
 
     public final QMemory memory;
-
-    public final StringPath url = createString("url");
 
     public QMemoryImage(String variable) {
         this(MemoryImage.class, forVariable(variable), INITS);

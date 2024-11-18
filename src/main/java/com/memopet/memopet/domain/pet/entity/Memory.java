@@ -4,6 +4,7 @@ import com.memopet.memopet.global.common.entity.FirstCreatedEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -13,45 +14,35 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class Memory extends FirstCreatedEntity {
     @Id @GeneratedValue
-    @Column(name = "memory_id")
+    @Column(name = "memoryId")
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "pet_id", nullable = false)
-    private Pet petId;
+    @JoinColumn(name = "petId", nullable = false)
+    private Pet pet;
 
-    @Column(name = "memory_title",nullable = false)
+    @Column(nullable = false)
     private String title;
 
-    @Column(name = "memory_date",nullable = false)
-    private LocalDateTime memoryDate;
+    @Column(nullable = false)
+    private LocalDate memoryDate;
 
-    @Column(name = "memory_desc")
-    private String description;
+    private String memoryDescription;
 
-    @Column(name = "like_count")
-    private Long likeCount;
+    private int likeCount;
 
-    @Column(name = "deleted_date")
     private LocalDateTime deletedDate;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Audience audience;
 
+    public void updateDeleteDate(LocalDateTime deletedDate) {
+        this.deletedDate = deletedDate;
+    }
 
-
-
-//    @ManyToOne
-//    @JoinColumn(name = "modified_id")
-//    private Member modifier;
-
-
+    public void updateLikesCount(int count) {this.likeCount =count;}
 
 }
-//    @OneToMany(fetch = FetchType.LAZY)
-//    private List<Comment> comments;
-//
-//    @OneToMany(fetch = FetchType.LAZY)
-//    private List<MemoryImage> memoryImages;
+
 
