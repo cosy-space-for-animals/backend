@@ -30,7 +30,7 @@ The Memopet Project is a service designed to record a pet's entire lifetime, all
 
 ### **3. Database Design and API Development**  
 - Designed a **report system inspired by Memopet**, handling **DB schema design** and **API development** directly.  
-- Developed a well-structured **layered architecture** comprising **XX database tables** and **50+ services** for efficient project organization.  
+- Developed a well-structured **layered architecture** comprising **15 database tables** and **50+ services** for efficient project organization.  
 
 ### **4. Optimizing Data Logging**  
 - Designed a **data logging feature** to log access data into the database using **Filter**.  
