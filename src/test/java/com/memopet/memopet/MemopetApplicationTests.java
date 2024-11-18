@@ -9,5 +9,4 @@ class MemopetApplicationTests {
     @Test
     void contextLoads() {
     }
-
 }
