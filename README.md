@@ -1,45 +1,47 @@
-# MemoPet Backend Readme
+# **Memopet Project**
 
-### Git 커밋 컨벤션
-    [#issueNumber] type: Subject
-    (한 줄 개행)
-    body
-    (한 줄 개행)
-    footer
+## **Overview**  
+The Memopet Project is a service designed to record a pet's entire lifetime, allowing memories to be preserved not only during their lifetime but also as a memorial after they have passed away, built using Spring Boot v3.1.2, JPA, and MySQL.
 
-- type : 어떤 의도로 커밋했는지를 type에 명시합니다. 자세한 사항은 아래서 설명하겠습니다..
-- subject : 최대 50글자가 넘지 않도록 하고 마침표는 찍지 않습니다. 영문으로 표기하는 경우 동사(원형)를 가장 앞에 두고 첫 글자는 대문자로 표기합니다. 
-- body : 긴 설명이 필요한 경우에 작성합니다. 어떻게 했는지가 아니라, 무엇을 왜 했는지를 작성합니다. 최대 75자를 넘기지 않도록 합니다. 
-- footer(선택) : issue tracker ID를 명시하고 싶은 경우에 작성합니다.
-  - 이슈 트래커 유형은 다음 중 하나를 사용한다.
-  - Fixes: 이슈 수정중 (아직 해결되지 않은 경우)
-  - Resolves: 이슈를 해결했을 때 사용
-  - Ref: 참고할 이슈가 있을 때 사용
-  - Related to: 해당 커밋에 관련된 이슈번호 (아직 해결되지 않은 경우)
-  ex) Fixes: #45 Related to: #34, #23
-  
-#### 커밋 메세지 예시
-    Feat: 회원 가입 기능 구현
+---
 
-    SMS, 이메일 중복확인 API 개발
-    
-    
-    Resolves: #123
-    Ref: #456
-    Related to: #48, #45
+## **Development Environment**  
+- **Framework**: Spring Boot v3.1.2  
+- **Database**: MySQL  
+- **ORM**: JPA  
+- **Build Tool**: Gradle  
 
-#### 제목 type
-|태그 이름|설명|
-|---|---|
-|Feat|새로운 기능을 추가할 경우|
-|Fix|버그를 고친 경우|
-|!HOTFIX|급하게 치명적인 버그를 고쳐야하는 경우|
-|Style|코드 포맷 변경, 세미 콜론 누락, 코드 수정이 없는 경우|
-|Refactor|프로덕션 코드 리팩토링|
-|Comment|필요한 주석 추가 및 변경|
-|Docs|문서를 수정한 경우|
-|Test|테스트 추가, 테스트 리팩토링|
-|Chore|빌드 태스트 업데이트, 패키지 매니저를 설정하는 경우|
-|Rename|파일 혹은 폴더명을 수정하거나 옮기는 작업만인 경우|
-|Remove|파일을 삭제하는 작업만 수행한 경우|
+---
 
+## **Role**  
+**Full-stack Developer**  
+- System Design and Implementation  
+
+---
+
+## **Key Features & Achievements**  
+
+### **1. Enhancing Service Stability**  
+- Implemented features such as **image upload**, **email sending**, and **SMS services** using **Message Queue** to ensure high service stability.
+
+### **2. Integrated Login Development**  
+- Developed a **social login integration system** using **Spring Security**, including support for **Naver login**.  
+- Designed and implemented a process for **automatic reissuance of access tokens** using refresh tokens (Naver access token validity: 3 hours).  
+
+### **3. Database Design and API Development**  
+- Designed a **report system inspired by Memopet**, handling **DB schema design** and **API development** directly.  
+- Developed a well-structured **layered architecture** comprising **XX database tables** and **50+ services** for efficient project organization.  
+
+### **4. Optimizing Data Logging**  
+- Designed a **data logging feature** to log access data into the database using **Filter**.  
+- Implemented a **BatchUpdate process** capable of inserting up to **50,000 records per second** for optimized performance.  
+
+### **5. Automated Deployment**  
+- Developed **automation scripts** to streamline deployment from the local development environment to the test server.  
+
+---
+
+## **How to Run**  
+1. Clone the repository:  
+   ```bash
+   git clone https://github.com/memopet-project/memopet-backend.git
