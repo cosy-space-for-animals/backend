@@ -1,7 +1,5 @@
 package com.memopet.memopet.domain.member.dto;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.memopet.memopet.domain.member.entity.MemberStatus;
 import lombok.*;
 
 @Getter
@@ -11,11 +9,8 @@ import lombok.*;
 @NoArgsConstructor
 public class MemberInfoResponseDto {
 
-
-    private String dscCode;
     private String email;
     private String username;
     private String phoneNum;
-    private String errMessage;
 
 }

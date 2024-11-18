@@ -1,0 +1,9 @@
+2024-07-31 21:20:11.581 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-1]  INFO p6spy - #1722428411581 | took 9ms | commit | connection 2| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-07-31 21:20:59.466 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-1]  INFO p6spy - #1722428459466 | took 0ms | commit | connection 3| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-07-31 21:30:42.321 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-1]  INFO p6spy - #1722429042321 | took 0ms | commit | connection 2| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;

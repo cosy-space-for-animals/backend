@@ -1,21 +1,20 @@
 package com.memopet.memopet.domain.member.service;
 
-import com.memopet.memopet.domain.member.dto.*;
-import com.memopet.memopet.domain.member.entity.Member;
+import com.memopet.memopet.domain.member.dto.DuplicationCheckResponseDto;
+import com.memopet.memopet.domain.member.dto.MyIdResponseDto;
+import com.memopet.memopet.domain.member.dto.MyPasswordResponseDto;
+import com.memopet.memopet.domain.member.dto.ResetPasswordResponseDto;
+import com.memopet.memopet.domain.member.entity.MemberSocial;
 import com.memopet.memopet.domain.member.entity.MemberStatus;
 import com.memopet.memopet.domain.member.repository.LoginFailedRepository;
-import com.memopet.memopet.domain.member.repository.MemberRepository;
+import com.memopet.memopet.domain.member.repository.MemberSocialRepository;
 import com.memopet.memopet.global.common.dto.EmailAuthResponseDto;
+import com.memopet.memopet.global.common.entity.Audit;
+import com.memopet.memopet.global.common.repository.AuditRepository;
 import com.memopet.memopet.global.common.service.EmailService;
-import com.memopet.memopet.global.config.SecurityConfig;
 import com.memopet.memopet.global.config.UserInfoConfig;
-import jakarta.mail.MessagingException;
-import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -24,6 +23,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
+import java.util.Optional;
+
 @Service
 @Slf4j
 @RequiredArgsConstructor
@@ -31,128 +33,119 @@ import org.springframework.transaction.annotation.Transactional;
 public class LoginService implements UserDetailsService {
 
     private final PasswordEncoder passwordEncoder;
-    private final MemberRepository memberRepository;
-    private final EmailService emailService;
+    private final MemberSocialRepository memberSocialRepository;
     private final LoginFailedRepository loginFailedRepository;
+    private final AuditRepository auditRepository;
+    private final EmailService emailService;
     public static final int MAX_ATTEMPT_COUNT = 4;
 
     @Override
     // 로그인시에 DB에서 유저정보와 권한정보를 가져와서 해당 정보를 기반으로 userdetails.User 객체를 생성해 리턴
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        System.out.println("loadUserByUsername start with Email : " + email);
+        log.info("loadUserByUsername start with Email : " + email);
 
-        return memberRepository.findOptionalMemberByEmail(email)
+        return memberSocialRepository.findMemberByEmail(email)
                 .map(UserInfoConfig::new)
-                .orElseThrow(() -> {throw new UsernameNotFoundException(email + " -> 데이터베이스에서 찾을 수 없습니다.");});
-    }
-
-    public boolean isAccountLock(String email) {
-        Member member = memberRepository.findByEmail(email);
-        if(member.getMemberStatus().equals(MemberStatus.LOCKED)) {
-            return true;
-        }
-
-        return false;
+                .orElseThrow(() -> {
+                    throw new UsernameNotFoundException("User not found");
+                });
     }
 
     @Transactional(propagation = Propagation.REQUIRES_NEW)
-    public void loginAttemptCheck(String email,String password) {
-        Member member  = memberRepository.findByEmail(email);
+    public int loginAttemptCheck(String email,String password) {
+        Optional<MemberSocial> memberSocialByEmail = memberSocialRepository.findMemberByEmail(email);
 
-        if(member != null) {
-            // 비밀번호가 맞는지 체크
-            if (passwordEncoder.matches(password, member.getPassword())) {
-                loginFailedRepository.resetCount(member); // 계정 잠금 후 실패 횟수 초기화
+        if(memberSocialByEmail.isEmpty()) throw new UsernameNotFoundException("User Not Found");
+
+        MemberSocial memberSocial = memberSocialByEmail.get();
+
+        log.info("loginAttemptCheck method starts");
+        // check if the input password is correct
+        if (passwordEncoder.matches(password, memberSocial.getPassword())) {
+            loginFailedRepository.resetCount(memberSocial); // reset the count of login failure attempts
+        } else {
+            log.info("member.getLoginFailCount() : " + memberSocial.getLoginFailCount());
+            // login failure +1
+
+            if (memberSocial.getLoginFailCount() >= MAX_ATTEMPT_COUNT) {
+                log.info("login failed attempt : " + memberSocial.getLoginFailCount());
+                changeAccountStatus(MemberStatus.LOCKED, memberSocial);
+
+                Audit audit = Audit.builder().createdDate(LocalDateTime.now()).cnbf("account is active").cnaf("account is locked").modifier(memberSocial.getEmail()).build();
+                // save audit log
+                auditRepository.save(audit);
+                return 0;
             } else {
-                // 비밀번호가 맞지 않으면 로그인 login_fail_count +1
-                if (member.getLoginFailCount() >= MAX_ATTEMPT_COUNT) {
-                    changeAccountStatus(member, MemberStatus.LOCKED);
-
-                } else {
-                    System.out.println(loginFailedRepository.increment(member));
-                }
+                memberSocial.increaseLoginFailCount(memberSocial.getLoginFailCount()+1);
+                return 0;
             }
         }
+        return 1;
     }
 
     @Transactional(propagation = Propagation.REQUIRES_NEW)
-    private void changeAccountStatus(Member member, MemberStatus memberStatus) {
-        loginFailedRepository.changeMemberStatusAndActivation(member, memberStatus);
-        loginFailedRepository.resetCount(member); // 계정 잠금 후 실패 횟수 초기화
+    private void changeAccountStatus(MemberStatus memberStatus, MemberSocial memberSocial) {
+        loginFailedRepository.changeMemberStatusAndActivation(memberSocial, memberStatus);
+        loginFailedRepository.resetCount(memberSocial); // 계정 잠금 후 실패 횟수 초기화
     }
 
 
-    public PasswordResetResponseDto resetPassword(String email) {
-
-        EmailAuthResponseDto emailAuthResponseDto = null;
-        try {
-            emailAuthResponseDto = emailService.sendEmail(email);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-        System.out.println(" authCode : " + emailAuthResponseDto.getAuthCode());
-        Member member = memberRepository.findByEmail(email);
-        member.changePassword(passwordEncoder.encode(emailAuthResponseDto.getAuthCode()));
-
-        PasswordResetResponseDto passwordResetResponseDto = PasswordResetResponseDto.builder().dscCode("1").errMessage("complete reset password").build();
-
-        // unlock the account
-        changeAccountStatus(member, MemberStatus.NORMAL);
-
-        return passwordResetResponseDto;
-    }
-
-    public PasswordResetResponseDto checkValidEmail(String email) {
-        PasswordResetResponseDto passwordResetResponseDto;
-        if(isValidEmail(email)) {
-            passwordResetResponseDto = PasswordResetResponseDto.builder().dscCode("1").errMessage("Email is valid").build();
-        } else {
-            passwordResetResponseDto = PasswordResetResponseDto.builder().dscCode("0").errMessage("Email is not valid").build();
-        }
-        return passwordResetResponseDto;
-    }
 
     public DuplicationCheckResponseDto checkDupplication(String email) {
         DuplicationCheckResponseDto duplicationCheckResponseDto;
-        if(!isValidEmail(email)) {
-            duplicationCheckResponseDto = DuplicationCheckResponseDto.builder().dscCode("1").errMessage("사용가능한 이메일 입니다").build();
+        Optional<MemberSocial> memberByEmail = memberSocialRepository.findMemberByEmail(email);
+        if(memberByEmail.isEmpty()) {
+            duplicationCheckResponseDto = DuplicationCheckResponseDto.builder().dscCode("1").errMessage("Email is valid").build();
         } else {
-            duplicationCheckResponseDto = DuplicationCheckResponseDto.builder().dscCode("0").errMessage("이미 저장된 이메일입니다").build();
+            duplicationCheckResponseDto = DuplicationCheckResponseDto.builder().dscCode("0").errMessage("Email is invalid").build();
         }
         return duplicationCheckResponseDto;
     }
 
-    public boolean isValidEmail(String email) {
-        Member member  = memberRepository.findByEmail(email);
-        if(member == null) return false;
-        return true;
-    }
-
-
-
     public MyIdResponseDto findIdByUsernameAndPhoneNum(String username, String phoneNum) {
-
-        Member member = memberRepository.findIdByUsernameAndPhoneNum(username, phoneNum);
+        Optional<MemberSocial> memberSocialOptional = memberSocialRepository.findIdByUsernameAndPhoneNum(username, phoneNum);
         MyIdResponseDto myIdResponseDto;
-        if(member == null) {
+
+        if(memberSocialOptional.isEmpty()) {
             myIdResponseDto = MyIdResponseDto.builder().dscCode("0").build();
-        } else if(member.getProvideId() == null) {
-            myIdResponseDto = MyIdResponseDto.builder().dscCode("1").email(member.getEmail()).build();
+
         } else {
-            myIdResponseDto = MyIdResponseDto.builder().dscCode("2").email(member.getEmail()).build();
+            MemberSocial memberSocial = memberSocialOptional.get();
+
+            if(memberSocial.getProviderId() == null) {
+                myIdResponseDto = MyIdResponseDto.builder().dscCode("1").email(memberSocial.getEmail()).build();
+            } else {
+                myIdResponseDto = MyIdResponseDto.builder().dscCode("2").email(memberSocial.getEmail()).socialLoginProvider(memberSocial.getProvider()).build();
+            }
         }
         return myIdResponseDto;
     }
 
     public MyPasswordResponseDto saveNewPassword(String email, String password) {
-        Member member = memberRepository.findByEmail(email);
-        MyPasswordResponseDto myPasswordResponseDto;
-        if(member != null) {
-            member.changePassword(passwordEncoder.encode(password));
-            myPasswordResponseDto =MyPasswordResponseDto.builder().dscCode("1").build();
-        } else {
-            myPasswordResponseDto = MyPasswordResponseDto.builder().dscCode("0").build();
-        }
+        Optional<MemberSocial> memberSocialByEmailOptional = memberSocialRepository.findMemberByEmail(email);
+        if(memberSocialByEmailOptional.isEmpty()) throw new UsernameNotFoundException("User Not Found");
+
+        MemberSocial memberSocial = memberSocialByEmailOptional.get();
+
+        memberSocial.changePassword(passwordEncoder.encode(password));
+        MyPasswordResponseDto myPasswordResponseDto = MyPasswordResponseDto.builder().dscCode("1").build();
+
+        return myPasswordResponseDto;
+    }
+
+    @Transactional(readOnly = false)
+    public ResetPasswordResponseDto resetNewPassword(String email) {
+        Optional<MemberSocial> memberSocialByEmailOptional = memberSocialRepository.findMemberByEmail(email);
+        if(memberSocialByEmailOptional.isEmpty()) throw new UsernameNotFoundException("User Not Found");
+
+        MemberSocial memberSocial = memberSocialByEmailOptional.get();
+
+        EmailAuthResponseDto emailAuthResponseDto = emailService.sendEmail(memberSocial.getEmail());
+
+        memberSocial.changePassword(passwordEncoder.encode(emailAuthResponseDto.getAuthCode()));
+        memberSocial.changeMemberStatus(MemberStatus.NORMAL);
+        memberSocial.resetLoginFailureAttempts();
+        ResetPasswordResponseDto myPasswordResponseDto = ResetPasswordResponseDto.builder().dscCode("1").newPassword(emailAuthResponseDto.getAuthCode()).build();
 
         return myPasswordResponseDto;
     }

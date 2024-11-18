@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-import static com.memopet.memopet.domain.pet.entity.QBlocked.*;
+import static com.memopet.memopet.domain.pet.entity.QBlocked.blocked;
 
 @Repository
 public class CustomBlockRepositoryImpl implements CustomBlockRepository{

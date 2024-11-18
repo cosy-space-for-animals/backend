@@ -2,22 +2,29 @@ package com.memopet.memopet.global.common.service;
 
 import com.memopet.memopet.domain.pet.dto.SearchMemoryCommentResponseDto;
 import com.memopet.memopet.domain.pet.dto.SearchPetCommentResponseDto;
-import com.memopet.memopet.domain.pet.entity.*;
-import com.memopet.memopet.domain.pet.repository.*;
+import com.memopet.memopet.domain.pet.entity.Follow;
+import com.memopet.memopet.domain.pet.entity.Memory;
+import com.memopet.memopet.domain.pet.entity.MemoryImage;
+import com.memopet.memopet.domain.pet.entity.Pet;
+import com.memopet.memopet.domain.pet.repository.FollowRepository;
+import com.memopet.memopet.domain.pet.repository.MemoryImageRepository;
+import com.memopet.memopet.domain.pet.repository.MemoryRepository;
+import com.memopet.memopet.domain.pet.repository.PetRepository;
 import com.memopet.memopet.domain.pet.service.BlockedService;
 import com.memopet.memopet.global.common.dto.*;
 import com.memopet.memopet.global.common.entity.RecentSearch;
 import com.memopet.memopet.global.common.repository.RecentSearchRepository;
-import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -94,6 +101,7 @@ public class RecentSearchService {
 
         Slice<Pet> slice = petRepository.findPetBySearchText(blockedList, searchText, pageRequest);
 
+         //fixme 이런식으로 변경할 필요있습니다. if(slice.getContent().isEmpty())
         if(slice.getContent().size() == 0) return SearchResponseDTO.builder().build();
         List<Pet> pets = slice.getContent();
 
@@ -139,7 +147,7 @@ public class RecentSearchService {
             Optional<MemoryImage> memoryImage = memoryImageRepository.findOneById(m.getId());
             searchMemoryCommentResponseDtos.add(SearchMemoryCommentResponseDto.builder()
                             .memoryId(m.getId())
-                            .memoryImageUrl(memoryImage.isPresent() ? memoryImage.get().getUrl():null)
+                            .memoryImageUrl(memoryImage.isPresent() ? memoryImage.get().getImageUrl():null)
                             .memoryImageUrlId(memoryImage.isPresent() ? memoryImage.get().getId():null)
                             .memoryDescription(m.getMemoryDescription())
                             .memoryTitle(m.getTitle())

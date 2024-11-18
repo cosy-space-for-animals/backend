@@ -20,7 +20,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.UUID;
 
 import static com.memopet.memopet.domain.pet.entity.QPet.pet;
 
@@ -80,11 +79,10 @@ public class CustomPetRepositoryImpl implements CustomPetRepository{
     }
 
     @Override
-    public boolean deleteAPet(UUID memberId, Long petId) {
+    public boolean deleteAPet(Long memberId, Long petId) {
         long updatedCount = queryFactory.update(pet)
                 .set(pet.deletedDate, LocalDateTime.now())
                 .where(pet.id.eq(petId))
-                .where(pet.member.id.eq(memberId))
                 .where(pet.deletedDate.isNull())
                 .execute();
         return updatedCount > 0;
@@ -93,6 +91,28 @@ public class CustomPetRepositoryImpl implements CustomPetRepository{
     @Override
     public void updateMemoryInfo(String petImgUrl, String backgroundImgUrl, PetUpdateInfoRequestDto petUpdateInfoRequestDto) {
 
+        String petFavs = petUpdateInfoRequestDto.getPetFavs() != null && !petUpdateInfoRequestDto.getPetFavs().equals("") ? petUpdateInfoRequestDto.getPetFavs() : null;
+        String petFavs2 = petUpdateInfoRequestDto.getPetFavs2() != null && !petUpdateInfoRequestDto.getPetFavs2().equals("") ? petUpdateInfoRequestDto.getPetFavs2() : null;
+        String petFavs3 = petUpdateInfoRequestDto.getPetFavs3() != null && !petUpdateInfoRequestDto.getPetFavs3().equals("") ? petUpdateInfoRequestDto.getPetFavs3() : null;
+
+        String petFav= null, petFav2= null, petFav3 = null;
+        String petFavColour = null, petFavColour2= null,petFavColour3 = null;
+
+        if(petFavs != null) {
+            int i = petFavs.indexOf(",");
+            petFav = petFavs.substring(0, i);
+            petFavColour = petFavs.substring(i+1);
+        }
+        if(petFavs2 != null) {
+            int i = petFavs2.indexOf(",");
+            petFav2 = petFavs2.substring(0, i);
+            petFavColour2 = petFavs2.substring(i+1);
+        }
+        if(petFavs3 != null) {
+            int i = petFavs3.indexOf(",");
+            petFav3 = petFavs3.substring(0, i);
+            petFavColour3 = petFavs3.substring(i+1);
+        }
 
         JPAUpdateClause clause  = queryFactory
                 .update(pet);
@@ -111,14 +131,23 @@ public class CustomPetRepositoryImpl implements CustomPetRepository{
         if(petProfileFrameEq(petUpdateInfoRequestDto.getPetProfileFrame()) != null) {
             clause.set(pet.petProfileFrame, petUpdateInfoRequestDto.getPetProfileFrame());
         }
-        if(petFavEq(petUpdateInfoRequestDto.getPetFavs()) != null) {
-            clause.set(pet.petFavs, petUpdateInfoRequestDto.getPetFavs());
+        if(petFavEq(petFav) != null) {
+            clause.set(pet.petFavs, petFav);
         }
-        if(petFav2Eq(petUpdateInfoRequestDto.getPetFavs2()) != null) {
-            clause.set(pet.petFavs2, petUpdateInfoRequestDto.getPetFavs2());
+        if(petFav2Eq(petFav2) != null) {
+            clause.set(pet.petFavs2, petFav2);
         }
-        if(petFav3Eq(petUpdateInfoRequestDto.getPetFavs3()) != null) {
-            clause.set(pet.petFavs3, petUpdateInfoRequestDto.getPetFavs3());
+        if(petFav3Eq(petFav3) != null) {
+            clause.set(pet.petFavs3, petFav3);
+        }
+        if(petFavColourEq(petFavColour) != null) {
+            clause.set(pet.petFavsColour, petFavColour);
+        }
+        if(petFavColour2Eq(petFavColour2) != null) {
+            clause.set(pet.petFavs2Colour, petFavColour2);
+        }
+        if(petFavColour3Eq(petFavColour3) != null) {
+            clause.set(pet.petFavs3Colour, petFavColour3);
         }
         if(petImgUrlEq(petImgUrl) != null) {
             clause.set(pet.petProfileUrl, petImgUrl);
@@ -154,6 +183,16 @@ public class CustomPetRepositoryImpl implements CustomPetRepository{
     private BooleanExpression petFav3Eq(String petFav3) {
         return petFav3 != null ? pet.petFavs3.eq(petFav3) : null;
     }
+    private BooleanExpression petFavColourEq(String petFavColour) {
+        return petFavColour != null ? pet.petFavsColour.eq(petFavColour) : null;
+    }
+    private BooleanExpression petFavColour2Eq(String petFavColour2) {
+        return petFavColour2 != null ? pet.petFavs2Colour.eq(petFavColour2) : null;
+    }
+    private BooleanExpression petFavColour3Eq(String petFavColour3) {
+        return petFavColour3 != null ? pet.petFavs3Colour.eq(petFavColour3) : null;
+    }
+
     private BooleanExpression petImgUrlEq(String petImgUrl) {
         return petImgUrl != null ? pet.petProfileUrl.eq(petImgUrl) : null;
     }

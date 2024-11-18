@@ -1,14 +1,11 @@
 package com.memopet.memopet.global.token;
 
-import com.memopet.memopet.domain.member.entity.Member;
 import com.memopet.memopet.domain.member.repository.MemberRepository;
-import com.memopet.memopet.domain.member.service.AuthService;
-import com.memopet.memopet.domain.member.service.LoginService;
+import com.memopet.memopet.domain.member.repository.MemberSocialRepository;
+import com.memopet.memopet.global.common.exception.BadRequestRuntimeException;
 import com.memopet.memopet.global.config.UserInfoConfig;
 import lombok.RequiredArgsConstructor;
-import org.springframework.boot.autoconfigure.security.oauth2.resource.OAuth2ResourceServerProperties;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.stereotype.Component;
 
@@ -20,6 +17,7 @@ import java.util.Objects;
 public class JwtTokenUtils {
 
     private final MemberRepository memberRepository ;
+    private final MemberSocialRepository memberSocialRepository;
     public String getUserName(Jwt jwtToken){
         return jwtToken.getSubject();
     }
@@ -37,9 +35,9 @@ public class JwtTokenUtils {
     }
 
     public UserDetails userDetails(String email){
-        return memberRepository
-                .findOptionalMemberByEmail(email)
+        return memberSocialRepository
+                .findMemberByEmail(email)
                 .map(UserInfoConfig::new)
-                .orElseThrow(()-> new UsernameNotFoundException("UserEmail: "+email+" does not exist"));
+                .orElseThrow(()-> new BadRequestRuntimeException("UserEmail: "+email+" does not exist"));
     }
 }

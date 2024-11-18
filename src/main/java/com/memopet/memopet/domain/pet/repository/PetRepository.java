@@ -1,8 +1,5 @@
 package com.memopet.memopet.domain.pet.repository;
 
-import com.memopet.memopet.domain.pet.dto.PetFollowingResponseDto;
-import com.memopet.memopet.domain.pet.entity.Likes;
-import com.memopet.memopet.domain.pet.entity.Memory;
 import com.memopet.memopet.domain.pet.entity.Pet;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
@@ -13,7 +10,6 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-import java.util.UUID;
 
 public interface PetRepository extends JpaRepository<Pet, Long>,CustomPetRepository  {
     @Query(value="select * from pet where pet_id NOT IN (:petIds) and deleted_date IS NULL", nativeQuery = true)
@@ -26,8 +22,9 @@ public interface PetRepository extends JpaRepository<Pet, Long>,CustomPetReposit
     @Query(value = "select * from pet where pet_id not in ?1 and pet_name like %?2% and deleted_date IS NULL", nativeQuery = true)
     Slice<Pet> findPetBySearchText(List<Long> petId, String searchText, Pageable pageable);
 
-    @Query(value = "select p.* from pet as p left join member as m on p.member_id = m.id where m.email = :email and m.deleted_date is null and m.deleted_date is null", nativeQuery = true)
-    List<Pet> findPetInfoByEmail(@Param("email") String email);
+    @Query(value = "select p.* from pet as p left join member as m on p.member_id = m.id where m.member_id = :memberId and m.deleted_date is null", nativeQuery = true)
+    List<Pet> findPetInfoByMemberId(String memberId);
 
-
+    @Query(value = "select * from pet where member_id = ?1 and deleted_date IS NULL",nativeQuery = true)
+    List<Pet> findPetsByMemberId(Long id);
 }

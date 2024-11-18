@@ -1,19 +1,14 @@
 package com.memopet.memopet.domain.pet.repository;
 
-import com.memopet.memopet.domain.pet.dto.BlockedListResponseDto;
 import com.memopet.memopet.domain.pet.entity.Blocked;
 import com.memopet.memopet.domain.pet.entity.Pet;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface BlockedRepository extends JpaRepository<Blocked, Long>, CustomBlockRepository {
-
 //        @Query("SELECT b.blockedPet FROM Blocked b WHERE b.blockerPetId = :blockerPetId")
 //        Page<Pet> findBlockedPetsByBlockerPetId(@Param("blockerPetId") Long blockerPetId, Pageable pageable);
 
@@ -26,4 +21,5 @@ public interface BlockedRepository extends JpaRepository<Blocked, Long>, CustomB
         List<Blocked> findBlockedPets(@Param("blockerPetId") Long blockerPetId);
         @Query("select b from Blocked b where b.blockedPet = :blockedPet")
         List<Blocked> findBlockerPets(@Param("blockedPet") Pet blockedPet);
+
 }

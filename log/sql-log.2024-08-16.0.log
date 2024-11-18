@@ -1,0 +1,225 @@
+2024-08-16 20:23:46.621 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-1]  INFO p6spy - #1723807426621 | took 1ms | commit | connection 2| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-16 20:24:09.436 [http-nio-8080-exec-3]  INFO p6spy - #1723807449436 | took 12ms | statement | connection 3| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+select m1_0.id,m1_0.created_date,m1_0.deleted_date,m1_0.email,m1_0.last_login_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.login_fail_count,m1_0.member_id,m1_0.member_status,m1_0.password,m1_0.phone_num,m1_0.provider,m1_0.provider_id,m1_0.roles,m1_0.username from member_social m1_0 where m1_0.email=? and m1_0.deleted_date is null
+select m1_0.id,m1_0.created_date,m1_0.deleted_date,m1_0.email,m1_0.last_login_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.login_fail_count,m1_0.member_id,m1_0.member_status,m1_0.password,m1_0.phone_num,m1_0.provider,m1_0.provider_id,m1_0.roles,m1_0.username from member_social m1_0 where m1_0.email='user@gmail.com' and m1_0.deleted_date is null;
+2024-08-16 20:24:09.447 [http-nio-8080-exec-3]  INFO p6spy - #1723807449447 | took 1ms | statement | connection 3| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+select m1_0.id,m1_0.created_date,m1_0.deleted_date,m1_0.email,m1_0.last_login_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.login_fail_count,m1_0.member_id,m1_0.member_status,m1_0.password,m1_0.phone_num,m1_0.provider,m1_0.provider_id,m1_0.roles,m1_0.username from member_social m1_0 where m1_0.email=? and m1_0.deleted_date is null
+select m1_0.id,m1_0.created_date,m1_0.deleted_date,m1_0.email,m1_0.last_login_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.login_fail_count,m1_0.member_id,m1_0.member_status,m1_0.password,m1_0.phone_num,m1_0.provider,m1_0.provider_id,m1_0.roles,m1_0.username from member_social m1_0 where m1_0.email='user@gmail.com' and m1_0.deleted_date is null;
+2024-08-16 20:24:09.453 [http-nio-8080-exec-3]  INFO p6spy - #1723807449453 | took 2ms | statement | connection 4| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+select m1_0.id,m1_0.created_date,m1_0.deleted_date,m1_0.email,m1_0.last_login_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.login_fail_count,m1_0.member_id,m1_0.member_status,m1_0.password,m1_0.phone_num,m1_0.provider,m1_0.provider_id,m1_0.roles,m1_0.username from member_social m1_0 where m1_0.email=? and m1_0.deleted_date is null
+select m1_0.id,m1_0.created_date,m1_0.deleted_date,m1_0.email,m1_0.last_login_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.login_fail_count,m1_0.member_id,m1_0.member_status,m1_0.password,m1_0.phone_num,m1_0.provider,m1_0.provider_id,m1_0.roles,m1_0.username from member_social m1_0 where m1_0.email='user@gmail.com' and m1_0.deleted_date is null;
+2024-08-16 20:24:09.547 [http-nio-8080-exec-3]  INFO p6spy - #1723807449547 | took 0ms | commit | connection 4| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-16 20:24:09.627 [http-nio-8080-exec-3]  INFO p6spy - #1723807449627 | took 1ms | statement | connection 3| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+select m1_0.id,m1_0.created_date,m1_0.deleted_date,m1_0.email,m1_0.last_login_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.login_fail_count,m1_0.member_id,m1_0.member_status,m1_0.password,m1_0.phone_num,m1_0.provider,m1_0.provider_id,m1_0.roles,m1_0.username from member_social m1_0 where m1_0.email=? and m1_0.deleted_date is null
+select m1_0.id,m1_0.created_date,m1_0.deleted_date,m1_0.email,m1_0.last_login_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.login_fail_count,m1_0.member_id,m1_0.member_status,m1_0.password,m1_0.phone_num,m1_0.provider,m1_0.provider_id,m1_0.roles,m1_0.username from member_social m1_0 where m1_0.email='user@gmail.com' and m1_0.deleted_date is null;
+2024-08-16 20:24:09.710 [http-nio-8080-exec-3]  INFO p6spy - #1723807449710 | took 0ms | commit | connection 3| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-16 20:24:09.712 [http-nio-8080-exec-3]  INFO p6spy - #1723807449712 | took 0ms | statement | connection 5| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+select m1_0.id,m1_0.created_date,m1_0.deleted_date,m1_0.email,m1_0.last_login_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.login_fail_count,m1_0.member_id,m1_0.member_status,m1_0.password,m1_0.phone_num,m1_0.provider,m1_0.provider_id,m1_0.roles,m1_0.username from member_social m1_0 where m1_0.email=? and m1_0.deleted_date is null
+select m1_0.id,m1_0.created_date,m1_0.deleted_date,m1_0.email,m1_0.last_login_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.login_fail_count,m1_0.member_id,m1_0.member_status,m1_0.password,m1_0.phone_num,m1_0.provider,m1_0.provider_id,m1_0.roles,m1_0.username from member_social m1_0 where m1_0.email='user@gmail.com' and m1_0.deleted_date is null;
+2024-08-16 20:24:09.782 [http-nio-8080-exec-3]  INFO p6spy - #1723807449782 | took 8ms | statement | connection 6| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+select next_val as id_val from refresh_token_seq for update
+select next_val as id_val from refresh_token_seq for update;
+2024-08-16 20:24:09.789 [http-nio-8080-exec-3]  INFO p6spy - #1723807449789 | took 6ms | statement | connection 6| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+update refresh_token_seq set next_val= ? where next_val=?
+update refresh_token_seq set next_val= 1151 where next_val=1101;
+2024-08-16 20:24:09.791 [http-nio-8080-exec-3]  INFO p6spy - #1723807449791 | took 2ms | commit | connection 6| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-16 20:24:09.821 [http-nio-8080-exec-3]  INFO p6spy - #1723807449821 | took 17ms | statement | connection 5| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into refresh_token (access_token,expired_at,member_social_id,refresh_token,revoked,id) values (?,?,?,?,?,?)
+insert into refresh_token (access_token,expired_at,member_social_id,refresh_token,revoked,id) values ('eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJhdHF1aWwiLCJzdWIiOiJ1c2VyQGdtYWlsLmNvbSIsImV4cCI6MTcyMzgxODI0OSwiaWF0IjoxNzIzODA3NDQ5LCJzY29wZSI6IlVTRVJfQVVUSE9SSVRZIn0.taN7GZ_Wcsw0qa36SN8kwo-2BglU8BQ1L4dI2OPZUvjGfMDptUAhM6xDvQGSdFVQnd2Nm9uTSfZOT33zHrUEkNIASDyPMwk0bmG2tvFsQYphEhEL_Ed7F5dFpazmd4zwsw-rcOYlFyU9gwsCEwJclsvf97lVqpEdMMgPxy14AEvOm5x0GE2aztV-5wPFGkZtOqDULoFglF9s7epiF7GjAFP6ttNAe-BOq1dNfiiAHGz_ntCqVzfoEW9d205g52ZRBD3f-CO1xMeVxSi9kyjkSCpoGghoYQzEHh7kizs2AYCVzVdzE4cSEG3hXxiZMJ_O642q_q3gnJHUl0Z682O8Fw','2024-09-15T20:24:09.757+0900',1,'eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJhdHF1aWwiLCJzdWIiOiJ1c2VyQGdtYWlsLmNvbSIsImV4cCI6MTcyNjM5OTQ0OSwiaWF0IjoxNzIzODA3NDQ5LCJzY29wZSI6IlJFRlJFU0hfVE9LRU4ifQ.BHKJcigPMW64xrfxxz0bqW8lGTWE9lp-jscpV2K0_2g7FD3T6AeS2gRtsqWpd412sdHlgsfM80SX12YOHc-cB-Ua5gii9aDfF7H9Y6CFrF_ib5USngoyITWzWglw2TEYqQDjDmeZKMV3ff-vXb1THilLHcHonhaMnJYygdoJJJGe2FnWAqMOgz_nQb8t5mcZ05_A1gqffvwtbyh52bAy-EN6INA0mZ4NqzUWfINbsVgo1yCku6lUi9T_EAbeizwpmuo2lhPq-sMM5KwlsMMGt6XE6tUTN6NRrVZpGPqJfPOgazI4bEVV8SpIdTiJg73h71_n6y-PKQfdBG2mPuTnDw',false,1052);
+2024-08-16 20:24:09.825 [http-nio-8080-exec-3]  INFO p6spy - #1723807449825 | took 3ms | commit | connection 5| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-16 20:24:09.836 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-1]  INFO p6spy - #1723807449836 | took 0ms | commit | connection 7| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-16 20:24:41.348 [http-nio-8080-exec-4]  INFO p6spy - #1723807481348 | took 12ms | statement | connection 8| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+select m1_0.id,m1_0.created_date,m1_0.deleted_date,m1_0.email,m1_0.last_login_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.login_fail_count,m1_0.member_id,m1_0.member_status,m1_0.password,m1_0.phone_num,m1_0.provider,m1_0.provider_id,m1_0.roles,m1_0.username from member_social m1_0 where m1_0.email=? and m1_0.deleted_date is null
+select m1_0.id,m1_0.created_date,m1_0.deleted_date,m1_0.email,m1_0.last_login_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.login_fail_count,m1_0.member_id,m1_0.member_status,m1_0.password,m1_0.phone_num,m1_0.provider,m1_0.provider_id,m1_0.roles,m1_0.username from member_social m1_0 where m1_0.email='user@gmail.com' and m1_0.deleted_date is null;
+2024-08-16 20:24:41.375 [http-nio-8080-exec-4]  INFO p6spy - #1723807481375 | took 0ms | statement | connection 9| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+select m1_0.id,m1_0.created_date,m1_0.deleted_date,m1_0.email,m1_0.last_login_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.login_fail_count,m1_0.member_id,m1_0.member_status,m1_0.password,m1_0.phone_num,m1_0.provider,m1_0.provider_id,m1_0.roles,m1_0.username from member_social m1_0 where m1_0.email=? and m1_0.deleted_date is null
+select m1_0.id,m1_0.created_date,m1_0.deleted_date,m1_0.email,m1_0.last_login_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.login_fail_count,m1_0.member_id,m1_0.member_status,m1_0.password,m1_0.phone_num,m1_0.provider,m1_0.provider_id,m1_0.roles,m1_0.username from member_social m1_0 where m1_0.email='user@gmail.com' and m1_0.deleted_date is null;
+2024-08-16 20:24:41.490 [http-nio-8080-exec-4]  INFO p6spy - #1723807481490 | took 30ms | statement | connection 10| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+select m1_0.id,m1_0.agree_date,m1_0.agree_yn,m1_0.created_date,m1_0.deactivation_reason,m1_0.deactivation_reason_comment,m1_0.deleted_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.member_id,m1_0.phone_num,m1_0.username from member m1_0 where m1_0.member_id=? and m1_0.deleted_date is null
+select m1_0.id,m1_0.agree_date,m1_0.agree_yn,m1_0.created_date,m1_0.deactivation_reason,m1_0.deactivation_reason_comment,m1_0.deleted_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.member_id,m1_0.phone_num,m1_0.username from member m1_0 where m1_0.member_id='20240729204506710077' and m1_0.deleted_date is null;
+2024-08-16 20:24:41.513 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-1]  INFO p6spy - #1723807481513 | took 0ms | commit | connection 11| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-16 20:27:46.078 [http-nio-8080-exec-2]  INFO p6spy - #1723807666078 | took 20ms | statement | connection 2| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+select m1_0.id,m1_0.created_date,m1_0.deleted_date,m1_0.email,m1_0.last_login_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.login_fail_count,m1_0.member_id,m1_0.member_status,m1_0.password,m1_0.phone_num,m1_0.provider,m1_0.provider_id,m1_0.roles,m1_0.username from member_social m1_0 where m1_0.email=? and m1_0.deleted_date is null
+select m1_0.id,m1_0.created_date,m1_0.deleted_date,m1_0.email,m1_0.last_login_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.login_fail_count,m1_0.member_id,m1_0.member_status,m1_0.password,m1_0.phone_num,m1_0.provider,m1_0.provider_id,m1_0.roles,m1_0.username from member_social m1_0 where m1_0.email='user@gmail.com' and m1_0.deleted_date is null;
+2024-08-16 20:27:46.087 [http-nio-8080-exec-2]  INFO p6spy - #1723807666087 | took 1ms | statement | connection 2| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+select m1_0.id,m1_0.created_date,m1_0.deleted_date,m1_0.email,m1_0.last_login_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.login_fail_count,m1_0.member_id,m1_0.member_status,m1_0.password,m1_0.phone_num,m1_0.provider,m1_0.provider_id,m1_0.roles,m1_0.username from member_social m1_0 where m1_0.email=? and m1_0.deleted_date is null
+select m1_0.id,m1_0.created_date,m1_0.deleted_date,m1_0.email,m1_0.last_login_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.login_fail_count,m1_0.member_id,m1_0.member_status,m1_0.password,m1_0.phone_num,m1_0.provider,m1_0.provider_id,m1_0.roles,m1_0.username from member_social m1_0 where m1_0.email='user@gmail.com' and m1_0.deleted_date is null;
+2024-08-16 20:27:46.091 [http-nio-8080-exec-2]  INFO p6spy - #1723807666091 | took 0ms | statement | connection 3| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+select m1_0.id,m1_0.created_date,m1_0.deleted_date,m1_0.email,m1_0.last_login_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.login_fail_count,m1_0.member_id,m1_0.member_status,m1_0.password,m1_0.phone_num,m1_0.provider,m1_0.provider_id,m1_0.roles,m1_0.username from member_social m1_0 where m1_0.email=? and m1_0.deleted_date is null
+select m1_0.id,m1_0.created_date,m1_0.deleted_date,m1_0.email,m1_0.last_login_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.login_fail_count,m1_0.member_id,m1_0.member_status,m1_0.password,m1_0.phone_num,m1_0.provider,m1_0.provider_id,m1_0.roles,m1_0.username from member_social m1_0 where m1_0.email='user@gmail.com' and m1_0.deleted_date is null;
+2024-08-16 20:27:46.186 [http-nio-8080-exec-2]  INFO p6spy - #1723807666186 | took 0ms | commit | connection 3| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-16 20:27:46.278 [http-nio-8080-exec-2]  INFO p6spy - #1723807666278 | took 1ms | statement | connection 2| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+select m1_0.id,m1_0.created_date,m1_0.deleted_date,m1_0.email,m1_0.last_login_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.login_fail_count,m1_0.member_id,m1_0.member_status,m1_0.password,m1_0.phone_num,m1_0.provider,m1_0.provider_id,m1_0.roles,m1_0.username from member_social m1_0 where m1_0.email=? and m1_0.deleted_date is null
+select m1_0.id,m1_0.created_date,m1_0.deleted_date,m1_0.email,m1_0.last_login_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.login_fail_count,m1_0.member_id,m1_0.member_status,m1_0.password,m1_0.phone_num,m1_0.provider,m1_0.provider_id,m1_0.roles,m1_0.username from member_social m1_0 where m1_0.email='user@gmail.com' and m1_0.deleted_date is null;
+2024-08-16 20:27:46.362 [http-nio-8080-exec-2]  INFO p6spy - #1723807666362 | took 0ms | commit | connection 2| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-16 20:27:46.364 [http-nio-8080-exec-2]  INFO p6spy - #1723807666364 | took 0ms | statement | connection 4| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+select m1_0.id,m1_0.created_date,m1_0.deleted_date,m1_0.email,m1_0.last_login_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.login_fail_count,m1_0.member_id,m1_0.member_status,m1_0.password,m1_0.phone_num,m1_0.provider,m1_0.provider_id,m1_0.roles,m1_0.username from member_social m1_0 where m1_0.email=? and m1_0.deleted_date is null
+select m1_0.id,m1_0.created_date,m1_0.deleted_date,m1_0.email,m1_0.last_login_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.login_fail_count,m1_0.member_id,m1_0.member_status,m1_0.password,m1_0.phone_num,m1_0.provider,m1_0.provider_id,m1_0.roles,m1_0.username from member_social m1_0 where m1_0.email='user@gmail.com' and m1_0.deleted_date is null;
+2024-08-16 20:27:46.426 [http-nio-8080-exec-2]  INFO p6spy - #1723807666426 | took 2ms | statement | connection 5| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+select next_val as id_val from refresh_token_seq for update
+select next_val as id_val from refresh_token_seq for update;
+2024-08-16 20:27:46.427 [http-nio-8080-exec-2]  INFO p6spy - #1723807666427 | took 1ms | statement | connection 5| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+update refresh_token_seq set next_val= ? where next_val=?
+update refresh_token_seq set next_val= 1201 where next_val=1151;
+2024-08-16 20:27:46.431 [http-nio-8080-exec-2]  INFO p6spy - #1723807666431 | took 3ms | commit | connection 5| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-16 20:27:46.459 [http-nio-8080-exec-2]  INFO p6spy - #1723807666459 | took 18ms | statement | connection 4| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into refresh_token (access_token,expired_at,member_social_id,refresh_token,revoked,id) values (?,?,?,?,?,?)
+insert into refresh_token (access_token,expired_at,member_social_id,refresh_token,revoked,id) values ('eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJhdHF1aWwiLCJzdWIiOiJ1c2VyQGdtYWlsLmNvbSIsImV4cCI6MTcyMzgxODQ2NiwiaWF0IjoxNzIzODA3NjY2LCJzY29wZSI6IlVTRVJfQVVUSE9SSVRZIn0.bMclOE-cx3cYu_45tmTVK3d50MIofl60PACBJq1mz7y81p_tR16Nh6_EUMJMh6dvd-srlSYLkAvrQlx-PPxuuNgLONrNQnKOTPkpE1ORTwGmZVxsahSUlx5Ftas810of2QIlTWBwpza2R4L15kXHLds0mlHHujtiHorbPXeJsrqryYEJ43XS2xStDWGSivp3vthRQ8csWKD4Kys6jNErI2dozb1LtG0p2h274Ep10mKizprdY04Gq6OC2vxmhTdN0FZty7JNxFfItGBc4tBWaFU7dXKW6Z1dBrYx6O4YXh-BF3B8eLIcBjaZUvtQi8UbTGnfGvPI3wwa_xym02gMtQ','2024-09-15T20:27:46.400+0900',1,'eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJhdHF1aWwiLCJzdWIiOiJ1c2VyQGdtYWlsLmNvbSIsImV4cCI6MTcyNjM5OTY2NiwiaWF0IjoxNzIzODA3NjY2LCJzY29wZSI6IlJFRlJFU0hfVE9LRU4ifQ.k0GrjV8CBEAU8xuR-e5TP6Sfk_HUg65ik6LEDCToxf56zGKh9BlctDyyuq3h4o5qxmB6g6eZBcfMwgRsjgePFfbZXRO-Xg0Zb6p6gwnymYOjYXk88NZn4lTJUll9rprMYNN32JUo53gmjvjwymWyo4RsMD2jsVd0yDpeCRA0GlNSRlp9sMG_cO0KwmCANWHXfM67II780EwTVAPLqkRgAPrW5yrPbhkDFHyd7QQ6hPwRflZjSdG-5E-yNTjyIRXTrgSmADhGBt5VXFJdvpiy9OyKIF-CJBNBm3aiVt_IKTChcM0r9OfsVZ_up2lDxGZo0RT6IxmEWhAkJ2UV8AwArw',false,1102);
+2024-08-16 20:27:46.460 [http-nio-8080-exec-2]  INFO p6spy - #1723807666460 | took 0ms | commit | connection 4| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-16 20:27:46.523 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-1]  INFO p6spy - #1723807666523 | took 5ms | commit | connection 6| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-16 20:27:53.400 [http-nio-8080-exec-3]  INFO p6spy - #1723807673400 | took 0ms | statement | connection 7| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+select m1_0.id,m1_0.created_date,m1_0.deleted_date,m1_0.email,m1_0.last_login_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.login_fail_count,m1_0.member_id,m1_0.member_status,m1_0.password,m1_0.phone_num,m1_0.provider,m1_0.provider_id,m1_0.roles,m1_0.username from member_social m1_0 where m1_0.email=? and m1_0.deleted_date is null
+select m1_0.id,m1_0.created_date,m1_0.deleted_date,m1_0.email,m1_0.last_login_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.login_fail_count,m1_0.member_id,m1_0.member_status,m1_0.password,m1_0.phone_num,m1_0.provider,m1_0.provider_id,m1_0.roles,m1_0.username from member_social m1_0 where m1_0.email='user@gmail.com' and m1_0.deleted_date is null;
+2024-08-16 20:27:53.417 [http-nio-8080-exec-3]  INFO p6spy - #1723807673417 | took 1ms | statement | connection 8| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+select m1_0.id,m1_0.created_date,m1_0.deleted_date,m1_0.email,m1_0.last_login_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.login_fail_count,m1_0.member_id,m1_0.member_status,m1_0.password,m1_0.phone_num,m1_0.provider,m1_0.provider_id,m1_0.roles,m1_0.username from member_social m1_0 where m1_0.email=? and m1_0.deleted_date is null
+select m1_0.id,m1_0.created_date,m1_0.deleted_date,m1_0.email,m1_0.last_login_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.login_fail_count,m1_0.member_id,m1_0.member_status,m1_0.password,m1_0.phone_num,m1_0.provider,m1_0.provider_id,m1_0.roles,m1_0.username from member_social m1_0 where m1_0.email='user@gmail.com' and m1_0.deleted_date is null;
+2024-08-16 20:27:53.424 [http-nio-8080-exec-3]  INFO p6spy - #1723807673424 | took 3ms | statement | connection 9| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+select m1_0.id,m1_0.agree_date,m1_0.agree_yn,m1_0.created_date,m1_0.deactivation_reason,m1_0.deactivation_reason_comment,m1_0.deleted_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.member_id,m1_0.phone_num,m1_0.username from member m1_0 where m1_0.member_id=? and m1_0.deleted_date is null
+select m1_0.id,m1_0.agree_date,m1_0.agree_yn,m1_0.created_date,m1_0.deactivation_reason,m1_0.deactivation_reason_comment,m1_0.deleted_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.member_id,m1_0.phone_num,m1_0.username from member m1_0 where m1_0.member_id='20240729204506710077' and m1_0.deleted_date is null;
+2024-08-16 20:27:53.437 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-1]  INFO p6spy - #1723807673437 | took 0ms | commit | connection 10| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-16 20:29:06.765 [http-nio-8080-exec-2]  INFO p6spy - #1723807746765 | took 16ms | statement | connection 2| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+select m1_0.id,m1_0.created_date,m1_0.deleted_date,m1_0.email,m1_0.last_login_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.login_fail_count,m1_0.member_id,m1_0.member_status,m1_0.password,m1_0.phone_num,m1_0.provider,m1_0.provider_id,m1_0.roles,m1_0.username from member_social m1_0 where m1_0.email=? and m1_0.deleted_date is null
+select m1_0.id,m1_0.created_date,m1_0.deleted_date,m1_0.email,m1_0.last_login_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.login_fail_count,m1_0.member_id,m1_0.member_status,m1_0.password,m1_0.phone_num,m1_0.provider,m1_0.provider_id,m1_0.roles,m1_0.username from member_social m1_0 where m1_0.email='user@gmail.com' and m1_0.deleted_date is null;
+2024-08-16 20:29:07.599 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-1]  INFO p6spy - #1723807747599 | took 6ms | commit | connection 3| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-16 20:29:28.300 [http-nio-8080-exec-1]  INFO p6spy - #1723807768300 | took 1ms | statement | connection 4| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+select m1_0.id,m1_0.created_date,m1_0.deleted_date,m1_0.email,m1_0.last_login_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.login_fail_count,m1_0.member_id,m1_0.member_status,m1_0.password,m1_0.phone_num,m1_0.provider,m1_0.provider_id,m1_0.roles,m1_0.username from member_social m1_0 where m1_0.email=? and m1_0.deleted_date is null
+select m1_0.id,m1_0.created_date,m1_0.deleted_date,m1_0.email,m1_0.last_login_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.login_fail_count,m1_0.member_id,m1_0.member_status,m1_0.password,m1_0.phone_num,m1_0.provider,m1_0.provider_id,m1_0.roles,m1_0.username from member_social m1_0 where m1_0.email='user@gmail.com' and m1_0.deleted_date is null;
+2024-08-16 20:29:28.304 [http-nio-8080-exec-1]  INFO p6spy - #1723807768304 | took 2ms | statement | connection 4| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+select m1_0.id,m1_0.created_date,m1_0.deleted_date,m1_0.email,m1_0.last_login_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.login_fail_count,m1_0.member_id,m1_0.member_status,m1_0.password,m1_0.phone_num,m1_0.provider,m1_0.provider_id,m1_0.roles,m1_0.username from member_social m1_0 where m1_0.email=? and m1_0.deleted_date is null
+select m1_0.id,m1_0.created_date,m1_0.deleted_date,m1_0.email,m1_0.last_login_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.login_fail_count,m1_0.member_id,m1_0.member_status,m1_0.password,m1_0.phone_num,m1_0.provider,m1_0.provider_id,m1_0.roles,m1_0.username from member_social m1_0 where m1_0.email='user@gmail.com' and m1_0.deleted_date is null;
+2024-08-16 20:29:28.312 [http-nio-8080-exec-1]  INFO p6spy - #1723807768312 | took 1ms | statement | connection 5| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+select m1_0.id,m1_0.created_date,m1_0.deleted_date,m1_0.email,m1_0.last_login_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.login_fail_count,m1_0.member_id,m1_0.member_status,m1_0.password,m1_0.phone_num,m1_0.provider,m1_0.provider_id,m1_0.roles,m1_0.username from member_social m1_0 where m1_0.email=? and m1_0.deleted_date is null
+select m1_0.id,m1_0.created_date,m1_0.deleted_date,m1_0.email,m1_0.last_login_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.login_fail_count,m1_0.member_id,m1_0.member_status,m1_0.password,m1_0.phone_num,m1_0.provider,m1_0.provider_id,m1_0.roles,m1_0.username from member_social m1_0 where m1_0.email='user@gmail.com' and m1_0.deleted_date is null;
+2024-08-16 20:29:28.422 [http-nio-8080-exec-1]  INFO p6spy - #1723807768422 | took 0ms | commit | connection 5| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-16 20:29:28.516 [http-nio-8080-exec-1]  INFO p6spy - #1723807768516 | took 1ms | statement | connection 4| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+select m1_0.id,m1_0.created_date,m1_0.deleted_date,m1_0.email,m1_0.last_login_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.login_fail_count,m1_0.member_id,m1_0.member_status,m1_0.password,m1_0.phone_num,m1_0.provider,m1_0.provider_id,m1_0.roles,m1_0.username from member_social m1_0 where m1_0.email=? and m1_0.deleted_date is null
+select m1_0.id,m1_0.created_date,m1_0.deleted_date,m1_0.email,m1_0.last_login_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.login_fail_count,m1_0.member_id,m1_0.member_status,m1_0.password,m1_0.phone_num,m1_0.provider,m1_0.provider_id,m1_0.roles,m1_0.username from member_social m1_0 where m1_0.email='user@gmail.com' and m1_0.deleted_date is null;
+2024-08-16 20:29:28.599 [http-nio-8080-exec-1]  INFO p6spy - #1723807768599 | took 0ms | commit | connection 4| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-16 20:29:28.607 [http-nio-8080-exec-1]  INFO p6spy - #1723807768607 | took 5ms | statement | connection 6| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+select m1_0.id,m1_0.created_date,m1_0.deleted_date,m1_0.email,m1_0.last_login_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.login_fail_count,m1_0.member_id,m1_0.member_status,m1_0.password,m1_0.phone_num,m1_0.provider,m1_0.provider_id,m1_0.roles,m1_0.username from member_social m1_0 where m1_0.email=? and m1_0.deleted_date is null
+select m1_0.id,m1_0.created_date,m1_0.deleted_date,m1_0.email,m1_0.last_login_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.login_fail_count,m1_0.member_id,m1_0.member_status,m1_0.password,m1_0.phone_num,m1_0.provider,m1_0.provider_id,m1_0.roles,m1_0.username from member_social m1_0 where m1_0.email='user@gmail.com' and m1_0.deleted_date is null;
+2024-08-16 20:29:28.647 [http-nio-8080-exec-1]  INFO p6spy - #1723807768647 | took 0ms | statement | connection 7| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+select next_val as id_val from refresh_token_seq for update
+select next_val as id_val from refresh_token_seq for update;
+2024-08-16 20:29:28.651 [http-nio-8080-exec-1]  INFO p6spy - #1723807768651 | took 3ms | statement | connection 7| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+update refresh_token_seq set next_val= ? where next_val=?
+update refresh_token_seq set next_val= 1251 where next_val=1201;
+2024-08-16 20:29:28.658 [http-nio-8080-exec-1]  INFO p6spy - #1723807768658 | took 7ms | commit | connection 7| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-16 20:29:28.672 [http-nio-8080-exec-1]  INFO p6spy - #1723807768672 | took 3ms | statement | connection 6| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+insert into refresh_token (access_token,expired_at,member_social_id,refresh_token,revoked,id) values (?,?,?,?,?,?)
+insert into refresh_token (access_token,expired_at,member_social_id,refresh_token,revoked,id) values ('eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJhdHF1aWwiLCJzdWIiOiJ1c2VyQGdtYWlsLmNvbSIsImV4cCI6MTcyMzgxODU2OCwiaWF0IjoxNzIzODA3NzY4LCJzY29wZSI6IlVTRVJfQVVUSE9SSVRZIn0.q5HHAf9EWLlLUE8VzhhwPedPveDZg9yw1auC-UhVrU3Uc06J6gCN9GcGYJDG5Fe6zwHwP59Cg8rDo6haGDccuDDOzXrmpXYljD6A0qjNGaLnpftb9F0NUd1yvUhFtUiZ_OtpEYpz_4P5WHeHPLn5xDZSp8V4LYfcazd7ntokxbCrQ1V-F4i2eJRlianTNRoXq27DpYYi-jETfBEtTLdMz6f5yMNTRl7R8vITbB5tDmYLkDMHqrg5dVstNOm_yvgCfs8hIXdlJK1CZq0_21ekbwp26bgFSapR4HqYvIvIpEk8PMDCw9RbkaIvYnGZ0yVSmDh4mbYKz019NFGtcjtYjQ','2024-09-15T20:29:28.629+0900',1,'eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJhdHF1aWwiLCJzdWIiOiJ1c2VyQGdtYWlsLmNvbSIsImV4cCI6MTcyNjM5OTc2OCwiaWF0IjoxNzIzODA3NzY4LCJzY29wZSI6IlJFRlJFU0hfVE9LRU4ifQ.IdrwkK3qI78jXCyCp8cddRQICjau3hI2Q1tREnykX51Y9JdgAz7WcXrTmhaSYz8dFZpxuCkhJtsCg8otD8p-RUbxxISmoAUdKT8uEesYQMobTOrhju_1ZxnhXtYLx2UonOvuLDS4lAFQo3eYVBcVjpWfIlEo3UXYnfQMq-J0hJzuR_0LM_4ZYBstJ9duEdpXv1KomdZGF4Ta1yQYuZOCCNZ035WPbNmYR_fQxsIzMHq79yfMBq4JYD3njLWYGdKvOLxeGqoM5DGEayf9rIG2QY9_TBNkut9pCt3ywjZrIPch172T9_hPWuoOaH-l9aP9F6OJhl5Tpylgn9tJvhihmg',false,1152);
+2024-08-16 20:29:28.674 [http-nio-8080-exec-1]  INFO p6spy - #1723807768674 | took 0ms | commit | connection 6| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-16 20:29:28.689 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-1]  INFO p6spy - #1723807768689 | took 0ms | commit | connection 8| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-16 20:29:35.510 [http-nio-8080-exec-5]  INFO p6spy - #1723807775510 | took 1ms | statement | connection 9| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+select m1_0.id,m1_0.created_date,m1_0.deleted_date,m1_0.email,m1_0.last_login_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.login_fail_count,m1_0.member_id,m1_0.member_status,m1_0.password,m1_0.phone_num,m1_0.provider,m1_0.provider_id,m1_0.roles,m1_0.username from member_social m1_0 where m1_0.email=? and m1_0.deleted_date is null
+select m1_0.id,m1_0.created_date,m1_0.deleted_date,m1_0.email,m1_0.last_login_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.login_fail_count,m1_0.member_id,m1_0.member_status,m1_0.password,m1_0.phone_num,m1_0.provider,m1_0.provider_id,m1_0.roles,m1_0.username from member_social m1_0 where m1_0.email='user@gmail.com' and m1_0.deleted_date is null;
+2024-08-16 20:29:35.520 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-1]  INFO p6spy - #1723807775520 | took 1ms | commit | connection 10| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-16 20:30:03.059 [http-nio-8080-exec-7]  INFO p6spy - #1723807803059 | took 3ms | statement | connection 11| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+select m1_0.id,m1_0.created_date,m1_0.deleted_date,m1_0.email,m1_0.last_login_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.login_fail_count,m1_0.member_id,m1_0.member_status,m1_0.password,m1_0.phone_num,m1_0.provider,m1_0.provider_id,m1_0.roles,m1_0.username from member_social m1_0 where m1_0.email=? and m1_0.deleted_date is null
+select m1_0.id,m1_0.created_date,m1_0.deleted_date,m1_0.email,m1_0.last_login_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.login_fail_count,m1_0.member_id,m1_0.member_status,m1_0.password,m1_0.phone_num,m1_0.provider,m1_0.provider_id,m1_0.roles,m1_0.username from member_social m1_0 where m1_0.email='user@gmail.com' and m1_0.deleted_date is null;
+2024-08-16 20:30:03.076 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-1]  INFO p6spy - #1723807803076 | took 0ms | commit | connection 12| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-16 20:30:59.713 [http-nio-8080-exec-10]  INFO p6spy - #1723807859713 | took 1ms | statement | connection 13| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+select m1_0.id,m1_0.created_date,m1_0.deleted_date,m1_0.email,m1_0.last_login_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.login_fail_count,m1_0.member_id,m1_0.member_status,m1_0.password,m1_0.phone_num,m1_0.provider,m1_0.provider_id,m1_0.roles,m1_0.username from member_social m1_0 where m1_0.email=? and m1_0.deleted_date is null
+select m1_0.id,m1_0.created_date,m1_0.deleted_date,m1_0.email,m1_0.last_login_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.login_fail_count,m1_0.member_id,m1_0.member_status,m1_0.password,m1_0.phone_num,m1_0.provider,m1_0.provider_id,m1_0.roles,m1_0.username from member_social m1_0 where m1_0.email='user@gmail.com' and m1_0.deleted_date is null;
+2024-08-16 20:30:59.733 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-1]  INFO p6spy - #1723807859733 | took 0ms | commit | connection 14| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-16 20:32:45.319 [http-nio-8080-exec-1]  INFO p6spy - #1723807965319 | took 6ms | statement | connection 2| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+select m1_0.id,m1_0.created_date,m1_0.deleted_date,m1_0.email,m1_0.last_login_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.login_fail_count,m1_0.member_id,m1_0.member_status,m1_0.password,m1_0.phone_num,m1_0.provider,m1_0.provider_id,m1_0.roles,m1_0.username from member_social m1_0 where m1_0.email=? and m1_0.deleted_date is null
+select m1_0.id,m1_0.created_date,m1_0.deleted_date,m1_0.email,m1_0.last_login_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.login_fail_count,m1_0.member_id,m1_0.member_status,m1_0.password,m1_0.phone_num,m1_0.provider,m1_0.provider_id,m1_0.roles,m1_0.username from member_social m1_0 where m1_0.email='user@gmail.com' and m1_0.deleted_date is null;
+2024-08-16 20:33:02.422 [http-nio-8080-exec-1]  INFO p6spy - #1723807982422 | took 1ms | statement | connection 3| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+select m1_0.id,m1_0.created_date,m1_0.deleted_date,m1_0.email,m1_0.last_login_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.login_fail_count,m1_0.member_id,m1_0.member_status,m1_0.password,m1_0.phone_num,m1_0.provider,m1_0.provider_id,m1_0.roles,m1_0.username from member_social m1_0 where m1_0.email=? and m1_0.deleted_date is null
+select m1_0.id,m1_0.created_date,m1_0.deleted_date,m1_0.email,m1_0.last_login_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.login_fail_count,m1_0.member_id,m1_0.member_status,m1_0.password,m1_0.phone_num,m1_0.provider,m1_0.provider_id,m1_0.roles,m1_0.username from member_social m1_0 where m1_0.email='user@gmail.com' and m1_0.deleted_date is null;
+2024-08-16 20:33:20.863 [http-nio-8080-exec-1]  INFO p6spy - #1723808000862 | took 2ms | statement | connection 4| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+select m1_0.id,m1_0.agree_date,m1_0.agree_yn,m1_0.created_date,m1_0.deactivation_reason,m1_0.deactivation_reason_comment,m1_0.deleted_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.member_id,m1_0.phone_num,m1_0.username from member m1_0 where m1_0.member_id=? and m1_0.deleted_date is null
+select m1_0.id,m1_0.agree_date,m1_0.agree_yn,m1_0.created_date,m1_0.deactivation_reason,m1_0.deactivation_reason_comment,m1_0.deleted_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.member_id,m1_0.phone_num,m1_0.username from member m1_0 where m1_0.member_id='20240729204506710077' and m1_0.deleted_date is null;
+2024-08-16 20:33:20.981 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-1]  INFO p6spy - #1723808000981 | took 0ms | commit | connection 5| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-16 20:35:38.900 [http-nio-8080-exec-2]  INFO p6spy - #1723808138900 | took 7ms | statement | connection 2| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+select m1_0.id,m1_0.created_date,m1_0.deleted_date,m1_0.email,m1_0.last_login_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.login_fail_count,m1_0.member_id,m1_0.member_status,m1_0.password,m1_0.phone_num,m1_0.provider,m1_0.provider_id,m1_0.roles,m1_0.username from member_social m1_0 where m1_0.email=? and m1_0.deleted_date is null
+select m1_0.id,m1_0.created_date,m1_0.deleted_date,m1_0.email,m1_0.last_login_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.login_fail_count,m1_0.member_id,m1_0.member_status,m1_0.password,m1_0.phone_num,m1_0.provider,m1_0.provider_id,m1_0.roles,m1_0.username from member_social m1_0 where m1_0.email='user@gmail.com' and m1_0.deleted_date is null;
+2024-08-16 20:35:39.698 [http-nio-8080-exec-2]  INFO p6spy - #1723808139698 | took 2ms | statement | connection 3| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+select m1_0.id,m1_0.agree_date,m1_0.agree_yn,m1_0.created_date,m1_0.deactivation_reason,m1_0.deactivation_reason_comment,m1_0.deleted_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.member_id,m1_0.phone_num,m1_0.username from member m1_0 where m1_0.member_id=? and m1_0.deleted_date is null
+select m1_0.id,m1_0.agree_date,m1_0.agree_yn,m1_0.created_date,m1_0.deactivation_reason,m1_0.deactivation_reason_comment,m1_0.deleted_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.member_id,m1_0.phone_num,m1_0.username from member m1_0 where m1_0.member_id='20240729204506710077' and m1_0.deleted_date is null;
+2024-08-16 20:35:46.502 [http-nio-8080-exec-2]  INFO p6spy - #1723808146502 | took 32ms | statement | connection 3| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+select * from pet where memberId ? and deletedDate IS NULL
+select * from pet where memberId 1 and deletedDate IS NULL;
+2024-08-16 20:35:46.515 [http-nio-8080-exec-2]  INFO p6spy - #1723808146515 | took 0ms | rollback | connection 3| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-16 20:35:46.616 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-1]  INFO p6spy - #1723808146616 | took 0ms | commit | connection 4| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-16 20:37:12.012 [http-nio-8080-exec-2]  INFO p6spy - #1723808232012 | took 4ms | statement | connection 2| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+select m1_0.id,m1_0.created_date,m1_0.deleted_date,m1_0.email,m1_0.last_login_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.login_fail_count,m1_0.member_id,m1_0.member_status,m1_0.password,m1_0.phone_num,m1_0.provider,m1_0.provider_id,m1_0.roles,m1_0.username from member_social m1_0 where m1_0.email=? and m1_0.deleted_date is null
+select m1_0.id,m1_0.created_date,m1_0.deleted_date,m1_0.email,m1_0.last_login_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.login_fail_count,m1_0.member_id,m1_0.member_status,m1_0.password,m1_0.phone_num,m1_0.provider,m1_0.provider_id,m1_0.roles,m1_0.username from member_social m1_0 where m1_0.email='user@gmail.com' and m1_0.deleted_date is null;
+2024-08-16 20:37:12.777 [http-nio-8080-exec-2]  INFO p6spy - #1723808232777 | took 0ms | statement | connection 3| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+select m1_0.id,m1_0.agree_date,m1_0.agree_yn,m1_0.created_date,m1_0.deactivation_reason,m1_0.deactivation_reason_comment,m1_0.deleted_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.member_id,m1_0.phone_num,m1_0.username from member m1_0 where m1_0.member_id=? and m1_0.deleted_date is null
+select m1_0.id,m1_0.agree_date,m1_0.agree_yn,m1_0.created_date,m1_0.deactivation_reason,m1_0.deactivation_reason_comment,m1_0.deleted_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.member_id,m1_0.phone_num,m1_0.username from member m1_0 where m1_0.member_id='20240729204506710077' and m1_0.deleted_date is null;
+2024-08-16 20:37:12.805 [http-nio-8080-exec-2]  INFO p6spy - #1723808232805 | took 8ms | statement | connection 3| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+select * from pet where memberId = ? and deletedDate IS NULL
+select * from pet where memberId = 1 and deletedDate IS NULL;
+2024-08-16 20:37:12.810 [http-nio-8080-exec-2]  INFO p6spy - #1723808232810 | took 0ms | rollback | connection 3| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-16 20:37:12.890 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-1]  INFO p6spy - #1723808232890 | took 4ms | commit | connection 4| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-16 20:38:10.321 [http-nio-8080-exec-2]  INFO p6spy - #1723808290321 | took 5ms | statement | connection 2| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+select m1_0.id,m1_0.created_date,m1_0.deleted_date,m1_0.email,m1_0.last_login_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.login_fail_count,m1_0.member_id,m1_0.member_status,m1_0.password,m1_0.phone_num,m1_0.provider,m1_0.provider_id,m1_0.roles,m1_0.username from member_social m1_0 where m1_0.email=? and m1_0.deleted_date is null
+select m1_0.id,m1_0.created_date,m1_0.deleted_date,m1_0.email,m1_0.last_login_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.login_fail_count,m1_0.member_id,m1_0.member_status,m1_0.password,m1_0.phone_num,m1_0.provider,m1_0.provider_id,m1_0.roles,m1_0.username from member_social m1_0 where m1_0.email='user@gmail.com' and m1_0.deleted_date is null;
+2024-08-16 20:38:11.091 [http-nio-8080-exec-2]  INFO p6spy - #1723808291091 | took 1ms | statement | connection 3| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+select m1_0.id,m1_0.agree_date,m1_0.agree_yn,m1_0.created_date,m1_0.deactivation_reason,m1_0.deactivation_reason_comment,m1_0.deleted_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.member_id,m1_0.phone_num,m1_0.username from member m1_0 where m1_0.member_id=? and m1_0.deleted_date is null
+select m1_0.id,m1_0.agree_date,m1_0.agree_yn,m1_0.created_date,m1_0.deactivation_reason,m1_0.deactivation_reason_comment,m1_0.deleted_date,m1_0.last_modified_by,m1_0.last_modified_date,m1_0.member_id,m1_0.phone_num,m1_0.username from member m1_0 where m1_0.member_id='20240729204506710077' and m1_0.deleted_date is null;
+2024-08-16 20:38:11.114 [http-nio-8080-exec-2]  INFO p6spy - #1723808291114 | took 3ms | statement | connection 3| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+select * from pet where member_id = ? and deleted_date IS NULL
+select * from pet where member_id = 1 and deleted_date IS NULL;
+2024-08-16 20:38:11.128 [http-nio-8080-exec-2]  INFO p6spy - #1723808291128 | took 0ms | commit | connection 3| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;
+2024-08-16 20:38:11.215 [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-1]  INFO p6spy - #1723808291215 | took 0ms | commit | connection 4| url jdbc:mysql://localhost:3306/memopetdblocal?serverTimezone=UTC&characterEncoding=UTF-8
+
+;

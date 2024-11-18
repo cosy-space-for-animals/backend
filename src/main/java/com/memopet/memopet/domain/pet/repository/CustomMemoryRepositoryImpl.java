@@ -2,7 +2,6 @@ package com.memopet.memopet.domain.pet.repository;
 
 import com.memopet.memopet.domain.pet.dto.MemoryUpdateRequestDto;
 import com.memopet.memopet.domain.pet.entity.Audience;
-import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.querydsl.jpa.impl.JPAUpdateClause;
@@ -11,7 +10,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 import static com.memopet.memopet.domain.pet.entity.QMemory.memory;
 
@@ -37,8 +35,8 @@ public class CustomMemoryRepositoryImpl implements CustomMemoryRepository{
 
         JPAUpdateClause clause  = queryFactory
                 .update(memory);
-                if(memoryDescriptionEq(memoryUpdateRequestDto.getMemoryDescription()) != null) {
-                    clause.set(memory.memoryDescription, memoryUpdateRequestDto.getMemoryDescription());
+                if(memoryDescriptionEq(memoryUpdateRequestDto.getMemoryDesc()) != null) {
+                    clause.set(memory.memoryDescription, memoryUpdateRequestDto.getMemoryDesc());
                 }
                 if(memoryDateEq(memoryUpdateRequestDto.getMemoryDate()) != null) {
                     clause.set(memory.memoryDate, memoryUpdateRequestDto.getMemoryDate());

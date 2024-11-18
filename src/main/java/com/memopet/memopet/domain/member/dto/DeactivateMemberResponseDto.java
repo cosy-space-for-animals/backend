@@ -1,6 +1,5 @@
 package com.memopet.memopet.domain.member.dto;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 @Getter
@@ -11,6 +10,4 @@ import lombok.*;
 public class DeactivateMemberResponseDto {
 
     private String dscCode;
-
-    private String errMessage;
 }

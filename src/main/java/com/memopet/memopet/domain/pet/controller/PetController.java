@@ -3,86 +3,90 @@ package com.memopet.memopet.domain.pet.controller;
 
 import com.memopet.memopet.domain.pet.dto.*;
 import com.memopet.memopet.domain.pet.service.PetService;
-import com.memopet.memopet.global.common.service.S3Uploader;
+import com.memopet.memopet.global.common.dto.RestResult;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.Email;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api")
+@Slf4j
 public class PetController {
 
-    private final S3Uploader s3Uploader;
     private final PetService petService;
     @PreAuthorize("hasAuthority('SCOPE_USER_AUTHORITY')")
     @PostMapping(value="/pet/new",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public SavedPetResponseDto savePet(@RequestPart(value="back_img_url") MultipartFile backImgUrl, @RequestPart(value="pet_profile_url") MultipartFile petProfileUrl, @RequestPart(value = "petRequestDto") @Valid SavedPetRequestDto petRequestDto) throws IOException {
-        System.out.println("save pet start");
-        System.out.println(backImgUrl);
-        System.out.println(petProfileUrl);
-        System.out.println(petRequestDto.getEmail());
-        System.out.println(petRequestDto.getPetDesc());
-        System.out.println(petRequestDto.getPetName());
-        System.out.println(petRequestDto.getPetSpecM());
-        System.out.println(petRequestDto.getPetSpecS());
-        System.out.println(petRequestDto.getPetGender());
-        System.out.println(petRequestDto.getBirthDate());
-        System.out.println(petRequestDto.getPetDeathDate());
-        System.out.println(petRequestDto.getPetFavs());
-        System.out.println(petRequestDto.getPetFavs2());
-        System.out.println(petRequestDto.getPetFavs3());
-        System.out.println("-----------------------------------------------------");
-        SavedPetResponseDto savedPetResponseDto = petService.savePet(backImgUrl, petProfileUrl, petRequestDto);
+    public RestResult savePet(@RequestPart(value="backImg", required = false) Optional<MultipartFile> backImgUrl,
+                              @RequestPart(value="petProfileImg") Optional<MultipartFile> petProfileUrl,
+                              @RequestPart(value = "petRequestDto") @Valid SavedPetRequestDto petRequestDto
+                              ) throws IOException {
 
-        return savedPetResponseDto;
+
+        log.info("save pet start");
+        SavedPetResponseDto savedPetResponseDto = petService.savePet(petProfileUrl,backImgUrl, petRequestDto);
+
+        Map<String, Object> dataMap = new LinkedHashMap<>();
+        dataMap.put("savePetResponse", savedPetResponseDto);
+
+        return new RestResult(dataMap);
     }
 
     @PreAuthorize("hasAuthority('SCOPE_USER_AUTHORITY')")
     @GetMapping("/pets")
-    public PetsResponseDto findPets(PetsRequestDto petsRequestDto) {
+    public RestResult findPets(PetsRequestDto petsRequestDto) {
         PetsResponseDto petResponseDto = petService.findPetsByPetId(petsRequestDto);
-        return petResponseDto;
+
+        Map<String, Object> dataMap = new LinkedHashMap<>();
+        dataMap.put("findPetsResponse", petResponseDto);
+
+        return new RestResult(dataMap);
     }
 
     @PreAuthorize("hasAuthority('SCOPE_USER_AUTHORITY')")
     @GetMapping("/profile-detail")
-    public PetDetailInfoResponseDto findPetDetailInfo(PetDetailInfoRequestDto petDetailInfoRequestDto) {
+    public RestResult findPetDetailInfo(PetDetailInfoRequestDto petDetailInfoRequestDto) {
         PetDetailInfoResponseDto petDetailInfoResponseDto  = petService.findPetDetailInfo(petDetailInfoRequestDto);
-        return petDetailInfoResponseDto;
+
+        Map<String, Object> dataMap = new LinkedHashMap<>();
+        dataMap.put("findPetDetailedInfoResponse", petDetailInfoResponseDto);
+
+        return new RestResult(dataMap);
     }
 
     @PreAuthorize("hasAuthority('SCOPE_USER_AUTHORITY')")
     @PatchMapping("/profile")
-    public PetUpdateInfoResponseDto findPets(@RequestPart(value="back_img_url") MultipartFile backImgUrl, @RequestPart(value="pet_profile_url") MultipartFile petProfileUrl, @RequestPart(value = "petUpdateInfoRequestDto") PetUpdateInfoRequestDto petUpdateInfoRequestDto) throws Exception {
+    public RestResult findPets(@RequestPart(value="backImg", required = false) Optional<MultipartFile> backImgUrl, @RequestPart(value="petProfileImg", required = false) Optional<MultipartFile> petProfileUrl, @RequestPart(value = "petUpdateInfoRequestDto") PetUpdateInfoRequestDto petUpdateInfoRequestDto) throws Exception {
         PetUpdateInfoResponseDto petUpdateInfoResponseDto  = petService.updatePetInfo(backImgUrl, petProfileUrl, petUpdateInfoRequestDto);
-        return petUpdateInfoResponseDto;
+
+        Map<String, Object> dataMap = new LinkedHashMap<>();
+        dataMap.put("updatePetInfoResponse", petUpdateInfoResponseDto);
+
+        return new RestResult(dataMap);
     }
 
     /**
      * 내 프로필 리스트
      */
     @PreAuthorize("hasAuthority('SCOPE_USER_AUTHORITY')")
-    @GetMapping("/pet/profiles/{petId}")
-    public PetProfileResponseDto petsList(@PathVariable Long petId, Authentication authentication) {
-        boolean validatePetResult = petService.validatePetRequest(authentication.getName(), petId);
-        if (!validatePetResult) {
-            return PetProfileResponseDto.builder()
-                    .decCode('0')
-                    .message("Pet not available or not active.").build();
-        }
+    @GetMapping("/pet/profiles/{memberId}")
+    public RestResult petsList(@PathVariable String memberId) {
 
-        PetProfileResponseDto petProfileResponseDto = petService.profileList(petId);
-        return petProfileResponseDto;
+        PetProfileResponseDto petProfileResponseDto = petService.profileList(memberId);
+
+        Map<String, Object> dataMap = new LinkedHashMap<>();
+        dataMap.put("findPetListResponse", petProfileResponseDto);
+
+        return new RestResult(dataMap);
     }
 
     /**
@@ -90,8 +94,13 @@ public class PetController {
      */
     @PreAuthorize("hasAuthority('SCOPE_USER_AUTHORITY')")
     @PatchMapping("/pet")
-    public PetProfileResponseDto switchProfile(@RequestBody PetSwitchRequestDto petSwitchResponseDTO) {
-        return petService.switchProfile(petSwitchResponseDTO);
+    public RestResult switchProfile(@RequestBody PetSwitchRequestDto petSwitchResponseDTO) {
+        PetProfileResponseDto petProfileResponseDto = petService.switchProfile(petSwitchResponseDTO);
+
+        Map<String, Object> dataMap = new LinkedHashMap<>();
+        dataMap.put("switchPetProfileResponse", petProfileResponseDto);
+
+        return new RestResult(dataMap);
     }
 
     /**
@@ -99,8 +108,13 @@ public class PetController {
      */
     @PreAuthorize("hasAuthority('SCOPE_USER_AUTHORITY')")
     @DeleteMapping("/pet")
-    public PetProfileResponseDto deletePetProfile(@RequestBody PetDeleteRequestDto petDeleteRequestDTO) {
-        return petService.deletePetProfile(petDeleteRequestDTO);
+    public RestResult deletePetProfile(@RequestBody PetDeleteRequestDto petDeleteRequestDTO) {
+        PetProfileResponseDto petProfileResponseDto = petService.deletePetProfile(petDeleteRequestDTO);
+
+        Map<String, Object> dataMap = new LinkedHashMap<>();
+        dataMap.put("deletePetProfileResponse", petProfileResponseDto);
+
+        return new RestResult(dataMap);
     }
 
 

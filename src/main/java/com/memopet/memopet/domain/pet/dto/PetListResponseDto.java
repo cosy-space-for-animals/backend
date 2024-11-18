@@ -9,5 +9,5 @@ public class PetListResponseDto {
     private Long petId;
     private String petName;
     private String petProfileUrl;
-
+    private boolean isActive;
 }

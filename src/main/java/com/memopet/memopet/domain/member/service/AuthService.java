@@ -2,18 +2,22 @@ package com.memopet.memopet.domain.member.service;
 
 import com.memopet.memopet.domain.member.dto.LoginRequestDto;
 import com.memopet.memopet.domain.member.dto.LoginResponseDto;
+import com.memopet.memopet.domain.member.dto.MemberCreationDto;
 import com.memopet.memopet.domain.member.dto.SignUpRequestDto;
 import com.memopet.memopet.domain.member.entity.Member;
-import com.memopet.memopet.domain.member.entity.RefreshTokenEntity;
+import com.memopet.memopet.domain.member.entity.MemberSocial;
+import com.memopet.memopet.domain.member.entity.RefreshToken;
 import com.memopet.memopet.domain.member.mapper.MemberInfoMapper;
 import com.memopet.memopet.domain.member.repository.MemberRepository;
+import com.memopet.memopet.domain.member.repository.MemberSocialRepository;
 import com.memopet.memopet.domain.member.repository.RefreshTokenRepository;
+import com.memopet.memopet.global.common.exception.BadLoginCredentialsException;
+import com.memopet.memopet.global.common.exception.BadRequestRuntimeException;
+import com.memopet.memopet.global.common.service.MemberCreationRabbitPublisher;
+import com.memopet.memopet.global.common.utils.BusinessUtil;
 import com.memopet.memopet.global.token.JwtTokenGenerator;
-import jakarta.servlet.http.Cookie;
-import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.core.Authentication;
@@ -21,9 +25,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.server.ResponseStatusException;
 
-import javax.security.auth.login.AccountLockedException;
 import java.util.Arrays;
 import java.util.Optional;
 
@@ -33,15 +35,15 @@ import java.util.Optional;
 @Transactional(readOnly = true)
 public class AuthService  {
 
-
-    private static final int ACCESSTOKENEXPIRYTIME = 3 * 60;
-    private static final int REFRESHTOKENEXPIRYTIME = 15 * 24 * 60 * 60;
     private final MemberRepository memberRepository;
+    private final MemberSocialRepository memberSocialRepository;
     private final RefreshTokenRepository refreshTokenRepository;
     private final AuthenticationManagerBuilder authenticationManagerBuilder;
     private final JwtTokenGenerator jwtTokenGenerator;
     private final MemberInfoMapper memberInfoMapper;
     private final LoginService loginService;
+    private final BusinessUtil businessUtil;
+    private final MemberCreationRabbitPublisher memberCreationRabbitPublisher;
 
     /**
      * return the user id if the sign up process is successfully completed
@@ -51,127 +53,89 @@ public class AuthService  {
      * @return user_id
      */
     @Transactional(readOnly = false)
-    public LoginResponseDto join (SignUpRequestDto signUpDto, HttpServletResponse httpServletResponse)  {
-        try{
-            log.info("[AuthService:registerUser]User Registration Started with :::{}", signUpDto);
+    public LoginResponseDto join (SignUpRequestDto signUpDto)  {
 
-            Optional<Member> member = memberRepository.findOptionalMemberByEmail(signUpDto.getEmail());
-            if(member.isPresent()){
-                throw new Exception("User already Exists");
-            }
+        log.info("[AuthService:registerUser]User Registration Started with :::{}", signUpDto.getEmail());
+        Optional<MemberSocial> memberSocialByEmail = memberSocialRepository.findMemberByEmail(signUpDto.getEmail());
+        if(memberSocialByEmail.isPresent()) throw new BadRequestRuntimeException("User Already Exists");
 
-            Member member1 = memberInfoMapper.convertToEntity(signUpDto);
-            Authentication authentication = createAuthenticationObject(member1);
+        // RabbitMQ 로 채번
+        String memberId = memberCreationRabbitPublisher.pubsubMessage();
 
-            // Generate a JWT token
-            String accessToken = jwtTokenGenerator.generateAccessToken(authentication);
-            String refreshToken = jwtTokenGenerator.generateRefreshToken(authentication);
+        log.info("response memberId : {}", memberId);
+        // check if Member Entity does not exist
+        Optional<Member> memberByPhoneNum = memberRepository.findMemberByPhoneNum(signUpDto.getPhoneNum());
 
-            Member savedmember = memberRepository.save(member1);
-            saveUserRefreshToken(savedmember,refreshToken);
-
-            createRefreshTokenCookie(httpServletResponse,refreshToken);
-
-            log.info("[AuthService:registerUser] User:{} Successfully registered",member1.getUsername());
-            return  LoginResponseDto.builder()
-                    .username(savedmember.getUsername())
-                    .userStatus(savedmember.getMemberStatus())
-                    .userRole(savedmember.getRoles() == "ROLE_USER" ? "GU" : "SA")
-                    .loginFailCount(savedmember.getLoginFailCount())
-                    .accessToken(accessToken)
-                    .accessTokenExpiry(ACCESSTOKENEXPIRYTIME)
-                    .build();
-
-
-        }catch (Exception e){
-            log.error("[AuthService:registerUser]Exception while registering the user due to :"+e.getMessage());
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,e.getMessage());
+        if(memberByPhoneNum.isEmpty()) {
+            Member member = memberInfoMapper.convertToMemberEntity(signUpDto, memberId);
+            memberRepository.save(member);
         }
-    }
 
-    @Transactional(readOnly = false)
-    public LoginResponseDto getJWTTokensAfterAuthentication(Authentication authentication, HttpServletResponse response) {
-        try {
-            var savedmember = memberRepository.findOptionalMemberByEmail(authentication.getName())
-                    .orElseThrow(()->{
-                        log.error("[AuthService:userSignInAuth] User :{} not found", authentication.getName());
-                        return new ResponseStatusException(HttpStatus.NOT_FOUND,"USER NOT FOUND ");});
-
-            String accessToken = jwtTokenGenerator.generateAccessToken(authentication);
-            String refreshToken = jwtTokenGenerator.generateRefreshToken(authentication);
-
-            createRefreshTokenCookie(response,refreshToken);
-
-            saveUserRefreshToken(savedmember,refreshToken);
-            log.info("[AuthService:userSignInAuth] Access token for user:{}, has been generated",savedmember.getUsername());
-            return  LoginResponseDto.builder()
-                    .username(savedmember.getUsername())
-                    .userStatus(savedmember.getMemberStatus())
-                    .userRole(savedmember.getRoles() == "ROLE_USER" ? "GU" : "SA")
-                    .loginFailCount(savedmember.getLoginFailCount())
-                    .accessToken(accessToken)
-                    .accessTokenExpiry(ACCESSTOKENEXPIRYTIME)
-                    .build();
-        } catch(Exception e) {
-            log.error("[AuthService:userSignInAuth]Exception while authenticating the user due to :" + e.getMessage());
-            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR,"Please Try Again");
-        }
-    }
-
-    @Transactional(readOnly = false)
-    public void saveUserRefreshToken(Member member, String refreshToken) {
-        var refreshTokenEntity = RefreshTokenEntity.builder()
-                .member(member)
-                .refreshToken(refreshToken)
-                .revoked(false)
+        MemberCreationDto memberCreationDto = MemberCreationDto.builder()
+                .email(signUpDto.getEmail())
+                .username(signUpDto.getUsername())
+                .phoneNum(signUpDto.getPhoneNum())
+                .password(signUpDto.getPassword())
+                .memberId(memberId)
+                .roleDscCode(signUpDto.getRoleDscCode())
                 .build();
-        refreshTokenRepository.save(refreshTokenEntity);
-    }
 
-    public Cookie createRefreshTokenCookie(HttpServletResponse response, String refreshToken) {
-        Cookie refreshTokenCookie = new Cookie("refresh_token",refreshToken);
-        refreshTokenCookie.setHttpOnly(true);
-        refreshTokenCookie.setSecure(true);
-        refreshTokenCookie.setMaxAge(REFRESHTOKENEXPIRYTIME); // in seconds
-        response.addCookie(refreshTokenCookie);
-        return refreshTokenCookie;
-    }
+        MemberSocial memberSocial = memberInfoMapper.convertToMemberSocialEntity(memberCreationDto);
 
-    public Object getAccessTokenUsingRefreshToken(String authorizationHeader) {
-        if(!authorizationHeader.startsWith("Bearer")){
-            return new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR,"Please verify your token type");
-        }
+        MemberSocial savedMemberSocial = memberSocialRepository.save(memberSocial);
 
-        final String refreshToken = authorizationHeader.substring(7);
+        Authentication authentication = createAuthenticationObject(memberSocial);
 
-        //Find refreshToken from database and should not be revoked : Same thing can be done through filter.
-        var refreshTokenEntity = refreshTokenRepository.findByRefreshToken(refreshToken)
-                .filter(tokens-> !tokens.isRevoked())
-                .orElseThrow(()-> new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR,"Refresh token revoked"));
-
-        Member savedmember = refreshTokenEntity.getMember();
-
-        //Now create the Authentication object
-        Authentication authentication =  createAuthenticationObject(savedmember);
-
-        //Use the authentication object to generate new accessToken as the Authentication object that we will have may not contain correct role.
         String accessToken = jwtTokenGenerator.generateAccessToken(authentication);
 
+        log.info("savedMemberSocial : {}", savedMemberSocial);
+        saveRefreshToken(savedMemberSocial, accessToken);
+
+        log.info("[AuthService:registerUser] User:{} Successfully registered",memberSocial.getUsername());
+        return  LoginResponseDto.builder()
+                .username(memberSocial.getUsername())
+                .userStatus(memberSocial.getMemberStatus())
+                .userRole(memberSocial.getRoles().equals("ROLE_USER") ? "GU" : "SA")
+                .loginFailCount(memberSocial.getLoginFailCount())
+                .phoneNumYn(memberSocial.getPhoneNum().isEmpty() ? "N" : "Y")
+                .memberId(memberSocial.getMemberId())
+                .accessToken(accessToken)
+                .build();
+    }
+
+
+    @Transactional(readOnly = false)
+    public LoginResponseDto getJWTTokensAfterAuthentication(Authentication authentication) {
+        MemberSocial savedmember = businessUtil.getValidEmail(authentication.getName());
+        String accessToken = jwtTokenGenerator.generateAccessToken(authentication);
+        saveRefreshToken(savedmember, accessToken);
+        log.info("[AuthService:userSignInAuth] Access token for user:{}, has been generated",savedmember.getUsername());
         return  LoginResponseDto.builder()
                 .username(savedmember.getUsername())
                 .userStatus(savedmember.getMemberStatus())
-                .userRole(savedmember.getRoles() == "ROLE_USER" ? "GU" : "SA")
+                .userRole(savedmember.getRoles().equals("ROLE_USER") ? "GU" : "SA")
                 .loginFailCount(savedmember.getLoginFailCount())
+                .phoneNumYn(savedmember.getPhoneNum() == null ? "N": "Y")
                 .accessToken(accessToken)
-                .accessTokenExpiry(ACCESSTOKENEXPIRYTIME)
+                .memberId(savedmember.getMemberId())
                 .build();
-
     }
-    public static Authentication createAuthenticationObject(Member member) {
+    public void saveRefreshToken(MemberSocial memberSocial, String accessToken) {
+        RefreshToken refreshToken = jwtTokenGenerator.generateRefreshToken(memberSocial.getEmail());
+        refreshToken.setAccessToken(accessToken);
+        refreshToken.setMemberSocial(memberSocial);
+        refreshToken.setRevoked(false);
+
+        refreshTokenRepository.save(refreshToken);
+    }
+
+
+
+    public Authentication createAuthenticationObject(MemberSocial memberInfo) {
         // Extract user details from UserDetailsEntity
-        String username = member.getEmail();
-        String password = member.getPassword();
-        String roles = member.getRoles();
+        String username = memberInfo.getEmail();
+        String password = memberInfo.getPassword();
+        String roles = memberInfo.getRoles();
 
         // Extract authorities from roles (comma-separated)
         String[] roleArray = roles.split(",");
@@ -182,13 +146,25 @@ public class AuthService  {
         return new UsernamePasswordAuthenticationToken(username, password, Arrays.asList(authorities));
     }
 
-    public Authentication authenicateUser(LoginRequestDto loginRequestDto) {
+    public Authentication authenticateUser(LoginRequestDto loginRequestDto) {
+
+        log.info("authenticateUser method starts");
+        // check if the email is valid
+        businessUtil.isValidEmail(loginRequestDto.getEmail());
+
+        // check if the account is locked
+        businessUtil.isAccountLock(loginRequestDto.getEmail());
+
+        int result = loginService.loginAttemptCheck(loginRequestDto.getEmail(), loginRequestDto.getPassword());
+        Optional<MemberSocial> memberSocialByEmail = memberSocialRepository.findMemberByEmail(loginRequestDto.getEmail());
+        if(result == 0) throw new BadLoginCredentialsException(String.valueOf(memberSocialByEmail.get().getLoginFailCount() + 1));
+
+
         // Created the authentication token
         UsernamePasswordAuthenticationToken authenticationToken =
                 new UsernamePasswordAuthenticationToken(loginRequestDto.getEmail(), loginRequestDto.getPassword());
 
 
-        loginService.loginAttemptCheck(loginRequestDto.getEmail(), loginRequestDto.getPassword());
         // when this line of code executes, it will call the loadUserByUsername method in AuthService.
         Authentication authentication = authenticationManagerBuilder.getObject().authenticate(authenticationToken);
 

@@ -27,6 +27,12 @@ public class Notification extends FirstCreatedEntity {
     @Column(name = "sender", nullable = false)
     private Long sender;
 
+    @Column(name = "senderImgUrl", nullable = false)
+    private String senderImgUrl;
+
+    @Column(name = "followYn")
+    private String followYn;
+
     @Column(name = "notification_type", nullable = false)
     private NotificationType notificationType;
 

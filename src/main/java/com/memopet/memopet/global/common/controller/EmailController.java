@@ -4,16 +4,11 @@ import com.memopet.memopet.global.common.dto.EmailAuthRequestDto;
 import com.memopet.memopet.global.common.dto.EmailAuthResponseDto;
 import com.memopet.memopet.global.common.dto.RestResult;
 import com.memopet.memopet.global.common.service.EmailService;
-import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.io.UnsupportedEncodingException;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -27,7 +22,7 @@ public class EmailController {
     public RestResult sendVerificationEmail(@RequestBody EmailAuthRequestDto emailDto) {
 
         Map<String,Object> hashMap = new LinkedHashMap<>();
-        hashMap.put("response",emailService.sendEmail(emailDto.getEmail()));
+        hashMap.put("response", emailService.sendEmail(emailDto.getEmail()));
 
         return new RestResult(hashMap);
     }

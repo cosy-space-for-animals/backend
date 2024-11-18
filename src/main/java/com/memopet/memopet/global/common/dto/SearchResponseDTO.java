@@ -1,7 +1,5 @@
 package com.memopet.memopet.global.common.dto;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.memopet.memopet.domain.pet.dto.NotificationResponseDto;
 import com.memopet.memopet.domain.pet.dto.SearchMemoryCommentResponseDto;
 import com.memopet.memopet.domain.pet.dto.SearchPetCommentResponseDto;
 import lombok.*;

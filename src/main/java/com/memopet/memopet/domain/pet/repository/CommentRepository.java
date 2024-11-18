@@ -1,8 +1,10 @@
 package com.memopet.memopet.domain.pet.repository;
 
-import com.memopet.memopet.domain.pet.dto.PetCommentResponseDto;
 import com.memopet.memopet.domain.pet.dto.ReplyPerCommentDto;
-import com.memopet.memopet.domain.pet.entity.*;
+import com.memopet.memopet.domain.pet.entity.Comment;
+import com.memopet.memopet.domain.pet.entity.CommentGroup;
+import com.memopet.memopet.domain.pet.entity.Memory;
+import com.memopet.memopet.domain.pet.entity.Pet;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -13,6 +15,7 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface CommentRepository extends JpaRepository<Comment, Long> {
+
 
     // 작성자 pet_id 로 조회 하기 - 즉 작성자의 댓글 조회
     @Query(value = "select * from comment where commenter_id = ?1 and deleted_date IS NULL and comment_group = 'MEMORY_COMMENT' and depth=1 order by created_date desc", nativeQuery = true)
@@ -35,7 +38,6 @@ public interface CommentRepository extends JpaRepository<Comment, Long> {
 
     @Query("select c from Comment c where c.parentCommentId = :parentCommentId and c.deletedDate IS NULL")
     Page<Comment> findByParentCommentId(@Param("parentCommentId") Long parentCommentId, PageRequest pageRequest);
-
 
     List<Comment> findByMemory(Memory memory);
 }

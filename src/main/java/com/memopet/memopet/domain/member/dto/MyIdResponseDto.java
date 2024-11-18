@@ -1,6 +1,5 @@
 package com.memopet.memopet.domain.member.dto;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 @Getter
@@ -12,4 +11,5 @@ public class MyIdResponseDto {
 
     private String dscCode;
     private String email;
+    private String socialLoginProvider;
 }

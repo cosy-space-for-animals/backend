@@ -6,7 +6,6 @@ import com.memopet.memopet.global.common.entity.FirstCreatedEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.sql.Clob;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -55,6 +54,15 @@ public class Pet extends FirstCreatedEntity {
 
     @Column(name = "pet_favs3")
     private String petFavs3;
+
+    @Column(name = "pet_favs_colour", nullable = false)
+    private String petFavsColour;
+
+    @Column(name = "pet_favs2_colour")
+    private String petFavs2Colour;
+
+    @Column(name = "pet_favs3_colour")
+    private String petFavs3Colour;
 
     @Column(name = "pet_desc", nullable = false)
     private String petDesc;

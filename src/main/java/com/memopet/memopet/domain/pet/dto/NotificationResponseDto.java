@@ -1,10 +1,7 @@
 package com.memopet.memopet.domain.pet.dto;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.memopet.memopet.domain.pet.entity.NotificationType;
 import lombok.*;
-
-import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -13,14 +10,17 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class NotificationResponseDto {
 
-
     private Long notificationId;
 
     private Long receiver;
 
     private Long sender;
 
+    private String imgUrl;
+
+    private String followYn;
+
     private NotificationType notificationType;
 
-    private LocalDateTime createdDate;
+    private String createdDate;
 }

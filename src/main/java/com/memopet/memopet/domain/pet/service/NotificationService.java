@@ -3,13 +3,11 @@ package com.memopet.memopet.domain.pet.service;
 import com.memopet.memopet.domain.pet.dto.NotificationDeleteResponseDto;
 import com.memopet.memopet.domain.pet.dto.NotificationResponseDto;
 import com.memopet.memopet.domain.pet.dto.NotificationsResponseDto;
-import com.memopet.memopet.domain.pet.entity.NotificationType;
 import com.memopet.memopet.domain.pet.entity.Notification;
+import com.memopet.memopet.domain.pet.entity.NotificationType;
 import com.memopet.memopet.domain.pet.entity.Pet;
-import com.memopet.memopet.domain.pet.repository.EmitterRepository;
-import com.memopet.memopet.domain.pet.repository.EmitterRepositoryImpl;
-import com.memopet.memopet.domain.pet.repository.NotificationRepository;
-import com.memopet.memopet.domain.pet.repository.PetRepository;
+import com.memopet.memopet.domain.pet.repository.*;
+import com.memopet.memopet.global.common.exception.BadRequestRuntimeException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
@@ -34,6 +32,7 @@ public class NotificationService {
     private static final Long DEFAULT_TIMEOUT = 60L * 1000 * 60;
     private final NotificationRepository notificationRepository;
     private final PetRepository petRepository;
+    private final FollowRepository followRepository;
     private final EmitterRepository emitterRepository = new EmitterRepositoryImpl();
 
     /**
@@ -49,7 +48,7 @@ public class NotificationService {
         //따라서 notification에 저장되어있는 읽지 않은 데이터가 없는경우 연결된 id값만 보낸다.
         sendFirstUnReadNotiToClient(emitter, id);
 
-        //Last-Event-ID는 클라이언트가 마지막으로 수신한 데이터의 Id값을 의미합니다.
+        // Last-Event-ID는 클라이언트가 마지막으로 수신한 데이터의 Id값을 의미합니다.
         // 그러나 Id 값만을 사용한다면 언제 데이터가 보내졌는지, 유실 되었는지 알 수가 없기 때문에 시간을 emitterId에 붙여두면 데이터가 유실된 시점을
         // 알 수 있으므로 저장된 Key값 비교를 통해 유실된 데이터만 재전송 할 수 있습니다.
         // lastEventId값이 있는 경우, 저장된 데이터 캐시에서 유실된 데이터들을 다시 전송합니다.
@@ -80,6 +79,7 @@ public class NotificationService {
         PageRequest pageRequest = PageRequest.of(currentPage-1, dataCounts, Sort.by("createdDate").descending());
         Optional<Pet> pet = petRepository.findById(petId);
 
+        if(pet.isEmpty()) throw new BadRequestRuntimeException("Pet Not Found");
         //slice로 안읽은 50개의 알림을 보내기
         Slice<Notification> slice = notificationRepository.findUnReadNotiByReceiverId(pet.get(), pageRequest);
 
@@ -91,8 +91,10 @@ public class NotificationService {
                     .notificationId(notification.getId())
                     .receiver(notification.getReceiver().getId())
                     .sender(notification.getSender())
+                    .imgUrl(notification.getSenderImgUrl())
+                    .followYn(notification.getFollowYn())
                     .notificationType(notification.getNotificationType())
-                    .createdDate(notification.getCreatedDate())
+                    .createdDate(String.valueOf(notification.getCreatedDate()))
                     .build());
         }
 
@@ -115,7 +117,7 @@ public class NotificationService {
                     NotificationResponseDto notificationResponseDto = NotificationResponseDto.builder()
                             .notificationId(notification.getId())
                             .notificationType(notification.getNotificationType())
-                            .createdDate(notification.getCreatedDate())
+                            .createdDate(String.valueOf(notification.getCreatedDate()))
                             .receiver(notification.getReceiver().getId())
                             .sender(notification.getSender())
                             .build();
@@ -161,13 +163,26 @@ public class NotificationService {
         return emitter;
     }
     @Transactional(readOnly = false)
-    public Notification saveNotificationInfo(NotificationType notificationType, Pet pet, Long petIdSend) {
-        Long result = 1L;
+    public Notification saveNotificationInfo(NotificationType notificationType, Pet pet, Long senderPetId) {
+        Optional<Pet> sender = petRepository.findById(senderPetId);
 
-        Notification notification = Notification.builder().receiver(pet).sender(petIdSend).notificationType(notificationType).readYn(1).build();
+        if(sender.isEmpty()) throw new BadRequestRuntimeException("Sender petInfo does not exist");
+        Pet senderPetInfo = sender.get();
+        String followYn = null;
+        if(NotificationType.FOLLOW_ALARM.equals(notificationType)) {
+            boolean isFollowed = followRepository.existsByPetIdAndFollowingPetId(senderPetId, pet);
+            if(isFollowed) followYn = "Y";
+            else followYn = "N";
+        }
+
+        Notification notification = Notification.builder()
+                .receiver(pet)
+                .sender(senderPetId)
+                .notificationType(notificationType)
+                .senderImgUrl(senderPetInfo.getPetProfileUrl())
+                .followYn(followYn)
+                .readYn(1).build();
         notificationRepository.save(notification);
-
-        System.out.println("notification.getID : " + notification.getId());
 
         // 알림 보내기
         notify(notification);
@@ -177,11 +192,9 @@ public class NotificationService {
 
     @Transactional(readOnly = false)
     public NotificationDeleteResponseDto deleteNotificationInfo(long notificationId) {
-        Long result = 1L;
-
         Optional<Notification> notificationOptional = notificationRepository.findById(notificationId);
 
-        if(!notificationOptional.isPresent()) return NotificationDeleteResponseDto.builder().decCode('0').build();
+        if(!notificationOptional.isPresent()) throw new BadRequestRuntimeException("Notification Info Not Found");
 
         Notification notification = notificationOptional.get();
         notification.updateReadYN(0);

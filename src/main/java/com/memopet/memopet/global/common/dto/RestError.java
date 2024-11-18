@@ -6,9 +6,10 @@ import lombok.Data;
 public class RestError {
     private String code;
     private String message;
-
     public RestError(String code, String message) {
         this.code = code;
         this.message = message;
     }
+
 }
+

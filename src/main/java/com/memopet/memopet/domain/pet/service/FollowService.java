@@ -1,21 +1,18 @@
 package com.memopet.memopet.domain.pet.service;
 
-import com.memopet.memopet.domain.member.entity.Member;
 import com.memopet.memopet.domain.pet.dto.*;
-import com.memopet.memopet.domain.pet.entity.NotificationType;
 import com.memopet.memopet.domain.pet.entity.Follow;
+import com.memopet.memopet.domain.pet.entity.NotificationType;
 import com.memopet.memopet.domain.pet.entity.Pet;
-import com.memopet.memopet.domain.pet.entity.PetStatus;
 import com.memopet.memopet.domain.pet.repository.FollowRepository;
 import com.memopet.memopet.domain.pet.repository.PetRepository;
+import com.memopet.memopet.global.common.exception.BadRequestRuntimeException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -32,10 +29,7 @@ public class FollowService {
 
         Optional<Pet> pet = petRepository.findById(followListRequestDto.getPetId());
         if (!pet.isPresent()) {
-            return FollowListResponseDto.builder()
-                    .errorDescription("Pet not available or not active.")
-                    .decCode('0')
-                    .build();
+            throw new BadRequestRuntimeException("Pet not available or not active.");
         }
 
         FollowListResponseDto followListResponseDto;
@@ -62,10 +56,7 @@ public class FollowService {
                         .decCode('1').build();
                 break;
             default:
-                followListResponseDto= FollowListResponseDto.builder()
-                        .errorDescription("Unexpected value: " + followListRequestDto.getFollowType())
-                        .decCode('0').build();
-                break;
+                throw new BadRequestRuntimeException("Unexpected value: " + followListRequestDto.getFollowType());
         }
 
         return followListResponseDto;
@@ -75,48 +66,55 @@ public class FollowService {
     /**
      * 팔로우 취소
      */
+    @Transactional(readOnly = false)
     public FollowResponseDto unfollow(Long petId, Long followingPetId) {
+        Optional<Pet> pet = petRepository.findById(followingPetId);
 
-        if (!followRepository.existsByPetIdAndFollowingPetId(petId, followingPetId)) {
-            return new FollowResponseDto('0', "Following relation doesn't exist.");
+        if(pet.isEmpty()) throw new BadRequestRuntimeException("팔로잉 펫");
+        Pet followingPet = pet.get();
+        if (!followRepository.existsByPetIdAndFollowingPetId(petId, followingPet)) {
+            throw new BadRequestRuntimeException("Following relationship doesn't exist.");
         }
-        followRepository.deleteByPetIdAndFollowingPetId(petId, followingPetId);
+        followRepository.deleteByPetIdAndFollowingPetId(petId, followingPet);
         return new FollowResponseDto('1', "Unfollowed the pet successfully");
     }
 
 
     /**
      * 팔로우
+     * tip: 팔로우를 했을때 팔로우를 당한 프로필에 알림을 보내는데, 이때 알림을 보내는건 좋은데, 알림을 받는 사람이 누구인지 알수가 없는데, 이부분은 어떻게 처리하는지 궁금합니다.
+     * tip: 누가 팔로우하는지를 알 필요가 없는걸까요?
+     * tip: 만약 로그인한 사람이 팔로워 라면 여기로 Member 를 넘겨야 합니다. 다른 메소드들도 마찬가지인데요 Member 를 ArgumentResolver 를 통해서 받아오는게 좋습니다.
      */
     public FollowResponseDto followAPet(FollowRequestDto followRequestDTO) {
 
         if (followRequestDTO.getPetId().equals(followRequestDTO.getFollowingPetId())) {
-            return new FollowResponseDto('0', "A pet cannot follow itself");
+            throw new BadRequestRuntimeException("A pet cannot follow itself");
 
         }
         Pet followingPet = petRepository.findByIdAndDeletedDateIsNull(followRequestDTO.getFollowingPetId())
                 .orElse(null);
 
         if (followingPet == null) {
-            return new FollowResponseDto('0', "Pet not found");
+            throw new BadRequestRuntimeException("Pet not found");
         }
 
-        if (followRepository.existsByPetIdAndFollowingPetId(followRequestDTO.getPetId(), followRequestDTO.getFollowingPetId())) {
-            return new FollowResponseDto('0',"Following relationship already exists");
+        if (followRepository.existsByPetIdAndFollowingPetId(followRequestDTO.getPetId(), followingPet)) {
+            throw new BadRequestRuntimeException("Following relationship already exists");
         }
 
         Follow follow = Follow.builder()
                 .petId(followRequestDTO.getPetId())
-                .followingPet(followingPet)
+                .following(followingPet)
                 .build();
         followRepository.save(follow);
 
         Optional<Pet> pet = petRepository.findById(followRequestDTO.getPetId());
 
-        if(!pet.isPresent()) return new FollowResponseDto('0',"Followed Pet Info not found");
+        if(!pet.isPresent()) throw new BadRequestRuntimeException("Followed Pet Info not found");
 
         // 팔로우를 했을때 팔로우를 당한 프로필에 알림을 보낸다.
-        notificationService.saveNotificationInfo(NotificationType.FOLLOW_ALARM,pet.get(), followingPet.getId());
+        notificationService.saveNotificationInfo(NotificationType.FOLLOW_ALARM, pet.get(), followingPet.getId());
 
         return new FollowResponseDto('1', "Followed the pet successfully");
     }
